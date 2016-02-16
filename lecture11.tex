@@ -1,0 +1,73 @@
+\section{Lecture 11: Symmetry}
+
+EY : 20150321 This lecture tremendously and lucidly clarified, for me at least, what a symmetry of the Lie algebra is, and in comparing structures $(M,\mathcal{O}, \mathcal{A})$ vs. $(M,\mathcal{O}, \mathcal{A}, \nabla)$, clarified differences, and asking about differences is a good way to learn, the difference between $\mathcal{L}$ and $\nabla$, respectively.  
+
+Feeling that the round sphere
+\[
+(S^2, \mathcal{O}, \mathcal{A},g^{\text{round}})
+\]
+has rotational symmetry, while \\
+the potato
+\[
+(S^2, \mathcal{O},\mathcal{A}, g^{\text{potato}})
+\]
+does not.  
+
+\subsection{}
+
+\subsection{}
+
+Important
+
+\subsection{Flow of a complete vector field}
+
+Let $(M,\mathcal{O},\mathcal{A})$ smooth $X$ vector \underline{field} on $M$
+
+\begin{definition}
+  A curve $\gamma :I \subseteq \mathbb{R} \to M$ is called an \underline{integral curve of $X$} \\
+if 
+\[
+v_{\gamma,\gamma(\lambda)} = X_{\gamma(\lambda)}
+\]
+\end{definition}
+
+\begin{definition} A vector filed $X$ is \textbf{complete} if all integral curves have $I = \mathbb{R}$ EY: 20150321 (i.e. domain is all of $\mathbb{R}$)
+\end{definition}
+
+Ex. minute 48:30 EY : reall good explanation by F.P.Schuller; take a pt. out for an incomplete vector field.
+
+\begin{theorem}
+  \underline{compactly} supported smooth vector field is complete.  
+\end{theorem}
+
+\begin{definition} The \underline{flow of a complete vector field $X$} is a 1-parameter family
+\[
+h^X = \mathbb{R}\times M \to M
+\]
+where $\begin{aligned} & \quad \\ 
+  & \gamma_p : \mathbb{R} \to M \\
+  & \gamma(0) = p \end{aligned}$ is \underline{the} integral curve of $X$ with 
+
+\underline{Then} for fixed $\lambda \in \mathbb{R}$ 
+\[
+h_{\lambda}^X : M \to M \text{ smooth }
+\]
+\underline{picture}  $h^X_{\underline{\lambda}}(S) \neq S (\text{ if } X \neq 0 )$
+\end{definition}
+
+\subsection{Lie subalgebras of the Lie algebra $(\Gamma(TM) , [ \cdot , \cdot ] )$ of vector fields}
+
+\begin{enumerate}
+  \item[(a)] $\Gamma(TM) = \lbrace \text{ set of all vector fields } \rbrace$ \quad \, $C^{\infty}(M)$-module $ = \mathbb{R}$-vector space \[
+\Longrightarrow [X,Y] \in \Gamma(TM) \quad \quad \quad \, [X,Y] f := X(Yf) - Y(Xf)
+\]
+\begin{enumerate}
+\item[(i)] $[X,Y] = -[Y,X]$ 
+\item[(ii)] $[\lambda X + Z, Y] = \lambda [X,Y] + [Z,Y]$
+\item[(iii)] $[X,[Y,Z]]  + [Z,[X,Y]] + [Y,[Z,X]] =0$ 
+
+$(\Gamma(TM), [\cdot, \cdot])$ \underline{Lie algebra}
+\end{enumerate}
+\item[(b)] Let $X_1\dots X_s$ for $s$ (many) vector fields on $M$, \underline{such that}
+\end{enumerate}
+

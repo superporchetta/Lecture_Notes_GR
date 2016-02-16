@@ -1,0 +1,155 @@
+\section{Lecture 7: Connections}
+
+\[
+\begin{aligned}
+  & \nabla_X f = Xf = (df)(X) \text{ but (not quite) } \\ 
+  & X : C^{\infty}(M) \to C^{\infty}(M) \\ 
+  & df : \Gamma(TM) \to C^{\infty}(M) \\
+  & \nabla_X : C^{\infty}(M) \to C^{\infty}(M)
+\end{aligned}
+\]
+
+\begin{tikzpicture}[decoration=snake]
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+\nabla_X :   C^{\infty}(M) & C^{\infty}(M)   \\
+\nabla_X :  \begin{aligned} \quad  \\ TM^p \otimes T^*M^q \text{ i.e. }  \\  \binom{p}{q} \text{ tensor field }  \end{aligned}   &  \begin{aligned} \quad \\ TM^p \otimes T^*M^q \text{ i.e. }  \\ \binom{p}{q} \text{ tensor field } \end{aligned} \\  };
+%  \path[-stealth]
+  \path[->]
+  (m-1-1) edge node [above] {$$} (m-1-2)
+%  edge node [left] {$\text{ev}_0$} (m-2-2)
+%  (m-1-1) edge node [left] {$\alpha$} (m-2-1)
+  (m-2-1) edge node [below] {$$} (m-2-2);
+%  edge node [below] {$\pi_M$} (m-2-2);
+  \path[->] %,decorate={zigzag,amplitude=0.7pt, segment length=1.2mm, pre=lineto,pre length=4pt}]
+  (m-1-1) edge node [left] {$\vdots$} (m-2-1)
+  (m-1-2) edge node [left] {$\vdots$} (m-2-2);
+\end{tikzpicture}
+
+
+\subsection{Directional derivatives of tensor fields}
+
+manifold with connection is quadruple $(M, \mathcal{O}, \mathcal{A}, \nabla)$ 
+
+topology $\mathcal{O}$
+
+atlas $\mathcal{A}$
+
+Consider chart $(U,x) \in \mathcal{A}$
+
+\begin{definition}
+$\forall \, $ pair $(X, (p,q)-\text{tensor field}) \equiv (X, (p,q)-TF)$,
+
+\textbf{connection} $\nabla$ on smooth manifold $(M,\mathcal{O},\mathcal{A})$ 
+
+$\nabla: ( X, (p,q)-TF) \to (p,q)-TF$ s.t.
+
+\begin{enumerate}
+  \item[(i)] $\nabla_X f = Xf $
+  \item[(ii)]  $\nabla_X(T+S) = \nabla_XT + \nabla_XS $ 
+\item[(iii)] \[
+\nabla_X(T(\omega,Y)) = (\nabla_XT)(\omega,T) + T(\nabla_X\omega, Y) + T(\omega, \nabla_XY)
+\]
+``Leibnitz'' rule.
+
+As
+\[
+T\otimes S (\omega_{(1)}\dots \omega_{(p+r)} , Y_{(1)} \dots Y_{(q+s)}) = T(\omega_{(1)} \dots \omega_{(p)}, Y_{(1)} \dots Y_{(q)} ) \cdot S( \omega_{(p+1)} \dots \omega_{(p+r)} , Y_{(q+1)} \dots Y_{(q+s)})
+\]
+so 
+\[
+\nabla_X(T\otimes S) = (\nabla_XT)\otimes S + T\otimes \nabla_XS
+\]
+
+
+\item[(iv)] $\nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T$
+$C^{\infty}$-linear
+\end{enumerate}
+\end{definition}
+
+\subsection{New structure on $(M,\mathcal{O},\mathcal{A})$ required to fix $\nabla$}
+
+
+There are $(\text{dim}M)^3$ many $\Gamma^i_{ \, \, j k}$
+\[
+\begin{aligned}
+&  \Gamma^i_{ \, \, jk} : U \to \mathbb{R} \\ 
+&  p \mapsto \left( dx^i ( \nabla_{ \frac{ \partial}{ \partial x} } \frac{ \partial }{ \partial x^j } ) \right)(p)
+\end{aligned}
+\]
+
+Now $\nabla_{ \frac{ \partial }{ \partial x^m}  }(dx^i) = ?$
+
+\[
+\begin{aligned}
+  & \underbrace{ \nabla_{  \frac{ \partial }{ \partial x^m} } ( \underbrace{ dx^i \left( \frac{ \partial }{ \partial x^j } \right) }_{ \delta^i_{ \, \, j} } ) }_{ \rotatebox{90}{$\,=$} \quad \, \text{ (iii) } }  = \frac{ \partial }{ \partial x^m} ( \delta^i_{ \, \, j} ) = 0  \\
+& = \left( \nabla_{ \frac{ \partial }{ \partial x^m} } dx^i \right)\left( \frac{ \partial }{ \partial x^j} \right) + dx^i (   \underbrace{ \nabla_{ \frac{ \partial }{ \partial x^m } } \frac{ \partial }{ \partial x^j } }_{ \Gamma^q_{ \, jm }\frac{ \partial }{ \partial x^q} }   ) = 0 \\
+& \Longrightarrow \left( \nabla_{ \frac{ \partial }{ \partial x^m } } dx^i \right)\left( \frac{ \partial }{ \partial x^j } \right) = - \Gamma^i_{ jm} \\
+& \nabla_{ \frac{ \partial }{ \partial x^m} } dx^i = -\Gamma^i_{ jm} dx^j 
+\end{aligned}
+\]
+
+
+% \rotatebox{90}{$\,=$}
+
+Hence
+
+\[
+\begin{aligned}
+  & ( \nabla_X Y)^i = X(Y^i) + \Gamma^i_{j\underbrace{m}_{\text{ last entry goes in direction of $X$ }} } Y^j X^m \\
+  & (\nabla_X \omega)_i = X(\omega_i) + - \Gamma^j_{im} \omega_j X^m
+\end{aligned}
+\]
+Note that for the immediately above expression for $(\nabla_X Y)^i$, in the second term on the right hand side, $\Gamma_{jm}^i$ has the last entry at the bottom, $m$ going in the direction of $X$, so that it matches up with $X^m$. This is a good mnemonic to memorize the index positions of $\Gamma$. 
+
+\underline{summary so far}:
+\[
+\begin{aligned}
+  & ( \nabla_X Y)^i = X(Y^i) + \Gamma^i_{jm }  Y^j X^m \\
+  & (\nabla_X \omega)_i = X(\omega_i) + - \Gamma^j_{im} \omega_j X^m
+\end{aligned}
+\]
+similarly, by further application of Leibnitz
+
+$T$ a $(1,2)$-TF (tensor field)
+
+\[
+\begin{aligned}
+  (\nabla_X T)^i_{ \, \, jk } = X(T^i_{ \, \, jk} ) + \Gamma^i_{ \, \, s m } T^s_{ \, \, jk} X^m - \Gamma^s_{ \, \, jm} T^i_{ \, \, sk} X^m - \Gamma^s_{ \, \, km} T^i_{ \,\, js} X^m
+\end{aligned}
+\]
+
+What is a Euclidean space: \\
+$(M = \mathbb{R}^n, \mathcal{O}_{\text{st}}, \mathcal{A})$ smooth manifold. \\
+Assume $(\mathbb{R}^n, \text{id}_{\mathbb{R}^n} ) \in \mathcal{A}$ and 
+\[
+(\Gamma^i_{(x)})_{jk} = dx^i \left( (\nabla_{\text{\underline{E}}})_{ \frac{ \partial }{ \partial x^k} } \frac{ \partial }{ \partial x^j} \right) \overset{!}{=} 0 
+\]
+
+
+\subsection{Change of $\Gamma$'s under change of chart}
+
+$(U,x)$, $(V,y) \in \mathcal{A}$ and $U \cap V \neq \emptyset$
+
+\[
+\Gamma^i_{jk}(y) := dy^i \left( \nabla_{ \frac{ \partial}{ \partial y^k} } \frac{ \partial }{ \partial y^j} \right) = \frac{ \partial y^i}{ \partial x^q }dx^q \left( \nabla_{\frac{ \partial x^p}{ \partial y^k}  \frac{ \partial }{ \partial x^p} } \frac{ \partial x^s}{ \partial y^j} \frac{ \partial }{ \partial x^s } \right)
+\]
+
+Note $\nabla_{fX}$ is $C^{\infty}$-linear for $fX$
+
+covector $dy^i$ is $C^{\infty}$-linear in its argument
+\[
+\begin{aligned}
+\Longrightarrow \Gamma_{jk}^i(y) & = \frac{ \partial y^i}{ \partial x^q} dx^q \left( \frac{ \partial x^p}{ \partial y^k} \left[ \left( \nabla_{ \frac{ \partial }{ \partial x^p} } \frac{ \partial x^s}{ \partial y^j} \right) \frac{ \partial }{ \partial x^s} + \frac{ \partial x^s}{ \partial y^j} \left( \nabla_{ \frac{ \partial }{ \partial x^p } } \frac{ \partial }{ \partial x^s } \right)  \right] \right) = \\
+& = \frac{ \partial y^i}{ \partial x^q} \frac{ \partial x^p }{ \partial y^k} \frac{ \partial }{ \partial x^p } \frac{ \partial x^s}{ \partial y^j } \delta^q_{ \, \, s} + \frac{ \partial y^i}{ \partial x^q} \frac{ \partial x^p }{ \partial y^k} \frac{ \partial x^s}{ \partial y^j} \Gamma^q_{sp}(x)
+\end{aligned}
+\]
+
+
+\begin{equation}\label{Eq:WEHCG0703_changeofGamma}
+\Gamma^i_{jk}(y) = \frac{ \partial y^i}{ \partial x^q} \frac{ \partial^2 x^q}{ \partial y^j \partial y^k} + \frac{ \partial y^i}{ \partial x^q } \frac{ \partial x^s }{ \partial y^j} \frac{ \partial x^p }{ \partial y^k} \Gamma^q_{sp}(x)
+\end{equation}
+Eq. (\ref{Eq:WEHCG0703_changeofGamma}) is the change of connection coefficient function under the change of chart $(U\cap V,x) \to (U\cap V,y)$
+
+
+\subsection{Normal Coordinates}

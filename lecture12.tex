@@ -1,0 +1,133 @@
+\section{Integration}
+
+\subsection{}
+
+\subsection{}
+
+\subsection{Volume forms}
+
+\begin{definition}
+On a smooth manifold $(M,\mathcal{O},\mathcal{A})$ \\
+a $(0,\text{dim}M)$-tensor field $\Omega$ is called a \underline{volume form} if 
+\begin{enumerate}
+\item[(a)] $\Omega$ vanishes nowhere (i.e. $\Omega \neq 0 \, \, \forall \, p \in M$) 
+\item[(b)] totally antisymmetric 
+\[
+\Omega(\dots , \underbrace{X}_{i\text{th}} , \dots , \underbrace{Y}_{j\text{th}} \dots ) = - \Omega(\dots , \underbrace{Y}_{i\text{th}} , \dots , \underbrace{X}_{j\text{th}} \dots )
+\]
+\end{enumerate}
+
+In a chart: 
+\[
+\Omega_{i_1 \dots i_d} = \Omega_{ [i_1 \dots i_d ]}
+\]
+\end{definition}
+
+\underline{Example} $(M,\mathcal{O}, \mathcal{A},g)$ metric manifold
+
+construct volume form $\Omega$ from $g$
+
+In \underline{any} chart: $(U,x)$
+
+\[
+\Omega_{i_1 \dots i_d} := \sqrt{ \text{det}(g_{ij}(x)) } \epsilon_{i_1 \dots i_d} 
+\]
+where \textbf{Levi-Civita symbol} $\epsilon_{i_1 \dots i_d}$ is \underline{defined} as $\begin{aligned} & \quad \\ 
+& \epsilon_{123 \dots d} = +1 \\ 
+& \epsilon_{1\dots d} = \epsilon_{[i_1 \dots i_d]} \end{aligned}$
+
+\begin{proof} (well-defined) Check: What happens under a change of charts
+\[
+\begin{aligned}
+\Omega(y)_{i_1 \dots i_d} & = \sqrt{ \text{det}(g(y)_{ij}) } \epsilon_{i_1 \dots i_d} = \\
+& = \sqrt{ \text{det}(g_{mn}(x) \frac{ \partial x^m}{ \partial y^i} \frac{ \partial x^n}{ \partial y^j} )} \frac{ \partial y^{m_1} }{ \partial x^{i_1} } \dots \frac{ \partial y^{m_d}}{ \partial x^{i_d}} \epsilon_{ [m_1 \dots m_d] } = \\
+& = \sqrt{ | \text{det}g_{ij}(x) | } \left| \text{det}\left( \frac{ \partial x}{ \partial y} \right) \right| \text{det}\left( \frac{ \partial y}{ \partial x} \right) \epsilon_{i_1 \dots i_d} = \sqrt{ \text{det}g_{ij}(x)} \epsilon_{i_1 \dots i_d} \text{sgn}\left( \text{det}\left( \frac{ \partial x}{ \partial y} \right) \right)
+\end{aligned}
+\]
+\end{proof}
+
+EY : 20150323 
+
+Consider the following:
+\[
+\begin{aligned}
+\Omega(y)(Y_{(1)} \dots Y_{(d)} ) & = \Omega(y)_{i_1 \dots i_d}Y_{(1)}^{i_1} \dots Y_{(d)}^{i_d} =  \\
+& = \sqrt{ \text{det}(g_{ij}(y)) } \epsilon_{i_1 \dots i_d} Y^{i_1}_{(1)} \dots Y^{i_d}_{(d)} = \\
+& = \sqrt{ \text{det}(g_{mn}(x)) \frac{ \partial x^m}{ \partial y^i} \frac{ \partial x^n }{ \partial y^j} } \epsilon_{i_1 \dots i_d} \frac{ \partial y^{i_1}}{ \partial x^{m_1} } \dots \frac{ \partial y^{i_d} }{ \partial x^{m_d} } X^{m_1} \dots X^{m_d}  = \\
+& = \sqrt{ \text{det}(g_{mn}(x))\frac{ \partial x^m}{ \partial y^i} \frac{ \partial x^n}{ \partial y^j}} \text{det}\left( \frac{ \partial y}{ \partial x}\right) \epsilon_{m_1 \dots m_d} X^{m_1} \dots X^{m_d} = \\
+& = \sqrt{ \text{det}(g_{mn}(x)) } \left| \text{det}\left( \frac{ \partial x}{ \partial y} \right) \right| \text{det}\left( \frac{ \partial y}{ \partial x} \right) \epsilon_{m_1 \dots m_d} X^{m_1} \dots X^{m_d} = \\
+& = \sqrt{\text{det}(g_{mn}(x))} \epsilon_{m_1 \dots m_d} \text{sgn}\left(\text{det}\left( \frac{ \partial x}{ \partial y} \right) \right) X^{m_1} \dots X^{m_d} = \text{sgn}(\text{det}\left( \frac{ \partial x}{ \partial y} \right)) \Omega_{m_1 \dots m_d}(x) X^{m_1} \dots X^{m_d}
+\end{aligned}
+\]
+
+If $\text{det}\left( \frac{ \partial y}{ \partial x} \right) > 0$, 
+\[
+\Omega(y)(Y_{(1)} \dots Y_{(d)})  = \Omega(x)(X_{(1)} \dots X_{(d)} )
+\]
+This works also if Levi-Civita symbol $\epsilon_{i_1\dots i_d}$ doesn't change at all under a change of charts. (around 42:43 \url{https://youtu.be/2XpnbvPy-Zg})
+
+\hrulefill
+
+Alright, let's require, \\
+\phantom{\quad \, } restrict the smooth atlas $\mathcal{A}$ \\
+\phantom{\quad \quad \, } to a subatlas ($\mathcal{A}^{\uparrow}$ still an atlas) 
+\[
+\mathcal{A}^{\uparrow} \subseteq \mathcal{A}
+\]
+s.t. $\forall \, (U,x), (V,y)$ have chart transition maps $\begin{aligned} & \quad \\ 
+& y\circ x^{-1} \\ 
+& x\circ y^{-1} \end{aligned}$
+
+s.t. $\text{det}\left( \frac{ \partial y}{ \partial x} \right) >0$  \\
+\phantom{ \quad \, } such $\mathcal{A}^{\uparrow} $ called an \textbf{oriented} atlas 
+
+\[
+(M, \mathcal{O}, \mathcal{A},g) \Longrightarrow (M,\mathcal{O},\mathcal{A}^{\uparrow} ,g)
+\]
+Note: associated bundles.
+
+Note also:
+$ \text{det}\left( \frac{ \partial y^b}{ \partial x^a} \right) = \text{det}(\partial_a(y^bx^{-1}))$ \phantom{ \quad \quad \, } $\frac{ \partial y^b}{ \partial x^a}$ is an endomorphism on vector space $V$.  $\begin{aligned} & \quad \\ 
+& \varphi : V \to V \\
+& \text{det}\varphi \quad \, \text{ independent of choice of basis } \end{aligned}$
+
+\phantom{\quad \quad \, } $g$ is a $(0,2)$ tensor field, not endomorphism (not independent of choice of basis) $\sqrt{ |\text{det}(g_{ij}(y)) | }$
+
+\begin{definition} $\Omega$ be a volume form on $(M,\mathcal{O}, \mathcal{A}^{\uparrow} )$ and consider chart $(U,x)$ 
+\begin{definition} $\omega_{(X)} := \Omega_{i_1\dots i_d} \epsilon^{i_1\dots i_d}$
+same way $\begin{aligned} & \quad \\ 
+& \epsilon^{12 \dots d} = +1 \\ 
+& \epsilon^{[\dots ]} \end{aligned}$
+
+one can show
+
+\[
+\boxed{ \omega_{(y)} = \text{det}\left( \frac{ \partial x}{ \partial y} \right) \omega_{(x)} } \quad \quad \, \text{ scalar density }
+\]
+\end{definition}
+\end{definition}
+
+\subsection{Integration on \underline{one} chart domain $U$}
+
+\begin{definition}
+\begin{equation}
+\boxed{ \int_U f :\overset{ (U,y) }{=} \int_{y(U)} d^d\beta \omega_{(y)}(y^{-1}(\beta)) f_{(y)}(\beta) }
+\end{equation}
+\end{definition}
+
+\begin{proof}: Check that it's (well-defined), how it changes under change of charts
+\[
+\begin{gathered}
+\int_U f :\overset{ (U,y) }{=} \int_{y(U)} d^d\beta \omega_{(y)}(y^{-1}(\beta)) f_{(y)}(\beta) = \underset{ (U,y)}{=} \int_{x(U)} \int d^d\alpha \left| \text{det}\left( \frac{ \partial y }{ \partial x}\right) \right| f_{(x)}(\alpha) \omega_{(x)}(x^{-1}(\alpha) \text{det}\left( \frac{ \partial x}{ \partial y } \right) = \\
+= \int_{x(U)} d^d \alpha \omega_{(x)}(x^{-1}(x)) f_{(x)}(\alpha)
+\end{gathered}
+\]
+\end{proof}
+
+On an oriented metric manifold $(M,\mathcal{O}, \mathcal{A}^{\uparrow}, g)$
+\[
+\int_Uf:= \int_{x(U)} d^d\alpha  \underbrace{  \sqrt{ \text{det}(g_{ij}(x))(x^{-1}(\alpha)) } }_{\sqrt{g}}  f_{(x)}(\alpha)
+\]
+
+\subsection{Integration on the entire manifold}
+

@@ -1,0 +1,200 @@
+\section{Differential Manifolds}
+
+\begin{tikzpicture}[decoration=snake]
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+\gamma : \mathbb{R} & U \\
+& x(U) \subseteq \mathbb{R}^d \\ 
+};
+  \path[->]
+  (m-1-1) edge node [above] {$$} (m-1-2)
+          edge node [left] {$x\circ \gamma$} (m-2-2)
+  (m-1-2) edge node [right] {$x$} (m-2-2);
+\end{tikzpicture}
+\underline{idea}. try to ``lift'' the undergraduate notion of differentiability of a curve on $\mathbb{R}^d$ to a notion of differentiability of a curve on $M$
+
+\underline{Problem} Can this be well-defined under change of chart?
+
+\begin{tikzpicture}[decoration=snake]
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
+  {
+    & y(U\cap V) \subseteq \mathbb{R}^d \\ 
+\gamma : \mathbb{R} & U \cap V \neq \emptyset \\
+& x(U\cap V) \subseteq \mathbb{R}^d \\ 
+};
+  \path[->]
+  
+  (m-2-1) edge node [auto] {$$} (m-2-2)
+          edge node [auto] {$x\circ \gamma$} (m-3-2)
+          edge node [auto] {$y\circ \gamma$} (m-1-2)
+  (m-2-2) edge node [auto] {$x$} (m-3-2)
+          edge node [auto] {$y$} (m-1-2)
+  (m-3-2) edge [bend right=40] node [right] {$y\circ x^{-1}$} (m-1-2);
+\end{tikzpicture}
+
+$x\circ \gamma$ undergraduate differentiable (``as a map $\mathbb{R} \to \mathbb{R}^d$'')
+
+\[
+\begin{gathered}
+  \underbrace{y\circ \gamma}_{\text{maybe only continuous, but not undergraduate differentiable} } =  \underbrace{ ( \overbrace{ y\circ x^{-1}}^{\mathbb{R}^d \to \mathbb{R}^d }   )}_{\text{continuous}}  \circ \underbrace{ \overbrace{ (x\circ \gamma) }^{\mathbb{R}\to \mathbb{R}^d} }_{ \text{ undergrad differentiable } }  = y \circ (x^{-1} \circ x) \circ \gamma
+\end{gathered}
+\]
+
+At first sight, strategy does not work out.  
+
+\subsection{Compatible charts}
+
+In section 1, we used any imaginable charts on the top. mfd. $(M,\mathcal{O})$.  
+
+To emphasize this, we may say that we took $U$ and $V$ from the \emph{maximal atlas} $\mathcal{A}$ of $(M,\mathcal{O})$.  
+
+
+\begin{definition}
+Two charts $(U,x)$ and $(V,y)$ of a top. mfd. are called \ding{96}-compatible if 
+either
+\begin{enumerate}
+  \item[(a)] $U \cap V = \emptyset$
+or  \item[(b)] $U\cap V \neq \emptyset$
+\end{enumerate}
+chart transition maps have undergraduate \ding{96} property.
+
+EY : 20151109 e.g. since $\mathbb{R}^d \to \mathbb{R}^d$, can use undergradate \ding{96} property such as continuity or differentiability.
+
+\[
+\begin{aligned}
+  & y \circ x^{-1} : x(U \cap V) \subseteq \mathbb{R}^d  \to y(U\cap V) \subseteq \mathbb{R}^d  \\
+  & x\circ y^{-1} : y(U\cap V) \subseteq \mathbb{R}^d   \to x(U\cap V) \subseteq \mathbb{R}^d
+\end{aligned}
+\]
+\end{definition}
+
+\underline{Philosophy}: 
+
+\begin{definition}
+  An atlas $\mathcal{A}_{\text{\ding{96}}}$ is a \ding{96}-compatible atlas if any two charts in $\mathcal{A}_{\text{\ding{96}}}$ are \ding{96}-compatible.
+
+\end{definition}
+
+\begin{definition}
+  A \textbf{\ding{96}-manifold} is a triple $(\underbrace{ M,\mathcal{O} }_{\text{top. mfd.} }, \mathcal{A}_{\text{\ding{96}}})$ \quad \, $\mathcal{A}_{\text{\ding{96}}} \subseteq \mathcal{A}_{\text{maximal}} $
+\end{definition}
+
+
+\begin{tabular}{ l | c  l}
+\ding{96} &  undergraduate  \ding{96} &  \\
+\hline
+$C^0$ & $C^0(\mathbb{R}^d \to \mathbb{R}^d) =$  &  continuous maps w.r.t. $\mathcal{O}$  \\
+$C^1$ & $C^1(\mathbb{R}^d \to \mathbb{R}^d) = $  &  differentiable (once) and is continuous  \\
+$C^k$ & & $k$-times continuously differentiable \\
+$D^k$ & & $k$-times differentiable \\
+$\vdots$ & & \\
+$C^{\infty}$ & $C^{\infty}(\mathbb{R}^d \to \mathbb{R}^d)$ & \\
+$\mathbin{\rotatebox[origin=c]{-90}{$\supseteq$}}$ & &  \\
+$C^{\omega}$ & $\exists $  multi-dim. Taylor exp.  &  \\
+$\mathbb{C}^{\infty}$ & satisfy Cauchy-Riemann equations, pair-wise & 
+\end{tabular}
+
+
+EY : 20151109 Schuller says: $C^k$ is easy to work with because you can judge $k$-times cont. differentiability from existence of all partial derivatives \textbf{and} their continuity.  There are examples of maps that partial derivatives exist but are not $D^k$, $k$-times differentiable.  
+
+\begin{theorem}[Whitney]
+%  Any $C^{k\geq 1}$-manifold $(M,\mathcal{O}, \mathcal{A}_{C^{k\geq 1}})$  
+  Any $C^{k\geq 1}$-atlas, $\mathcal{A}_{C^{k\geq 1}}$ of a topological manifold \emph{contains} a $C^{\infty}$-atlas.  
+
+Thus we may w.l.o.g. always consider $C^{\infty}$-manifolds, ``smooth manifolds'', unless we wish to define Taylor expandibility/complex differentiability \dots
+\end{theorem}
+
+EY : 20151109 Hassler Whitney \footnote{\url{http://mathoverflow.net/questions/8789/can-every-manifold-be-given-an-analytic-structure}}
+
+\begin{definition}
+  A smooth manifold $(\underbrace{ M,\mathcal{O} }_{\text{top. mfd. } }, \underbrace{ \mathcal{A}}_{C^{\infty}-\text{atlas}} )$ 
+\end{definition}
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
+  {
+ \mathbb{R} & M   \\
+&  \mathbb{R}^d \\ 
+};
+  \path[->]  
+  (m-1-1) edge node [auto] {$\gamma$} (m-1-2)
+          edge node [auto] {$x\circ \gamma$} (m-2-2)
+  (m-1-2) edge node [auto] {$x$} (m-2-2);
+\end{tikzpicture}
+EY: 20151109 Schuller was explaining that the trajectory is real in $M$; the coordinate maps to obtain coordinates is $x\circ \gamma$
+
+\subsection{Diffeomorphisms}
+
+$M \xrightarrow{ \phi } N$
+
+If $M,N$ are naked sets, the structure preserving maps are the bijections (invertible maps).  
+
+e.g. $\lbrace 1,2,3 \rbrace \to \lbrace a,b \rbrace$
+
+\begin{definition}
+  $M \cong_{\text{set}} N$ (set-theoretically) isomorphic if $\exists \, $ bijection $\phi : M \to N$
+\end{definition}
+
+\underline{Examples}.  $\mathbb{N} \cong_{\text{set}} \mathbb{Z}$ \\
+$\mathbb{N} \cong_{\text{set}} \mathbb{Q}$  (EY: 20151109 Schuller says from diagonal counting)\\
+$\mathbb{N} \cancel{\cong_{\text{set}}} \mathbb{R}$
+
+Now $(M, \mathcal{O}_M) \cong_{\text{top}} (N,\mathcal{O}_N)$ (topl.) isomorphic $=$ ``homeomorphic'' $\exists \, $ bijection $\phi : M \to N$  \\
+\phantom{ \quad \quad \, } $\phi, \phi^{-1}$ are continuous.  
+
+$(V,+,\cdot) \cong_{\text{vec}} ( W,+_w,\cdot_w)$ (EY: 20151109 vector space isomorphism) if \\
+$\exists \, \text{ bijection } \phi : V \to W$ linearly
+
+\underline{finally}
+
+\begin{definition}
+  Two $C^{\infty}$-manifolds \\
+  $(M,\mathcal{O}_M, \mathcal{A}_M)$ and $(N,\mathcal{O}_N, \mathcal{A}_N)$ are said to be \textbf{diffeomorphic} if $\exists \, $ bijection $\phi : M \to N$ s.t. 
+\[
+\begin{aligned} & \phi : M \to N \\
+  & \phi^{-1} : N \to M \end{aligned}
+    \]
+are both $C^{\infty}$-maps
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
+  {
+ \mathbb{R}^d & \mathbb{R}^e   \\
+M \supseteq U &  V\subseteq N   \\ 
+\mathbb{R}^d & \mathbb{R}^e \\
+};
+  \path[->]  
+  (m-1-1) edge node [auto] {$\widetilde{y} \circ \phi \circ \widetilde{x}^{-1}$} (m-1-2)
+  (m-2-1) edge node [auto] {$\widetilde{x}$} (m-1-1)
+          edge node [auto] {$\phi$} (m-2-2)
+          edge node [auto] {$x$} (m-3-1)
+  (m-3-1) edge node [auto] {$ \substack{ y\circ \phi \circ x^{-1} \\ 
+ \text{ undergraduate } C^{\infty} }$} (m-3-2)
+          edge [bend left=50] node [auto] {$C^{\infty}$} (m-1-1)
+  (m-2-2) edge node [auto] {$\widetilde{y}$} (m-1-2) 
+          edge node [auto] {$y$} (m-3-2)
+  (m-3-2) edge [bend right=50] node [auto] {$$} (m-1-2);
+\end{tikzpicture}
+
+
+\end{definition}
+
+\begin{theorem}
+  $\# = $ number of $C^{\infty}$-manifolds one can make out of a given $C^0$-manifolds (if any) - up to diffeomorphisms.  
+
+\begin{tabular}{l | c r }
+  $\text{dim}M$ &  $\#$ &  \\
+  \hline
+  1  & 1  & Morse-Radon theorems \\
+ 2  & 1  & Morse-Radon theorems \\
+ 3 & 1  & Morse-Radon theorems \\
+4 & uncountably infinitely many & \\
+5 &   finite  & surgery theory \\
+6 &  finite & surgery theory \\
+\vdots & finite & surgery theory
+\end{tabular}
+
+\end{theorem}
+
+EY : 20151109 cf. \url{http://math.stackexchange.com/questions/833766/closed-4-manifolds-with-uncountably-many-differentiable-structures}  \\
+\href{http://www.maths.ed.ac.uk/~aar/papers/scorpan.pdf}{The wild world of 4-manifolds}

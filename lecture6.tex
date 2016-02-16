@@ -1,0 +1,203 @@
+\section{Lecture 6: Fields}
+
+So far: 
+
+\begin{tikzpicture}[decoration=snake]
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+T_pM \\ 
+T_p^*M \\
+\vdots \\
+};
+  \path[->] %,decorate={zigzag,amplitude=0.7pt, segment length=1.2mm, pre=lineto,pre length=4pt}]
+  (m-1-1) edge node [left] {$\vdots$} (m-2-1)
+  (m-2-1) edge node [left] {$\vdots$} (m-3-1);
+\end{tikzpicture},
+
+now
+
+in Thought Cloud: theory of bundles
+
+\subsection{Bundles}
+
+\begin{definition}
+  A \textbf{bundle} is a triple 
+\[
+E \xrightarrow{ \pi } M 
+\]
+$E$ smooth manifold \quad \, ``\textbf{total space}'' \\
+$\pi$ smooth map (surjective)  ``projection map'' \\
+$M$ smooth manifold ``base space''
+
+\end{definition}
+
+\underline{Example} $E = $ cylinder
+$M = $ circle
+
+
+\begin{definition}
+  define \textbf{fibre over $p$} \\
+  \phantom{define} $:= \text{preim}_{\pi}(\lbrace p \rbrace)$
+\end{definition}
+
+\begin{definition}
+A \textbf{section} $\sigma$ of a bundle
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+    E \\
+    M \\ };
+  \path[->]
+  (m-1-1) edge node [above] {$\phi^*$} (m-2-1)
+  (m-2-1) edge [bend right=30] node [left] {$d$} (m-1-1);
+\end{tikzpicture}
+
+
+
+
+
+require $\pi \circ \sigma = \text{id}_M$
+\end{definition}
+
+Schuller says: in quantum mechanics, 
+\underline{Aside}: $\psi : M \to \mathbb{C}$
+
+
+\subsection{Tangent bundle of smooth manifold}
+
+$(M,\mathcal{O},\mathcal{A})$ smooth manifold
+
+\begin{enumerate}
+\item[(a)] as a \textbf{set}
+  $TM : = \dot{\bigcup}_{p\in M} T_pM$
+\item[(b)] $\begin{aligned} & \quad \\
+  \text{surjective } & \pi: TM \to M \\
+  & X\mapsto p \end{aligned}$ the \emph{unique} point $p\in M$, $X \in T_pM$  
+
+\underline{situation}:  $\underbrace{TM}_{\text{set}} \underbrace{ \xrightarrow{ \pi } }_{\text{surjective map }} \underbrace{M}_{\text{smooth manifold}}$
+
+\item[(c)] Construct topology on $TM$ that is the coarsest topology such that $\pi$ (just) continuous.  (``initial topology with respect to $\pi$'').
+
+\[
+\mathcal{O}_{TM} := \lbrace \text{preim}_{\pi}(U) | \mathcal{U}\in \mathcal{O} \rbrace
+\]
+Show: Tutorial $\mathcal{O}_{TM}$
+Schuller says this is shown in the tutorial
+
+$(TM,\mathcal{O}_{TM})$  \\
+
+\underline{Construction of a $C^{\infty}$-atlas on $TM$ from the $C^{\infty}$-atlas $\mathcal{A}$ on $M$. }
+
+\[
+\mathcal{A}_{TM} := \lbrace (T\mathcal{U},\xi_x  ) | (U,x) \in \mathcal{A} \rbrace
+\]
+where
+\[
+\begin{aligned}
+  \xi_x : & T \mathcal{U} \to \mathbb{R}^{2\cdot\text{dim}  M } \\
+  & X \mapsto (\underbrace{ (x^1 \circ \pi)(X), \dots, (x^d\circ \pi)(X) }_{(U,x)-\text{ coords of $\pi(X)$ } \, (d \text{ many } ) } , (dx^1)_{\pi(X)}(X), \dots , (dx^d)_{\pi(X)}(X)  )
+\end{aligned}
+\]
+where $X\in T_{\pi(X)}M$ \\
+\phantom{where } $X = X_{(x)}^i \left( \frac{ \partial }{ \partial x^i} \right)_{\pi(X)}$  \\
+\phantom{where } $\begin{aligned} \quad  & \\
+  (dx^j)_{\pi(X)}(X) &= (dx^j)_{\pi(X)} \left( X^i_{(x)}\left( \frac{ \partial }{ \partial x^i} \right)_{\pi(X)} \right) = \\
+  & = X^i_{(x)}\delta_i^j = X^j_{(x)}\end{aligned}$
+
+\underline{Write} $\xi_x^{-1} : \xi_x(TU) \subseteq \mathbb{R}^{2\text{dim}M} \to TU$
+\[
+(\alpha^1 , \dots , \alpha^d, \beta^1, \dots , \beta^d) := \beta^i \left( \frac{ \partial }{ \partial x^i} \right)_{ \underbrace{ x^{-1}(\alpha^1 , \dots , \alpha^d) }_{\pi(X)} }
+\]
+
+\underline{Check}: \[
+\begin{gathered}
+  (\xi_y \circ \xi_x^{-1})(\alpha^1 , \dots , \alpha^d, \beta^1, \dots , \beta^d) = \\
+  = \xi_y \left( \beta^i \left( \frac{ \partial }{ \partial x^i} \right)_{x^{-1}(\alpha^1 , \dots , \alpha^d) } \right) \\
+  = \left( \dots, (y^i \circ \pi)( \beta^m \cdot \left( \frac{ \partial }{ \partial x^m} \right)_{x^{-1}(\alpha^1 \dots \alpha^d) } )  , \dots , \dots (dy^i)_{x^{-1}(\alpha^1, \dots \alpha^d) } \left( \beta^m \left( \frac{ \partial }{ \partial x^m} \right)_{x^{-1}(\alpha^1 \dots \alpha^d) } \right) , \dots   \right) = \\
+  = ( \dots , (y^i \circ x^{-1})(\alpha^1 , \dots , \alpha^d), \dots , \dots , \underbrace{ \beta^m(dy^i)_{x^{-1} (\alpha^1, \dots , \alpha^d) } \left( \left( \frac{ \partial }{ \partial x^m} \right)_{x^{-1}(\alpha^1 \dots \alpha^d) } \right)}_{ \beta^m \left( \frac{ \partial y }{ \partial x^m } \right)_{x^{-1}(\alpha^1 \dots \alpha^d)} }  ) 
+\end{gathered}
+\]
+
+%
+$\left( \frac{ \partial y }{ \partial x^m } \right)_{x^{-1}(\alpha^1 \dots \alpha^d)} = \partial_m (y^i \circ x^{-1} )( x\circ (x^{-1}(\alpha^1 \dots \alpha^d) ) ) = \partial_m (y^i \circ x^{-1} )( \alpha^1 \dots \alpha^d)$ smooth.  
+
+\underline{upshot}
+
+\[
+\underbrace{TM}_{\text{smooth manifold}} \underbrace{ \xrightarrow{\pi} }_{\text{smooth map} } \underbrace{M}_{\text{ smooth manifold} }
+\]
+bundle, called the tangent bundle.
+
+\end{enumerate}
+
+\subsection{Vector fields}
+
+\begin{definition}
+  A \textbf{smooth vector field} $\chi$ is a \emph{smooth} map
+\end{definition}
+
+\subsection{The $C^{\infty}(M)$-module $\Gamma(TM)$}
+
+\textbf{set} $\Gamma(TM) = \lbrace \chi \quad \, M \to TM | \text{ smooth section } \rbrace$
+ 
+$(\chi \oplus \widetilde{\chi})(f) := (\chi f) + \underbrace{\widetilde{\chi}}_{C^{\infty}(M)}(f)$ \\
+
+$(g\odot \xi)(f) := g \cdot \underbrace{ \chi }_{C^{\infty}(M)}(f)$
+
+
+\underline{upshot}: set of all smooth vector fields can be made into a $C^{\infty}(M)$-module.  
+
+\underline{Fact}: \begin{enumerate}
+\item[(1)] ZF\underline{C} $\Longrightarrow $ every vector space has a basis. 
+\item[(2)] no such result exists for modules.  
+\end{enumerate}
+
+This is a shame, because otherwise, we could have chosen (for any manifolds) vector fields, 
+\[
+\Xi_{(1)}, \dots , \Xi_{(d)} \in \Gamma(TM)
+\]
+and would be able to write every vector field $\Xi$
+\[
+\Xi = \underbrace{ f^i }_{\text{ component functions } } \cdot \Xi_{(i)}
+\]
+
+\underline{Simple counterexample}
+
+Schuller says: Take a sphere, Morse Theorem, every smooth vector field must vanish at 2 pts. ``mustn't choose a global basis''
+
+
+\underline{However}: $\begin{aligned} & \quad \\
+  & \frac{ \partial }{ \partial x^i} : U \xrightarrow{ \text{ smooth }} TU \\
+  & p \mapsto \left( \frac{ \partial }{ \partial x^i } \right)_p
+\end{aligned}$
+
+\subsection{Tensor fields}
+
+so far
+
+$\Gamma(M) = $''set of vector fields''  $C^{\infty}(M)$-module
+
+ $\Gamma(T^*M) = $ ``covector fields'' $C^{\infty}(M)$-module
+
+\begin{definition}
+An $(r,s)$-tensor field $T$ is a multi-linear map
+\[
+T:\underbrace{ \Gamma(T^*M) \times \dots \times \Gamma(T^*M) }_{r} \times \Gamma(TM) \times \dots \times \Gamma(TM) \xrightarrow{ \sim } C^{\infty}(M)
+\]
+\end{definition}
+
+\underline{Example}: $f\in C^{\infty}(M)$ 
+\[
+\begin{gathered}
+  \begin{aligned} 
+    df : & \Gamma(TM) \xrightarrow{ \sim } C^{\infty}(M) \\ 
+    & \Xi \mapsto df(\Xi) := \Xi [f]
+\end{aligned}
+\end{gathered}
+\]
+$df$ ($0,1$)-T.F. (tensor field)
+
+where $(\Xi f)(\underbrace{p}_{ \in M}) := \underbrace{ \Xi(p) }_{ \in T_pM}f$
+
+can check: $df$ is $C^{\infty}-$linear
