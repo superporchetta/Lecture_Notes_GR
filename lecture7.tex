@@ -1,74 +1,77 @@
 \section{Lecture 7: Connections}
+\begin{framed}
+\textbf{Motivation}: So far, all we have dealt with (e.g., sets, topological manifolds, smooth manifolds, fields, bundles, etc.) are structures that we have to provide by hand before we can start doing physics as we know it. Why? Because we don't have equations which determine what we have done so far. These are assumptions you need to submit before you can do physics.
 
+In this lecture we introduce yet another structure called connections which are determined by Einstein's equations. Everything from now on will be objects that are the subject of Einstein's equations depending on the matter in the Universe. Connections are also called covariant derivatives. Even though these are different, for our purposes we shall not distinguish the two and use the more general connections.
+\end{framed}
+
+So far, we saw that a vector field $X$ can be used to provide a directional derivative of a function $f \in C^{\infty}(M)$ in the direction $X$\\
+\begin{equation*}
+\nabla_X f := Xf
+\end{equation*}
+Isn't this a notational overkill? We already know \\
+\begin{equation*}
+\nabla_X f = Xf = (df)X
+\end{equation*}
+Actually, they are not quite the same because
 \[
 \begin{aligned}
-  & \nabla_X f = Xf = (df)(X) \text{ but (not quite) } \\ 
-  & X : C^{\infty}(M) \to C^{\infty}(M) \\ 
-  & df : \Gamma(TM) \to C^{\infty}(M) \\
-  & \nabla_X : C^{\infty}(M) \to C^{\infty}(M)
+  X : C^{\infty}(M) \to C^{\infty}(M) \\ 
+  df : \Gamma(TM) \to C^{\infty}(M) \\
+  \nabla_X : C^{\infty}(M) \to C^{\infty}(M)
 \end{aligned}
 \]
-
-\begin{tikzpicture}[decoration=snake]
-  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
-  {
-\nabla_X :   C^{\infty}(M) & C^{\infty}(M)   \\
-\nabla_X :  \begin{aligned} \quad  \\ TM^p \otimes T^*M^q \text{ i.e. }  \\  \binom{p}{q} \text{ tensor field }  \end{aligned}   &  \begin{aligned} \quad \\ TM^p \otimes T^*M^q \text{ i.e. }  \\ \binom{p}{q} \text{ tensor field } \end{aligned} \\  };
-%  \path[-stealth]
-  \path[->]
-  (m-1-1) edge node [above] {$$} (m-1-2)
-%  edge node [left] {$\text{ev}_0$} (m-2-2)
-%  (m-1-1) edge node [left] {$\alpha$} (m-2-1)
-  (m-2-1) edge node [below] {$$} (m-2-2);
-%  edge node [below] {$\pi_M$} (m-2-2);
-  \path[->] %,decorate={zigzag,amplitude=0.7pt, segment length=1.2mm, pre=lineto,pre length=4pt}]
-  (m-1-1) edge node [left] {$\vdots$} (m-2-1)
-  (m-1-2) edge node [left] {$\vdots$} (m-2-2);
+where $\nabla_X$ can be generalized to eat an arbitrary $(p,q)$-tensor field and yield a $(p,q)$-tensor field whereas $X$ can only eat functions. \\
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of nodes, row sep=3em, column sep=3em, minimum width=1em]
+{
+$\nabla_X : C^{\infty}(M)$ & $C^{\infty}(M)$ \\
+$\nabla_X : (p,q)$-tensor field & $(p,q)$-tensor field \\ };
+\path[->]
+  (m-1-1) edge (m-1-2);
+\path[->]
+  (m-2-1) edge (m-2-2);
+\path[->]
+  (m-1-1) edge[snake it] node[left] {$\vdots$} (m-2-1);
+\path[->]
+  (m-1-2) edge[snake it] node[left] {$\vdots$} (m-2-2);
 \end{tikzpicture}
+\]
 
+We need $\nabla_X$ to provide the new structure to allow us to talk about directional derivatives of tensor fields and vector fields. Of course, only in cases where $\nabla_X$ acts on function $f$ which is a $(0,0)$-tensor, it is exactly the same as $Xf$. 
 
 \subsection{Directional derivatives of tensor fields}
-
-manifold with connection is quadruple $(M, \mathcal{O}, \mathcal{A}, \nabla)$ 
-
-topology $\mathcal{O}$
-
-atlas $\mathcal{A}$
-
-Consider chart $(U,x) \in \mathcal{A}$
+We formulate a wish list of properties which $\nabla_X$ acting on a tensor field should have. We put this in form of a definition. There may be many structures that satify this wish list. Any remaining freedom in choosing such a $\nabla$ will need to be provided as additional structure beyond the structure we already have. And we assume all this takes place on a smooth manifold.
 
 \begin{definition}
-$\forall \, $ pair $(X, (p,q)-\text{tensor field}) \equiv (X, (p,q)-TF)$,
-
-\textbf{connection} $\nabla$ on smooth manifold $(M,\mathcal{O},\mathcal{A})$ 
-
-$\nabla: ( X, (p,q)-TF) \to (p,q)-TF$ s.t.
-
-\begin{enumerate}
-  \item[(i)] $\nabla_X f = Xf $
-  \item[(ii)]  $\nabla_X(T+S) = \nabla_XT + \nabla_XS $ 
-\item[(iii)] \[
-\nabla_X(T(\omega,Y)) = (\nabla_XT)(\omega,T) + T(\nabla_X\omega, Y) + T(\omega, \nabla_XY)
-\]
-``Leibnitz'' rule.
-
-As
-\[
-T\otimes S (\omega_{(1)}\dots \omega_{(p+r)} , Y_{(1)} \dots Y_{(q+s)}) = T(\omega_{(1)} \dots \omega_{(p)}, Y_{(1)} \dots Y_{(q)} ) \cdot S( \omega_{(p+1)} \dots \omega_{(p+r)} , Y_{(q+1)} \dots Y_{(q+s)})
-\]
-so 
-\[
-\nabla_X(T\otimes S) = (\nabla_XT)\otimes S + T\otimes \nabla_XS
-\]
-
-
-\item[(iv)] $\nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T$
-$C^{\infty}$-linear
+A \textbf{connection} $\nabla$ on a smooth manifold $(M, \mathcal{O}, \mathcal{A})$ is a map that takes a pair consisting of a vector (field) $X$ and a $(p,q)$-tensor field $T$ and sends them to a $(p,q)$-tensor (field) $\nabla_X T$ satisfying
+\begin{enumerate}[i)]
+\item $\nabla_X f = Xf \quad \forall f \in C^{\infty}M$
+\item $\nabla_X (T + S) = \nabla_X T + \nabla_X S \quad \text{ where }T, S \text{ are } (p,q) \text{-tensors}$
+\item \textbf{Leibnitz rule: } $\nabla_X T(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) = (\nabla_X T)(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) \\
++ T(\nabla_X \omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) + \dotsb + T(\omega_1,\dotsc,\nabla_X \omega_p,Y_1,\dotsc,Y_q) \\
++ T(\omega_1,\dotsc,\omega_p,\nabla_X Y_1,\dotsc,Y_q) + \dotsb + T(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,\nabla_X Y_q) \quad \text{ where }T \text{ is a }(p,q)\text{-tensor}$
+\item $C^{\infty}$-linearity: $\forall f \in C^{\infty}(M), \nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T$
 \end{enumerate}
 \end{definition}
 
-\subsection{New structure on $(M,\mathcal{O},\mathcal{A})$ required to fix $\nabla$}
+Note that for a $(p,q)$-tensor $T$ and a $(r,s)$-tensor $S$, since: \\
+$(T \otimes S) (\omega_{(1)}, \dotsc, \omega_{(p+r)} , Y_{(1)}, \dotsc, Y_{(q+s)}) = T(\omega_{(1)}, \dotsc, \omega_{(p)}, Y_{(1)}, \dotsc, Y_{(q)} ) \cdot S( \omega_{(p+1)}, \dotsc, \omega_{(p+r)} , Y_{(q+1)}, \dotsc, Y_{(q+s)})$, \\
+Leibnitz rule implies $\nabla_X (T \otimes S) = (\nabla_X T) \otimes S + T \otimes (\nabla_X S)$.
 
+$C^{\infty}$-linearity means that no matter how the function $f$ scales the vectors at different points of the manifold, the effect of the scaling at any point is independent of scaling in the neighbourhood and depends only on how the scaling happens at that point.
+
+A \textbf{manifold with a connection} $\nabla$ is a quadruple $(M, \mathcal{O}, \mathcal{A}, \nabla)$, where $M$ is a set, $\mathcal{O}$ is a topology and $\mathcal{A}$ is a smooth atlas.
+
+Remark: If $\nabla_X (\cdot)$ can be seen as an extension of $X$, \\
+then $\nabla_{(\cdot)}(\cdot)$ can be seen as an extension of $d$.
+
+\subsection{New structure on $(M,\mathcal{O},\mathcal{A})$ required to fix $\nabla$}
+How much freedom do we have in choosing such a structure?
+
+Consider the vector fields $(X,Y)$ and the chart $(U,x) \in \mathcal{A}$. Then \\
+$\nabla_X Y = \nabla_{\left(X^i \frac{\partial}{\partial x^i}\right)} \left(Y^m \frac{\partial}{\partial x^m}\right)$
 
 There are $(\text{dim}M)^3$ many $\Gamma^i_{ \, \, j k}$
 \[

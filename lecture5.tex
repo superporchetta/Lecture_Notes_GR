@@ -1,33 +1,17 @@
 \section{Lecture 5: Tangent Spaces}
-
-lead question: ``what is the velocity of a curve $\gamma$ \@ point $p$?
+Lead question: ``What is the velocity of a curve $\gamma : \mathbb{R} \to M$ at the point $p$ of the curve in $M$?''
 
 \subsection{Velocities}
-
-\begin{definition}
-  $(M,\mathcal{O},\mathcal{A})$ smooth mfd. \\
-  curve $\gamma : \mathbb{R} \to M$ at least $C^1$.   \\
-  Suppose $\gamma(\lambda_0) =p$ \\
-  The \textbf{velocity} of $\gamma$ \@ $p$ is the linear map 
-\[
-\begin{gathered}
-v_{\gamma, p} : C^{\infty}(M) \xrightarrow{ \sim } \mathbb{R}
-\end{gathered}
-\]
-$C^{\infty}(M) := \lbrace f: M \to \mathbb{R} | f \text{ smooth function } \rbrace$ equipped with $\begin{gathered}  \quad \\ 
-   (f\oplus g)(p) := f(p) + g(p) \\
-   (\lambda \otimes g)(p) := \lambda \cdot g(p) \end{gathered}$
-
-$\sim$ denotes linear map on top of $\xrightarrow{}$.
-
-\[
-f \mapsto v_{\gamma,p}(f):= (f\circ \gamma)'(\lambda_0)
-\]
-
-
+\begin{definition} Let $(M,\mathcal{O},\mathcal{A})$ be a smooth manifold. Let there be a curve $\gamma : \mathbb{R} \to M$, which is at least $C^1$. Suppose $\gamma(\lambda_0) =p$. The \textbf{velocity} of $\gamma$ at the point $p$ of the curve $\gamma$ is the linear map \\
+\begin{equation*}
+v_{\gamma, p} : C^{\infty}(M) \linearmapto \mathbb{R} \text{ with }
+f \mapsto v_{\gamma,p}(f):= (f \after \gamma)^{\prime}(\lambda_0)
+\end{equation*}
+where $C^{\infty}(M) := \lbrace f: M \to \mathbb{R} \, | \, f \text{ is a smooth function } \rbrace$ equipped with \\
+$(f \oplus g)(p) := f(p) + g(p)$ and $(\lambda \otimes g)(p) := \lambda \cdot g(p)$ is a vector space.
 \end{definition}
 
-intuition
+\textit{Intuition: If the first $\mathbb{R}$ in the picture below is thought of as time, and $f$ as temperature, then $f \after \gamma$ relates time and temperature and $(f \after \gamma)^\prime$ is the rate of change of temperature as you run around the curve.}
 \begin{tikzpicture}
   \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
   {
@@ -35,51 +19,52 @@ intuition
 };
   \path[->]  
   (m-1-1) edge node [auto] {$\gamma$} (m-1-2)
-          edge [bend right=40] node [auto] {$f\circ \gamma $} (m-1-3)
+          edge [bend right=30] node [auto] {$f \after \gamma$} (m-1-3)
   (m-1-2) edge node [auto] {$f $} (m-1-3);
 \end{tikzpicture}
 
-
-
-Schuller says: children run around the world.  Temperature function as temperature contour lines.  You feel the temperature.  You observe the rate of change of temperature as you run around.  $f$ is temperature.  
-
-\underline{past}: `` $\underbrace{v^i}_{} (\partial_i f) = (\underbrace{v^i \partial_i}_{\text{vector}})f$ 
+\underline{past}: `` $\underbrace{v^i}_{\text{vector in past}} (\partial_i f) = (\underbrace{v^i \partial_i}_{\text{vector as map}})f$ 
 
 \subsection{Tangent vector space}
 
 \begin{definition}
-  For each point $p \in M$ \\
-def the \textbf{set} ``tangent space $\neq_0 M$ \@ $p$ ``
-\[
-T_p M := \lbrace v_{\gamma, p} | \gamma \text{ smooth curves } \rbrace
-\]
+For each point $p \in M$, the \textbf{tangent space} to $M$ at the point $p$ is the set \\
+\begin{equation*}
+T_p M := \lbrace v_{\gamma, p} \, | \, \text{ for all smooth curves } \gamma \text{ through } p \rbrace
+\end{equation*}
 \end{definition}
 
-\underline{picture}:\\
-rather $M$ than (embedded) $p$ $T_pM$ EY : 20151109 see \url{https://youtu.be/pepU_7NJSGM?t=12m38s} for the picture
+\textbf{Picture}:\\
+\begin{tabular}{ p{8cm} | p{8cm} }
+\includegraphics[scale=0.9]{5_Tangent_plane} & \includegraphics[scale=0.9]{5_Tangential_vector} \\
+A pictorial representation of the tangent space $T_xM$ of a single point, x, on a manifold. A vector in this $T_xM$ can represent a possible velocity at x. After moving in that direction to a nearby point, one's velocity would then be given by a vector in the tangent space of that nearby point — a different tangent space, not shown. \textit{By Alexwright at English Wikipedia - Transferred from en.wikipedia to Commons by Ylebru., Public Domain \url{https://commons.wikimedia.org/w/index.php?curid=3941393}} & The tangent space $T_xM$ and a tangent vector $v \in T_xM$, along a curve travelling through $x \in M$. \textit{By derivative work: McSush (talk)Tangentialvektor.png: TNThe original uploader was TN at German Wikipedia - Tangentialvektor.png, Public Domain, \url{https://commons.wikimedia.org/w/index.php?curid=4821938}} \\
+\end{tabular}
 
-\underline{Observation}: $T_pM$ can be made into a vector space. 
+\textit{\textbf{Caution}: Although the above pictures refer to an ambient space in which $M$ is embedded, the tangent space has been defined intrinsically. There is a velocity corresponding to each curve along a different path in $M$ passing through $p$. Velocity along two different curves could be same, or curves along same paths but having different parameter speeds would yield different velocities.}
+
+\textbf{Observation}: $T_pM$ can be made into a vector space. Define $\oplus$ and $\otimes$ such that
 
 \[
 \begin{aligned}
 & \begin{aligned}
-  \oplus : & T_pM \times T_pM \to   \\
+  \oplus : & T_pM \times T_pM \to Hom(C^\infty(M),\mathbb{R})  \\
   & (v_{\gamma,p} \oplus v_{\delta,p})(\underbrace{f}_{ \in C^{\infty}(M)} ) := v_{\gamma,p}(f) +_{\mathbb{R}} v_{\delta,p}(f) \\
   \end{aligned} \\
 & \begin{aligned}
-    \odot : & \mathbb{R} \times T_pM \to \text{Hom}(C^{\infty}(\mathbb{R}),\mathbb{R}) \\
+    \odot : & \mathbb{R} \times T_pM \to Hom(C^{\infty}(M),\mathbb{R}) \\
     & (\alpha \odot v_{\gamma,p} )(f) := \alpha \cdot_{\mathbb{R}}  v_{\gamma, p}(f)
 \end{aligned}
 \end{aligned}
 \]
-Remains to be shown that 
-\begin{enumerate}
-  \item[(i)] $\exists \, \sigma$ curve : $v_{\gamma,p} \oplus v_{\delta,p} = v_{\sigma,p}$
-  \item[(ii)] $\exists \, \tau $ curve : $\alpha \odot v_{\gamma,p} = v_{\tau,p}$
+It remains to be shown that 
+\begin{enumerate}[i)]
+  \item $\exists \, \sigma$ curve : $v_{\gamma,p} \oplus v_{\delta,p} = v_{\sigma,p}$
+  \item $\exists \, \tau $ curve : $\alpha \odot v_{\gamma,p} = v_{\tau,p}$
 \end{enumerate}
+%lazierthanthou: Rest of this notes to be reviewed
 
 \underline{Claim}: $\begin{aligned} & \quad \\ 
-  \tau : \mathbb{R}&  \to M  \\
+  \tau : \mathbb{R} &  \to M  \\
   & \mapsto \tau(\lambda) := \gamma(\alpha  \lambda + \lambda_0) = (\gamma \circ \mu_{\alpha})(\lambda)
 \end{aligned}$
 where $\begin{aligned} & \quad \\
@@ -98,9 +83,7 @@ $\tau(0) = \gamma(\lambda_0) =p$
 \]
 
 Now for the sum: %(EY:20151109 ??)
-
 $v_{\gamma,p} \oplus v_{\delta,p} \overset{?}{=} v_{\sigma, p} $
-
 make a \underline{choice} of chart $(\underbrace{U}_{\ni p} , x)$  In cloud: ill definition alarm bells. 
 
 and define:
@@ -143,11 +126,11 @@ Now:
      & \mathbb{R}^d & \\ 
 };
   \path[->]  
-  (m-1-1) edge node [auto] {$\sigma$} (m-1-2)
-          edge  node [auto] {$x\circ \sigma $} (m-2-2)
-  (m-1-2) edge node [auto] {$x $} (m-2-2)
-          edge node [auto] {$f$} (m-1-3)
-  (m-2-2) edge node [below] {$f\circ x^{-1}$} (m-1-3);
+  (m-1-1) edge node[auto] {$\sigma$} (m-1-2)
+          edge node[sloped, anchor=center, below] {$x \after \sigma$} (m-2-2)
+  (m-1-2) edge node[auto] {$x$} (m-2-2)
+          edge node[auto] {$f$} (m-1-3)
+  (m-2-2) edge node[sloped, anchor=center, below] {$f \after x^{-1}$} (m-1-3);
 \end{tikzpicture}
 
 
@@ -171,8 +154,8 @@ EY : 20151109 Schuller says adding trajectories is chart dependent, bad. Adding 
 Calculate 
 \[
 \begin{aligned} 
-  v_{\gamma,p}(f) & := (f \circ \gamma)'(0) = (\underbrace{ (f\circ x^{-1}) }_{\mathbb{R}^d \to \mathbb{R} }  \circ \underbrace{ (x\circ \gamma)}_{\mathbb{R} \to \mathbb{R}^d}  )'(0) \\
-  & = \underbrace{ (x\circ \gamma)^{i'}(0) }_{\dot{\gamma}_x^i(0) }  \cdot \underbrace{ (\partial_i(f\circ x^{-1} ) )(x(p))  }_{ =: \left( \frac{ \partial f}{ \partial x^i } \right)_p }
+  v_{\gamma,p}(f) & := (f \after \gamma)'(0) = (\underbrace{ (f\after x^{-1}) }_{\mathbb{R}^d \to \mathbb{R} }  \after \underbrace{ (x\after \gamma)}_{\mathbb{R} \to \mathbb{R}^d}  )'(0) \\
+  & = \underbrace{ (x\after \gamma)^{i'}(0) }_{\dot{\gamma}_x^i(0) }  \cdot \underbrace{ (\partial_i(f\after x^{-1} ) )(x(p))  }_{ =: \left( \frac{ \partial f}{ \partial x^i } \right)_p }
 \end{aligned}
 \]
 think cloud $f:M\to \mathbb{R}$
@@ -203,10 +186,10 @@ constitute a \textbf{basis} of $T_pU$
   \[
 \begin{gathered}
 \lambda^i \left( \frac{ \partial }{ \partial x^i} \right)_p \overset{!}{=} 0  \\
- \Longrightarrow \lambda^i \left( \frac{ \partial }{ \partial x^i} \right)_p(x^j) = \lambda^i \partial_i (\underbrace{ x^j \circ x^{-1} }_{} )( x(p)) = \\
+ \Longrightarrow \lambda^i \left( \frac{ \partial }{ \partial x^i} \right)_p(x^j) = \lambda^i \partial_i (\underbrace{ x^j \after x^{-1} }_{} )( x(p)) = \\
  = \lambda^i \delta_i^{\,\,j} = \lambda^j \quad \quad \, j = 1 , \dots , d
 \end{gathered} \quad \quad \, \begin{gathered}
-  x^j \circ x^{-1} : \mathbb{R}^d \to \mathbb{R} \\
+  x^j \after x^{-1} : \mathbb{R}^d \to \mathbb{R} \\
   (\alpha^1 , \dots , \alpha^d) \mapsto \alpha^j 
 \end{gathered}
 \]
@@ -240,9 +223,9 @@ X^i_{(y)}\cdot \left( \frac{ \partial }{ \partial y^i} \right)_p \underbrace{=}_
 to study change of components formula:
 \[
 \begin{aligned}
-  \left( \frac{ \partial }{ \partial x^i} \right)_p f & = \partial_i(f\circ x^{-1} )(x(p)) =  \\
-  & = \partial_i (\underbrace{ (f\circ y^{-1}) }_{\mathbb{R}^d \to \mathbb{R} } \circ (\underbrace{ y\circ x^{-1}}_{\mathbb{R}^d \to \mathbb{R}^d} )(x(p)) \\
-  & = (\partial_i (y^i\circ x^{-1} ) )(x(p)) \cdot (\partial_j (f\circ y^{-1}) )(y(p)) = \\
+  \left( \frac{ \partial }{ \partial x^i} \right)_p f & = \partial_i(f\after x^{-1} )(x(p)) =  \\
+  & = \partial_i (\underbrace{ (f\after y^{-1}) }_{\mathbb{R}^d \to \mathbb{R} } \after (\underbrace{ y\after x^{-1}}_{\mathbb{R}^d \to \mathbb{R}^d} )(x(p)) \\
+  & = (\partial_i (y^i\after x^{-1} ) )(x(p)) \cdot (\partial_j (f\after y^{-1}) )(y(p)) = \\
   & = \boxed{ \left( \frac{ \partial y^p}{ \partial x^i} \right)_p \cdot \left( \frac{ \partial f}{ \partial y^j} \right)_p  } f
 \end{aligned}
 \]
@@ -269,14 +252,14 @@ trivial $(T_pM)^* := \lbrace \varphi : T_pM \xrightarrow{\sim} \mathbb{R} \rbrac
 \]
 i.e. $\boxed{ (df)_p \in T_pM^* } $
 
-$(df)_p$ called the gradient of $f$ \@ $p\in M$.  
+$(df)_p$ called the gradient of $f$ at the point $p \in M$.  
 
 Calculate components of gradient w.r.t. chart-induced basis $(U,x)$  
 
 \[
 \begin{aligned}
   \left( (df)_p \right)_j & := (df)_p\left( \left( \frac{ \partial }{ \partial x^j} \right)_p \right) \\
-  & = \left( \frac{ \partial f}{ \partial x^j } \right)_p = \partial_j (f\circ x^{-1} )(x(p))
+  & = \left( \frac{ \partial f}{ \partial x^j } \right)_p = \partial_j (f\after x^{-1} )(x(p))
 \end{aligned}
 \]
 

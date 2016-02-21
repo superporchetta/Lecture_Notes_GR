@@ -34,6 +34,12 @@
 
 \usepackage{tikz} % for diagrams
 \usetikzlibrary{matrix,positioning,arrows,calc,decorations.pathmorphing,shapes}
+% for snaky lines (http://tex.stackexchange.com/questions/209942/curved-arrows-in-tikz) 
+\tikzset{snake it/.style={-stealth,
+decoration={snake, 
+    amplitude = .4mm,
+    segment length = 2mm,
+    post length=0.9mm},decorate}}
 
 \usepackage[parfill]{parskip}
 

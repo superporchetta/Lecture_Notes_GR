@@ -57,7 +57,7 @@ A \textbf{section} $\sigma$ of a bundle
 
 
 
-require $\pi \circ \sigma = \text{id}_M$
+require $\pi \after \sigma = \text{id}_M$
 \end{definition}
 
 Schuller says: in quantum mechanics, 
@@ -96,7 +96,7 @@ where
 \[
 \begin{aligned}
   \xi_x : & T \mathcal{U} \to \mathbb{R}^{2\cdot\text{dim}  M } \\
-  & X \mapsto (\underbrace{ (x^1 \circ \pi)(X), \dots, (x^d\circ \pi)(X) }_{(U,x)-\text{ coords of $\pi(X)$ } \, (d \text{ many } ) } , (dx^1)_{\pi(X)}(X), \dots , (dx^d)_{\pi(X)}(X)  )
+  & X \mapsto (\underbrace{ (x^1 \after \pi)(X), \dots, (x^d\after \pi)(X) }_{(U,x)-\text{ coords of $\pi(X)$ } \, (d \text{ many } ) } , (dx^1)_{\pi(X)}(X), \dots , (dx^d)_{\pi(X)}(X)  )
 \end{aligned}
 \]
 where $X\in T_{\pi(X)}M$ \\
@@ -112,15 +112,15 @@ where $X\in T_{\pi(X)}M$ \\
 
 \underline{Check}: \[
 \begin{gathered}
-  (\xi_y \circ \xi_x^{-1})(\alpha^1 , \dots , \alpha^d, \beta^1, \dots , \beta^d) = \\
+  (\xi_y \after \xi_x^{-1})(\alpha^1 , \dots , \alpha^d, \beta^1, \dots , \beta^d) = \\
   = \xi_y \left( \beta^i \left( \frac{ \partial }{ \partial x^i} \right)_{x^{-1}(\alpha^1 , \dots , \alpha^d) } \right) \\
-  = \left( \dots, (y^i \circ \pi)( \beta^m \cdot \left( \frac{ \partial }{ \partial x^m} \right)_{x^{-1}(\alpha^1 \dots \alpha^d) } )  , \dots , \dots (dy^i)_{x^{-1}(\alpha^1, \dots \alpha^d) } \left( \beta^m \left( \frac{ \partial }{ \partial x^m} \right)_{x^{-1}(\alpha^1 \dots \alpha^d) } \right) , \dots   \right) = \\
-  = ( \dots , (y^i \circ x^{-1})(\alpha^1 , \dots , \alpha^d), \dots , \dots , \underbrace{ \beta^m(dy^i)_{x^{-1} (\alpha^1, \dots , \alpha^d) } \left( \left( \frac{ \partial }{ \partial x^m} \right)_{x^{-1}(\alpha^1 \dots \alpha^d) } \right)}_{ \beta^m \left( \frac{ \partial y }{ \partial x^m } \right)_{x^{-1}(\alpha^1 \dots \alpha^d)} }  ) 
+  = \left( \dots, (y^i \after \pi)( \beta^m \cdot \left( \frac{ \partial }{ \partial x^m} \right)_{x^{-1}(\alpha^1 \dots \alpha^d) } )  , \dots , \dots (dy^i)_{x^{-1}(\alpha^1, \dots \alpha^d) } \left( \beta^m \left( \frac{ \partial }{ \partial x^m} \right)_{x^{-1}(\alpha^1 \dots \alpha^d) } \right) , \dots   \right) = \\
+  = ( \dots , (y^i \after x^{-1})(\alpha^1 , \dots , \alpha^d), \dots , \dots , \underbrace{ \beta^m(dy^i)_{x^{-1} (\alpha^1, \dots , \alpha^d) } \left( \left( \frac{ \partial }{ \partial x^m} \right)_{x^{-1}(\alpha^1 \dots \alpha^d) } \right)}_{ \beta^m \left( \frac{ \partial y }{ \partial x^m } \right)_{x^{-1}(\alpha^1 \dots \alpha^d)} }  ) 
 \end{gathered}
 \]
 
 %
-$\left( \frac{ \partial y }{ \partial x^m } \right)_{x^{-1}(\alpha^1 \dots \alpha^d)} = \partial_m (y^i \circ x^{-1} )( x\circ (x^{-1}(\alpha^1 \dots \alpha^d) ) ) = \partial_m (y^i \circ x^{-1} )( \alpha^1 \dots \alpha^d)$ smooth.  
+$\left( \frac{ \partial y }{ \partial x^m } \right)_{x^{-1}(\alpha^1 \dots \alpha^d)} = \partial_m (y^i \after x^{-1} )( x\after (x^{-1}(\alpha^1 \dots \alpha^d) ) ) = \partial_m (y^i \after x^{-1} )( \alpha^1 \dots \alpha^d)$ smooth.  
 
 \underline{upshot}
 
@@ -182,9 +182,9 @@ $\Gamma(M) = $''set of vector fields''  $C^{\infty}(M)$-module
 
 \begin{definition}
 An $(r,s)$-tensor field $T$ is a multi-linear map
-\[
-T:\underbrace{ \Gamma(T^*M) \times \dots \times \Gamma(T^*M) }_{r} \times \Gamma(TM) \times \dots \times \Gamma(TM) \xrightarrow{ \sim } C^{\infty}(M)
-\]
+\begin{equation*}
+T:\underbrace{ \Gamma(T^*M) \times \dotsb \times \Gamma(T^*M) }_{r} \times \underbrace{ \Gamma(TM) \times \dotsb \times \Gamma(TM) }_{s} \linearmapto C^{\infty}(M)
+\end{equation*}
 \end{definition}
 
 \underline{Example}: $f\in C^{\infty}(M)$ 

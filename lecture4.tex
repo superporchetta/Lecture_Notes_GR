@@ -1,4 +1,9 @@
 \section{Differential Manifolds}
+\begin{framed}
+\textbf{Motivation}: So far we have dealt with topological manifolds which allow us to talk about continuity. But to talk about smoothness of curves on manifolds, or velocities along these curves, we need something like differentiability. Does the structure of topological manifold allow us to talk about differentiability? The answer is a resounding no.
+
+So this lecture is about figuring out what structure we need to add on a topological manifold $M$ to start talking about differentiability of curves ($\mathbb{R} \to M$) on a manifold, or differentiability of functions ($M \to \mathbb{R}$) on a manifold, or differentiability of maps ($M \to N$) from one manifold $M$ to another manifold $N$. 
+\end{framed}
 
 \begin{tikzpicture}[decoration=snake]
   \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
@@ -8,9 +13,10 @@
 };
   \path[->]
   (m-1-1) edge node [above] {$$} (m-1-2)
-          edge node [left] {$x\circ \gamma$} (m-2-2)
+          edge node [sloped, anchor=center, below] {$x \circ \gamma$} (m-2-2)
   (m-1-2) edge node [right] {$x$} (m-2-2);
 \end{tikzpicture}
+
 \underline{idea}. try to ``lift'' the undergraduate notion of differentiability of a curve on $\mathbb{R}^d$ to a notion of differentiability of a curve on $M$
 
 \underline{Problem} Can this be well-defined under change of chart?
@@ -25,8 +31,8 @@
   \path[->]
   
   (m-2-1) edge node [auto] {$$} (m-2-2)
-          edge node [auto] {$x\circ \gamma$} (m-3-2)
-          edge node [auto] {$y\circ \gamma$} (m-1-2)
+          edge node [sloped, anchor=center, below] {$x \circ \gamma$} (m-3-2)
+          edge node [sloped, anchor=center, above] {$y \circ \gamma$} (m-1-2)
   (m-2-2) edge node [auto] {$x$} (m-3-2)
           edge node [auto] {$y$} (m-1-2)
   (m-3-2) edge [bend right=40] node [right] {$y\circ x^{-1}$} (m-1-2);
