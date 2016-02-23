@@ -1,193 +1,62 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Gravite by ernestyalumni</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <meta charset="UTF-8">
+    <title>Lecture Notes on General Relativity by lazierthanthou</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/ernestyalumni/Gravite">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/ernestyalumni/Gravite/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/ernestyalumni/Gravite/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+    <section class="page-header">
+      <h1 class="project-name">Lecture Notes on General Relativity</h1>
+      <h2 class="project-tagline">Lecture Notes on General Relativity, based on lectures by Dr. Frederic P. Schuller in 2015</h2>
+      <a href="https://github.com/lazierthanthou/Lecture_Notes_GR" class="btn">View on GitHub</a>
+      <a href="https://github.com/lazierthanthou/Lecture_Notes_GR/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/lazierthanthou/Lecture_Notes_GR/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <div class="wrapper">
+    <section class="main-content">
+      <h2>
+<a id="lecture-notes-on-general-relativity" class="anchor" href="#lecture-notes-on-general-relativity" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lecture Notes on General Relativity</h2>
 
-      <section>
-        <div id="title">
-          <h1>Gravite</h1>
-          <p>Notes and symbolic and numerical computations and implementations on Gravity</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/ernestyalumni">ernestyalumni</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+<p><a href="https://github.com/lazierthanthou/Lecture_Notes_GR/blob/master/main.pdf">Download Lecture Notes (under preparation)</a></p>
 
-        <h1>
-<a id="gravite---gravity-gravité" class="anchor" href="#gravite---gravity-gravit%C3%A9" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gravite - Gravity (Gravité)</h1>
+<blockquote>
+<p>Based on the <a href="https://www.youtube.com/channel/UCUHKG3S9N_QeIE2jQXd2-VQ/feed">Central Lecture Course</a> by Dr. Frederic P. Schuller (<strong>A thorough introduction to the theory of general relativity</strong>) introducing the mathematical and physical foundations of the theory in 24 self-contained lectures at the International Winter School on Gravity and Light in Linz/Austria for the WE Heraeus International Winter School of Gravity and Light, 2015 in Linz as part of the world-wide celebrations of the 100th anniversary of Einstein's theory of general relativity and the International Year of Light 2015.</p>
+</blockquote>
 
-<p>Notes and symbolic and numerical computations and implementations on Gravity</p>
+<p>These lectures develop the theory from first principles and aim at an audience ranging from ambitious undergraduate students to beginning PhD students in mathematics and physics. Satellite Lectures (see other videos on this channel) by Bernard F Schutz (Gravitational Waves), Domenico Giulini (Canonical Formulation of Gravity), Marcus C Werner (Gravitational Lensing) and Valeria Pettorino (Cosmic Microwave Background) expand on the topics of this central lecture course and take students to the research frontier.</p>
 
-<p><em>Includes</em>: </p>
+<p>I agree with <a href="https://github.com/ernestyalumni">Ernest Yeung</a> that these lectures are "unequivocally, the best, most lucid, and well-constructed lecture series on General Relativity and Gravity". This repository has been created by forking his repository <a href="https://github.com/ernestyalumni/Gravite">ernestyalumni/Gravite</a>.</p>
 
-<ul>
-<li>Gravity_Notes_grande.tex</li>
-<li>/pdfs/Gravity_Notes_grande.pdf</li>
-<li>
-<code>Rn.sage</code> </li>
-</ul>
-
-<h2>
-<a id="sagemanifolds-implementations" class="anchor" href="#sagemanifolds-implementations" aria-hidden="true"><span class="octicon octicon-link"></span></a>SageManifolds implementations</h2>
+<hr>
 
 <h3>
-<a id="euclidean-space-as-a-manifold---r2r3rn" class="anchor" href="#euclidean-space-as-a-manifold---r2r3rn" aria-hidden="true"><span class="octicon octicon-link"></span></a>Euclidean space as a Manifold - R^2,R^3,R^n</h3>
+<a id="why-this-fork" class="anchor" href="#why-this-fork" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why this fork</h3>
 
-<p>Using <a href="http://sagemanifolds.obspm.fr">SageManifolds</a>, Euclidean space, R^2, R^3, and R^n, is implemented as a manifold.</p>
-
-<h4>
-<a id="rnsage---euclidean-spaces-as-manifolds-using-sagemanifolds" class="anchor" href="#rnsage---euclidean-spaces-as-manifolds-using-sagemanifolds" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rn.sage - Euclidean spaces as manifolds using <a href="http://sagemanifolds.obspm.fr">sagemanifolds</a>
-</h4>
-
-<p><strong>Features</strong></p>
+<p>The initial purpose of this fork is the following:</p>
 
 <ul>
-<li>R^2,R^3,R^n as a manifold, with a chart atlas</li>
+<li>to confine the output pdf only to lectures</li>
+<li>using the documentclass{article} in A4 paper</li>
+<li>put each lecture/tutorial in its own file</li>
+<li>filling in missing parts in lectures or to modify existing parts to suit me better</li>
 </ul>
 
-<pre><code>sage: load(‘‘Rn.sage’’)  
-sage: R2eg = R2() 
-sage: R3eg = R3() 
-sage: R4 = Rn(4) 
-sage: R2eg.M.atlas()
-[Chart (R2, (x, y)), Chart (U, (x, y)), Chart (U, (r, ph))]
-sage: R3eg.M.atlas()
-[Chart (R3, (x, y, z)),
- Chart (U, (x, y, z)),
- Chart (U, (rh, th, ph)),
- Chart (U, (r, phi, zc))]
-sage: R4.M.atlas()
-[Chart (R4, (x1, x2, x3, x4)),
- Chart (U, (x1, x2, x3, x4)),
- Chart (U, (rh, th1, th2, ph)),
- Chart (U, (r, the1, phi, z))]
-</code></pre>
+<hr>
 
-<ul>
-<li>(carefully) define a spherical coordinate and cylindrical coordinate chart on Euclidean spaces, e.g.</li>
-</ul>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/lazierthanthou/Lecture_Notes_GR">Lecture Notes on General Relativity</a> is maintained by <a href="https://github.com/lazierthanthou">lazierthanthou</a>.</span>
 
-<pre><code>sage: R2eg.transit_sph_to_cart.display() 
-x = r*cos(ph)
-y = r*sin(ph)
-sage: R3eg.transit_sph_to_cart.display() 
-x = rh*cos(ph)*sin(th)
-y = rh*sin(ph)*sin(th)
-z = rh*cos(th)
-sage: R3eg.transit_cyl_to_cart.display() 
-x = r*cos(phi)
-y = r*sin(phi)
-z = zc
-sage: R4.transit_sph_to_cart.display() 
-x1 = rh*cos(ph)*sin(th1)*sin(th2)
-x2 = rh*sin(ph)*sin(th1)*sin(th2)
-x3 = rh*cos(th2)*sin(th1)
-x4 = rh*cos(th1)
-</code></pre>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
 
-<ul>
-<li>calculate the <strong>Jacobian!</strong>
-</li>
-</ul>
+    </section>
 
-<pre><code>sage: to_orthonormal2 , e2, Jacobians2 = R2eg.make_orthon_frames(R2eg.sph_ch) 
-sage: Jacobians2[0].inverse()[:,R2eg.sph_ch]
-[ cos(ph) -r*sin(ph)]
-[ sin(ph) r*cos(ph)]
-sage: to_orthonormal3sph, e3sph, Jacobians3sph = R3eg.make_orthon_frames(R3eg.sph_ch) 
-sage: to_orthonormal3cyl, e3cyl, Jacobians3cyl = R3eg.make_orthon_frames(R3eg.cyl_ch) 
-sage: Jacobians3sph[0].inverse()[:,R3eg.sph_ch]
-[ cos(ph)*sin(th) rh*cos(ph)*cos(th) -rh*sin(ph)*sin(th)]
-[ sin(ph)*sin(th) rh*cos(th)*sin(ph) rh*cos(ph)*sin(th) ]
-[ cos(th)         -rh*sin(th)        0                  ]
-sage: Jacobians3cyl[0].inverse()[:,R3eg.cyl_ch]
-[ cos(phi) -r*sin(phi) 0]
-[ sin(phi) r*cos(phi) 0] 
-[ 0 0 1]
-</code></pre>
-
-<ul>
-<li>equip the Euclidean space manifold with a <em>metric</em> <em>g</em> and calculate the metric automatically:</li>
-</ul>
-
-<pre><code>sage: R2eg.equip_metric() 
-sage: R3eg.equip_metric() 
-sage: R4.equip_metric()
-
-sage: R2eg.g.display(R2eg.sph_ch.frame(),R2eg.sph_ch)
-g = dr*dr + r^2 dph*dph
-sage: R3eg.g.display(R3eg.sph_ch.frame(),R3eg.sph_ch)
-g = drh*drh + rh^2 dth*dth + rh^2*sin(th)^2 dph*dph
-sage: R3eg.g.display(R3eg.cyl_ch.frame(),R3eg.cyl_ch)
-g = dr*dr + r^2 dphi*dphi + dzc*dzc
-sage: R4.g.display(R4.sph_ch.frame(),R4.sph_ch)
-g = drh*drh + rh^2 dth1*dth1 + rh^2*sin(th1)^2 dth2*dth2 + rh^2*sin(th1)^2*sin(th2)^2 dph*dph
-sage: R4.g.display(R4.cyl_ch.frame(),R4.cyl_ch)
-g = dr*dr + r^2 dthe1*dthe1 + r^2*sin(the1)^2 dphi*dphi + dz*dz
-</code></pre>
-
-<ul>
-<li>Calculate the so-called orthonormal non-coordinate basis vectors in terms of the (local) coordinate basis vectors, showing clearly and distinctively the difference between the two (concepts)</li>
-</ul>
-
-<pre><code>sage: e2[1].display( R2eg.sph_ch.frame(), R2eg.sph_ch)
-e_1 = d/dr
-sage: e2[2].display( R2eg.sph_ch.frame(), R2eg.sph_ch)
-e_2 = 1/r d/dph
-sage: for i in range(1,3+1):                                                         
-    e3sph[i].display( R3eg.sph_ch.frame(), R3eg.sph_ch )
-....:     
-e_1 = d/drh
-e_2 = 1/rh d/dth
-e_3 = 1/(rh*sin(th)) d/dph
-sage: for i in range(1,3+1):
-    e3cyl[i].display( R3eg.cyl_ch.frame(), R3eg.cyl_ch )
-....:     
-e_1 = d/dr
-e_2 = 1/r d/dphi
-e_3 = d/dzc
-</code></pre>
-
-<p><img src="https://ernestyalumni.files.wordpress.com/2016/01/rn_examples_01.png" alt=""></p>
-
-<p><img src="https://ernestyalumni.files.wordpress.com/2016/01/rn_examples_02.png" alt=""></p>
-
-<p><img src="https://ernestyalumni.files.wordpress.com/2016/01/rn_examples_03.png" alt=""></p>
-
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p><a href="https://github.com/ernestyalumni" class="user-mention">@ernestyalumni</a> </p>
-      </section>
-
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-              <script type="text/javascript">
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
