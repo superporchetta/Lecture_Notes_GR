@@ -50,6 +50,8 @@ decoration={snake,
 %for displaying tensor indices properly. requires installation of tensor package using 'sudo tlmgr install tensor'
 \usepackage{tensor}
 
+%for placing captions of figures on the side instead of above/below the figure
+\usepackage{sidecap}
 \linespread{1.2}
 
 %plain makes sure that we have page numbers
@@ -79,6 +81,7 @@ decoration={snake,
 
 \newcommand{\after}{\circ}
 \newcommand{\stdtop}{\mathcal{O}_{std}}
+\newcommand{\cibasis}[2][]{\frac{\partial #1}{\partial #2}}
 
 %set theory symbols
 %\renewcommand{\exists}{\exists\,}
