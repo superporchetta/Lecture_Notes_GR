@@ -1,51 +1,64 @@
-\section{Lecture 8: Parallel Transport \& Curvature}
+\section{Parallel Transport \& Curvature}
 
 \subsection{Parallelity of vector fields}
-
 \begin{definition}
-\begin{enumerate}
-\item[(1)]  \textbf{parallely transported} along smooth curve $\gamma: \mathbb{R} \to M$  
-
-if 
-\begin{equation}
-  \boxed{ \nabla_{ v_{\gamma} } X = 0 }
-\end{equation}
-\item[(2)] A slightly weaker condition 
-
-is ``parallel''
-
-\[
-( \nabla_{v_{\gamma, \gamma(\lambda)} } X)_{\gamma(\lambda)} = \mu(\lambda) X_{\gamma(\lambda)}
-\]
-
-
-\end{enumerate}
+  Let $(M, \mathcal{O}, \mathcal{A}, \nabla)$ be a smooth manifold with connection $\nabla$.
+  \begin{enumerate}
+    \item[(1)] A vector field $X$ on $M$ is said to be \textbf{parallely transported} along a smooth curve $\gamma: \mathbb{R} \to M$ if 
+      \begin{equation}
+        \boxed{\nabla_{v_{\gamma}} X = 0}
+      \end{equation}
+    \item[(2)] A slightly weaker condition is ``\textbf{parallel}'' if, for $\mu : \mathbb{R} \to \mathbb{R}$,
+      \begin{equation}
+        \left(\nabla_{v_{\gamma, \gamma(\lambda)} } X\right)_{\gamma(\lambda)} = \mu(\lambda) X_{\gamma(\lambda)}
+      \end{equation}
+  \end{enumerate}
 \end{definition}
+
+\textbf{Note:} Even though \textbf{parallely transported} sounds like an action, it is a property.
 
 \subsection{Autoparallely transported curves}
-
 \begin{definition}
-curve $\gamma: \mathbb{R} \to M$ is called \\
-\textbf{autoparallely transported} if 
-\begin{equation}
-  \nabla_{v_{\gamma}}v_{\gamma} \overset{!}{=} 0
-\end{equation}
+  A curve $\gamma: \mathbb{R} \to M$ is called \textbf{autoparallely transported} if 
+  \begin{equation}
+    \nabla_{v_{\gamma}}v_{\gamma} = 0
+  \end{equation}
 \end{definition}
 
+\textbf{Note:} Sometimes, this curve is called an autoparallel curve. But we wish to call a curve autoparallel if $\nabla_{v_{\gamma}}v_{\gamma} = \mu v_{\gamma}$.
 
 \subsection{Autoparallel equation}
+Express $\nabla_{v_{\gamma}} v_{\gamma} = 0$ in terms of chart representation.
+\begin{align*}
+0 & = \left(\nabla_{v_{\gamma}} v_{\gamma}\right) \\
+& = \left(\nabla_{\left(\dot{\gamma}^m_{(x)} \cibasis{x^m}\right)} \dot{\gamma}^n_{(x)} \cibasis{x^n}\right) && \text{ remember that } \gamma^m_{(x)} := x^m \after \gamma \\
+& = \dot{\gamma}^m \left(\nabla_{\left(\cibasis{x^m}\right)} \dot{\gamma}^n\right) \cibasis{x^n} + \dot{\gamma}^m \dot{\gamma}^n \left(\nabla_{\left(\cibasis{x^m}\right)} \cibasis{x^n}\right) && \text{x index is understood, hence suppressed} \\
+& = \dot{\gamma}^m \left(\cibasis{x^m} \dot{\gamma}^n\right) \cibasis{x^n} + \dot{\gamma}^m \dot{\gamma}^n \left(\nabla_{\left(\cibasis{x^m}\right)} \cibasis{x^n}\right) && \text{} \\
+& = \dot{\gamma}^m \left(\cibasis{x^m} \dot{\gamma}^q\right) \cibasis{x^q} + \dot{\gamma}^m \dot{\gamma}^n \left(\Gamma\indices{^{q}_{nm}} \cibasis{x^q}\right) && \text{change of index in 1st term} \\
+& = \left(\dot{\gamma}^m \cibasis{x^m} \dot{\gamma}^q + \dot{\gamma}^m \dot{\gamma}^n \Gamma\indices{^{q}_{nm}}\right) \cibasis{x^q} && \text{} \\
+& = \left(\ddot{\gamma}^q + \dot{\gamma}^m \dot{\gamma}^n \Gamma\indices{^{q}_{nm}}\right) \cibasis{x^q} && \text{1st term is 2nd derivative by Fig. \ref{fig:L8_2ndDerivativeDerivation}}
+\end{align*}
 
-\[
-\nabla_{v_{\gamma}} v_{\gamma} =0 
-\]
+%\begin{frame}
+%\begin{figure}
+%\label{fig:L8_2ndDerivativeDerivation}
+%\centering
+%\begin{align*}
+%\dot{\gamma}^m \cibasis{x^m} \dot{\gamma}^q & = \left(x^m \after \gamma\right)^\prime \cdot \partial_m\left(\dot{\gamma}^q \after x^{-1}\right)
+%\end{align*}
+%\caption{Second derivative of a curve}
+%\end{figure}
+%\end{frame}
 
-in summary:
-\begin{equation}
-  \ddot{\gamma}^m_{(x)}(\lambda) + (\Gamma^m_{(x)})_{ab}(\gamma(\lambda)) \dot{\gamma}^a_{(x)}(\lambda) \dot{\gamma}^b_{(x)}(\lambda) = 0 
+In summary:
+\begin{equation}\label{Eq:L8_autoParallelTransportChartExpression}
+\boxed{\ddot{\gamma}^q_{(x)}(\lambda) + (\Gamma_{(x)})\indices{^{q}_{mn}}(\gamma(\lambda)) \dot{\gamma}^m_{(x)}(\lambda) \dot{\gamma}^n_{(x)}(\lambda) = 0}
 \end{equation}
+Eq. (\ref{Eq:L8_autoParallelTransportChartExpression}) is the chart expression of the condition that $\gamma$ be autoparallely transported.
+
+%TODO after 37:07
 
 \subsection{Torsion}
-
 \begin{definition}
   \textbf{torsion} of a connection $\nabla$ is the $(1,2)$-\textbf{tensor field}
 \begin{equation}
