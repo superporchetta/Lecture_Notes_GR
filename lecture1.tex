@@ -1,4 +1,4 @@
-\section{Lecture 1: Topology}
+\section{Topology}
 
 \begin{framed}
 \textbf{Motivation}: At the coarsest level, spacetime is a set. But, a set  is not enough to talk about continuity of maps, which is required for classical physics notions such as trajectory of a particle. We do not want jumps such as a particle disappearing at some point on its trajectory and appearing somewhere. So we require continuity of maps. There could be many structures that allow us to talk about continuity, e.g., distance measure. But we need to be very minimal and very economic in order not to introduce undue assumptions. So we are interested in the weakest structure that can be established on a set which allows a good definition of continuity of maps. Mathematicians know that the weakest such structure is topology. This is the reason for studying topological spaces.
@@ -18,9 +18,9 @@ A set $\mathcal{O} \subseteq \mathcal{P}(M)$ is called a \textbf{topology}, if i
 
 \textbf{Terminology}:
 \begin{enumerate}
-\item the tuple $(M , \mathcal{O})$ is a \textbf{topological space},
-\item $\mathcal{U} \in M$ is an \textbf{open set} if $\mathcal{U} \in \mathcal{O}$
-\item $\mathcal{U} \in M$ is a \textbf{closed set} if $M \setminus \mathcal{U} \in \mathcal{O}$
+\item the tuple $(M , \mathcal{O})$ is a \textbf{topological space}.
+\item $\mathcal{U} \in M$ is an \textbf{open set} if $\mathcal{U} \in \mathcal{O}$.
+\item $\mathcal{U} \in M$ is a \textbf{closed set} if $M \setminus \mathcal{U} \in \mathcal{O}$.
 \end{enumerate}
 
 \begin{definition}
@@ -33,9 +33,9 @@ A set $\mathcal{O} \subseteq \mathcal{P}(M)$ is called a \textbf{topology}, if i
 
 \begin{definition}
 A \textbf{soft ball} at the point $p$ in $\mathbb{R}^d$ is the set
-\begin{equation*}
-\mathcal{B}_r(p) := \left\{ (q_1, q_2, ..., q_d) \quad | \quad \displaystyle\sum_{i=1}^{d} (q_i - p_i)^2 < r^2 \right\} \text{ where } r \in \mathbb{R}^+
-\end{equation*}
+\begin{equation}
+\displaystyle\mathcal{B}_r(p) := \left\{ (q_1, q_2, ..., q_d) \quad | \quad \sum_{i=1}^{d} (q_i - p_i)^2 < r^2 \right\} \text{ where } r \in \mathbb{R}^+
+\end{equation}
 \end{definition}
 
 \begin{definition}
@@ -66,8 +66,7 @@ A map $f$, $f: M \to N$, connects each element of a set $M$ (domain set) to an e
 \end{enumerate}
 
 \begin{definition}
-  Let $(M , \mathcal{O}_{M})$ and $(N, \mathcal{O}_{N})$ be topological spaces. A map $f: M \to N$ is called \textbf{continuous} w.r.t. $\mathcal{O}_{M}$ and $\mathcal{O}_{N}$ if \\
-   $V \in \mathcal{O}_{N} \implies (\text{preim}_{f}(V)) \in \mathcal{O}_{M}$.
+  Let $(M , \mathcal{O}_{M})$ and $(N, \mathcal{O}_{N})$ be topological spaces. A map $f: M \to N$ is called \textbf{continuous} w.r.t. $\mathcal{O}_{M}$ and $\mathcal{O}_{N}$ if $V \in \mathcal{O}_{N} \implies (\text{preim}_{f}(V)) \in \mathcal{O}_{M}$.
 \end{definition}
 
 \textit{\textbf{Mnemonic}: A map is continuous iff the preimages of all open sets are open sets.}
@@ -102,18 +101,13 @@ If $(M, \mathcal{O}_{M})$ is a topological space and $S \subseteq M$, then the s
 
 \begin{proof}
 \begin{enumerate}
-%empty set condition
-\item $\emptyset \in \mathcal{O}_{M} \implies S \cap \emptyset \in \mathcal{O}|_S \implies \emptyset \in \mathcal{O}|_S$
-%entire set condition
-\item $M \in \mathcal{O}_{M} \implies S \cap M \in \mathcal{O}|_S \implies S \in \mathcal{O}|_S$
+%empty set & entire set condition
+\item $\emptyset, S \in \mathcal{O}|_S \because \emptyset = S \cap \emptyset, S = S \cap M$.
+
 %intersection condition
-\item \begin{align*}
-S_1, S_2 \in \mathcal{O}|_S &\implies \exists U_1, U_2 \in \mathcal{O}_{M} : S_1 = S \cap U_1, S_2 = S \cap U_2 \\
-&\implies U_1 \cap U_2 \in \mathcal{O}_{M} \\
-&\implies S \cap (U_1 \cap U_2) \in \mathcal{O}|_S \\
-&\implies (S \cap U_1) \cap (S \cap U_2) \in \mathcal{O}|_S \\
-&\implies S_1 \cap S_2 \in \mathcal{O}|_S
-\end{align*}
+\item $S_1, S_2 \in \mathcal{O}|_S \implies \exists U_1, U_2 \in \mathcal{O}_{M} : S_1 = S \cap U_1, S_2 = S \cap U_2 \implies U_1 \cap U_2 \in \mathcal{O}_{M} \\
+\implies S \cap (U_1 \cap U_2) \in \mathcal{O}|_S \implies (S \cap U_1) \cap (S \cap U_2) \in \mathcal{O}|_S \implies S_1 \cap S_2 \in \mathcal{O}|_S$.
+
 %union condition
 \item Let $\alpha \in \mathcal{A}$, where $\mathcal{A}$ is an index set. Then $S_{\alpha} \in \mathcal{O}|_S \implies \exists U_{\alpha} \in \mathcal{O}_{M} : S_{\alpha} = S \cap U_{\alpha}$. \\
 Further, let $\mathcal{U} = \left( \bigcup_{\alpha \in \mathcal{A}} U_{\alpha} \right)$. Therefore, $\mathcal{U} \in \mathcal{O}_{M}$. \\
