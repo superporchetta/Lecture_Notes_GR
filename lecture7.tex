@@ -44,23 +44,28 @@ We need $\nabla_X$ to provide the new structure to allow us to talk about direct
 \subsection{Directional derivatives of tensor fields}
 We formulate a wish list of properties which $\nabla_X$ acting on a tensor field should have. We put this in form of a definition. There may be many structures that satify this wish list. Any remaining freedom in choosing such a $\nabla$ will need to be provided as additional structure beyond the structure we already have. And we assume all this takes place on a smooth manifold.
 
-\begin{definition}
+\begin{definition}\label{def:connection}
 A \textbf{connection} $\nabla$ on a smooth manifold $(M, \mathcal{O}, \mathcal{A})$ is a map that takes a pair consisting of a vector (field) $X$ and a $(p,q)$-tensor field $T$ and sends them to a $(p,q)$-tensor (field) $\nabla_X T$ satisfying
 \begin{enumerate}[i)]
 \item $\nabla_X f = Xf \quad \forall f \in C^{\infty}M$
+
 \item $\nabla_X (T + S) = \nabla_X T + \nabla_X S \quad \text{ where }T, S \text{ are } (p,q) \text{-tensors}$
+
 \item \textbf{Leibnitz rule: } $\nabla_X T(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) = (\nabla_X T)(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) \\
 + T(\nabla_X \omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) + \dotsb + T(\omega_1,\dotsc,\nabla_X \omega_p,Y_1,\dotsc,Y_q) \\
 + T(\omega_1,\dotsc,\omega_p,\nabla_X Y_1,\dotsc,Y_q) + \dotsb + T(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,\nabla_X Y_q) \quad \text{ where }T \text{ is a }(p,q)\text{-tensor}$
-\item $C^{\infty}$-linearity: $\forall f \in C^{\infty}(M), \nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T$
+\begin{framed}
+Note that for a $(p,q)$-tensor $T$ and a $(r,s)$-tensor $S$, since: \\
+$(T \otimes S) (\omega_{(1)}, \dotsc, \omega_{(p+r)}, Y_{(1)}, \dotsc, Y_{(q+s)}) = \\ T(\omega_{(1)}, \dotsc, \omega_{(p)}, Y_{(1)}, \dotsc, Y_{(q)} ) \cdot S( \omega_{(p+1)}, \dotsc, \omega_{(p+r)} , Y_{(q+1)}, \dotsc, Y_{(q+s)})$, \\
+Leibnitz rule implies $\nabla_X (T \otimes S) = (\nabla_X T) \otimes S + T \otimes (\nabla_X S)$.
+\end{framed}
+
+\item \textbf{$C^{\infty}$-linearity: }$\forall f \in C^{\infty}(M), \nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T$
+\begin{framed}
+$C^{\infty}$-linearity means that no matter how the function $f$ scales the vectors at different points of the manifold, the effect of the scaling at any point is independent of scaling in the neighbourhood and depends only on how the scaling happens at that point.
+\end{framed}
 \end{enumerate}
 \end{definition}
-
-Note that for a $(p,q)$-tensor $T$ and a $(r,s)$-tensor $S$, since: \\
-$(T \otimes S) (\omega_{(1)}, \dotsc, \omega_{(p+r)} , Y_{(1)}, \dotsc, Y_{(q+s)}) = T(\omega_{(1)}, \dotsc, \omega_{(p)}, Y_{(1)}, \dotsc, Y_{(q)} ) \cdot S( \omega_{(p+1)}, \dotsc, \omega_{(p+r)} , Y_{(q+1)}, \dotsc, Y_{(q+s)})$, \\
-Leibnitz rule implies $\nabla_X (T \otimes S) = (\nabla_X T) \otimes S + T \otimes (\nabla_X S)$.
-
-$C^{\infty}$-linearity means that no matter how the function $f$ scales the vectors at different points of the manifold, the effect of the scaling at any point is independent of scaling in the neighbourhood and depends only on how the scaling happens at that point.
 
 A \textbf{manifold with a connection} $\nabla$ is a quadruple $(M, \mathcal{O}, \mathcal{A}, \nabla)$, where $M$ is a set, $\mathcal{O}$ is a topology and $\mathcal{A}$ is a smooth atlas.
 
@@ -70,89 +75,96 @@ then $\nabla_{(\cdot)}(\cdot)$ can be seen as an extension of $d$.
 \subsection{New structure on $(M,\mathcal{O},\mathcal{A})$ required to fix $\nabla$}
 How much freedom do we have in choosing such a structure?
 
-Consider the vector fields $(X,Y)$ and the chart $(U,x) \in \mathcal{A}$. Then \\
-$\nabla_X Y = \nabla_{\left(X^i \frac{\partial}{\partial x^i}\right)} \left(Y^m \frac{\partial}{\partial x^m}\right)$
+Consider vector fields $X, Y$ and chart $(U,x) \in \mathcal{A}$. Then \\
+\begin{align*}
+\nabla_X Y & = \nabla_{\left(X^i \cibasis{x^i}\right)} \left(Y^m \cibasis{x^m}\right) && \text{by expanding in chart-induced basis} \\
+& = X^i \cdot \nabla_{\left(\cibasis{x^i}\right)} \left(Y^m \cibasis{x^m}\right) && \text{by }C^\infty\text{-linearity} \\
+& = X^i \underbrace{\left(\nabla_{\left(\cibasis{x^i}\right)} Y^m\right)}_{=\cibasis{x^i} Y^m} \cibasis{x^m} + X^i \cdot Y^m \cdot \underbrace{\left(\nabla_{\left(\cibasis{x^i}\right)} \cibasis{x^m}\right)}_{\text{a vector field, by defn.}} && \text{using Leibnitz rule} \\
+& =  X^i \left(\cibasis{x^i} Y^m\right) \cibasis{x^m} + X^i \cdot Y^m \cdot \left(\ccf{q}{mi} \cibasis{x^q}\right)
+\end{align*}
 
-There are $(\text{dim}M)^3$ many $\Gamma^i_{ \, \, j k}$
-\[
-\begin{aligned}
-&  \Gamma^i_{ \, \, jk} : U \to \mathbb{R} \\ 
-&  p \mapsto \left( dx^i ( \nabla_{ \frac{ \partial}{ \partial x} } \frac{ \partial }{ \partial x^j } ) \right)(p)
-\end{aligned}
-\]
+Thus, by change of indices, 
+\begin{equation}
+\boxed{\left(\nabla_X Y\right)^i = X^m \left(\cibasis{x^m} Y^i\right) + X^m \cdot Y^n \cdot \ccf{i}{nm}}
+\end{equation}
+So we need $(dim\,M)^3$-many functions to define directional derivative of a vector field.
 
-Now $\nabla_{ \frac{ \partial }{ \partial x^m}  }(dx^i) = ?$
+\begin{definition}
+Given $(M, \mathcal{O}, \mathcal{A}, \nabla)$ and $(U,x) \in \mathcal{A}$, then the \textbf{connection coefficient functions} ($\Gamma$s) on $M$ of $\nabla$ w.r.t $(U,x)$ are $(dim\,M)^3$-many functions given by
+\begin{align}
+\ccf{i}{jk} : \quad & U \to \mathbb{R} \nonumber \\ 
+& p \mapsto \ccf{i}{jk}(p) := \left(dx^i \left(\nabla_{\left(\cibasis{x^k}\right)} \cibasis{x^j}\right)\right)(p)
+\end{align}
+\end{definition}
 
-\[
-\begin{aligned}
-  & \underbrace{ \nabla_{  \frac{ \partial }{ \partial x^m} } ( \underbrace{ dx^i \left( \frac{ \partial }{ \partial x^j } \right) }_{ \delta^i_{ \, \, j} } ) }_{ \rotatebox{90}{$\,=$} \quad \, \text{ (iii) } }  = \frac{ \partial }{ \partial x^m} ( \delta^i_{ \, \, j} ) = 0  \\
-& = \left( \nabla_{ \frac{ \partial }{ \partial x^m} } dx^i \right)\left( \frac{ \partial }{ \partial x^j} \right) + dx^i (   \underbrace{ \nabla_{ \frac{ \partial }{ \partial x^m } } \frac{ \partial }{ \partial x^j } }_{ \Gamma^q_{ \, jm }\frac{ \partial }{ \partial x^q} }   ) = 0 \\
-& \Longrightarrow \left( \nabla_{ \frac{ \partial }{ \partial x^m } } dx^i \right)\left( \frac{ \partial }{ \partial x^j } \right) = - \Gamma^i_{ jm} \\
-& \nabla_{ \frac{ \partial }{ \partial x^m} } dx^i = -\Gamma^i_{ jm} dx^j 
-\end{aligned}
-\]
+\textit{Note: $\cibasis{x^j}$ is a vector field; $\therefore\,\nabla_{\left(\cibasis{x^k}\right)} \cibasis{x^j}$ is a vector field, and $dx^i$ is a covector which will result in a function after acting on a vector field.}
 
+On a chart domain $U$, choice of the $(dim\,M)^3$-many functions $\ccf{i}{jk}$ suffices to fix the action of $\nabla$ on a vector field. What about the directional derivative of a covector field, or a tensor field? Will we have to provide more and more coefficients? Fortunately, the same $(dim\,M)^3$-many functions fix the action of $\nabla$ on any tensor field.
 
-% \rotatebox{90}{$\,=$}
+We know that, for a covector, $\nabla_{\cibasis{x^m}}\left(dx^i\right) = \Sigma\indices{^{i}_{jm}} dx^j$, since $dx^i$ form a dual basis. Are these $\Sigma$s independent of $\Gamma$s? Consider the following.
 
-Hence
+\begin{align*}
+& \displaystyle\nabla_{\cibasis{x^m}} \left(dx^i \left(\cibasis{x^j}\right)\right) = \nabla_{\cibasis{x^m}} \delta^i_j = \cibasis{x^m}(\delta^i_j) = 0 \\
+& \implies \displaystyle\left(\nabla_{\cibasis{x^m}} dx^i \right)\left(\cibasis{x^j}\right) + dx^i \underbrace{\left(\nabla_{\cibasis{x^m}} \cibasis{x^j}\right)}_{\ccf{q}{jm}\cibasis{x^q}} = 0 \\
+& \implies \displaystyle\left(\nabla_{\cibasis{x^m}} dx^i \right)\left(\cibasis{x^j}\right) + dx^i \ccf{q}{jm} \cibasis{x^q} = 0 \\
+& \implies \left(\nabla_{\cibasis{x^m}} dx^i \right)\left(\cibasis{x^j}\right) = - dx^i \ccf{q}{jm} \cibasis{x^q} = - \ccf{q}{jm} dx^i \cibasis{x^q} = - \ccf{q}{jm} \delta^i_q = - \ccf{i}{jm} \\
+& \implies \left(\nabla_{\cibasis{x^m}} dx^i \right)\underbrace{\left(\cibasis{x^j}\right) dx^j}_{= \delta^j_j = 1} = -\ccf{i}{jm} dx^j \\
+& \implies \boxed{\nabla_{\cibasis{x^m}} dx^i = -\ccf{i}{jm} dx^j} \\
+& \implies \boxed{\left(\nabla_{\cibasis{x^m}} dx^i\right)_j = -\ccf{i}{jm}}
+\end{align*}
 
-\[
-\begin{aligned}
-  & ( \nabla_X Y)^i = X(Y^i) + \Gamma^i_{j\underbrace{m}_{\text{ last entry goes in direction of $X$ }} } Y^j X^m \\
-  & (\nabla_X \omega)_i = X(\omega_i) + - \Gamma^j_{im} \omega_j X^m
-\end{aligned}
-\]
-Note that for the immediately above expression for $(\nabla_X Y)^i$, in the second term on the right hand side, $\Gamma_{jm}^i$ has the last entry at the bottom, $m$ going in the direction of $X$, so that it matches up with $X^m$. This is a good mnemonic to memorize the index positions of $\Gamma$. 
+In summary,
+\begin{align}
+  \displaystyle\left(\nabla_X Y\right)^i & = X(Y^i) + \ccf{i}{jm} Y^j X^m \\
+  \displaystyle\left(\nabla_X \omega\right)_i & = X\left(\omega_i\right) - \ccf{j}{im} \omega_j X^m
+\end{align}
+Note that for the immediately above expression for $(\nabla_X Y)^i$, in the second term on the right hand side, $\ccf{i}{jm}$ has the last entry at the bottom, $m$ going in the direction of $X$, so that it matches up with $X^m$. This is a good mnemonic to memorize the index positions of $\ccf{}{}$.
 
-\underline{summary so far}:
-\[
-\begin{aligned}
-  & ( \nabla_X Y)^i = X(Y^i) + \Gamma^i_{jm }  Y^j X^m \\
-  & (\nabla_X \omega)_i = X(\omega_i) + - \Gamma^j_{im} \omega_j X^m
-\end{aligned}
-\]
-similarly, by further application of Leibnitz
+Similarly, as an example, by further application of Leibnitz rule, for a $(1,2)$-tensor field $T$,
+\begin{align*}
+  \left(\nabla_X T\right)\indices{^i_{jk}} = X\left(T\indices{^i_{jk}}\right) + \ccf{i}{sm} T\indices{^s_{jk}} X^m - \ccf{s}{jm} T\indices{^i_{sk}} X^m - \ccf{s}{km} T\indices{^i_{js}} X^m
+\end{align*}
 
-$T$ a $(1,2)$-TF (tensor field)
-
-\[
-\begin{aligned}
-  (\nabla_X T)^i_{ \, \, jk } = X(T^i_{ \, \, jk} ) + \Gamma^i_{ \, \, s m } T^s_{ \, \, jk} X^m - \Gamma^s_{ \, \, jm} T^i_{ \, \, sk} X^m - \Gamma^s_{ \, \, km} T^i_{ \,\, js} X^m
-\end{aligned}
-\]
-
-What is a Euclidean space: \\
-$(M = \mathbb{R}^n, \mathcal{O}_{\text{st}}, \mathcal{A})$ smooth manifold. \\
-Assume $(\mathbb{R}^n, \text{id}_{\mathbb{R}^n} ) \in \mathcal{A}$ and 
-\[
-(\Gamma^i_{(x)})_{jk} = dx^i \left( (\nabla_{\text{\underline{E}}})_{ \frac{ \partial }{ \partial x^k} } \frac{ \partial }{ \partial x^j} \right) \overset{!}{=} 0 
-\]
-
+%Student's Question: If in a Euclidean space, do the $\Gamma$s all vanish in a global chart? Yes, it is so by definition. But what is a Euclidean space? \\
+%$\left(M = \mathbb{R}^n, \mathcal{O}_{\text{st}}, \mathcal{A}\right)$ smooth manifold. \\
+%Assume $(\mathbb{R}^n, \text{id}_{\mathbb{R}^n} ) \in \mathcal{A}$ and 
+%\[
+%\ccfx{i}{jk}{(x)} = dx^i \left( (\nabla_{\text{\underline{E}}})_{\cibasis{x^k}}\cibasis{x^j} \right) \overset{!}{=} 0 
+%\]
 
 \subsection{Change of $\Gamma$'s under change of chart}
+Let $(U,x)$, $(V,y) \in \mathcal{A}$ and $U \cap V \neq \emptyset$.
 
-$(U,x)$, $(V,y) \in \mathcal{A}$ and $U \cap V \neq \emptyset$
-
-\[
-\Gamma^i_{jk}(y) := dy^i \left( \nabla_{ \frac{ \partial}{ \partial y^k} } \frac{ \partial }{ \partial y^j} \right) = \frac{ \partial y^i}{ \partial x^q }dx^q \left( \nabla_{\frac{ \partial x^p}{ \partial y^k}  \frac{ \partial }{ \partial x^p} } \frac{ \partial x^s}{ \partial y^j} \frac{ \partial }{ \partial x^s } \right)
-\]
-
-Note $\nabla_{fX}$ is $C^{\infty}$-linear for $fX$
-
-covector $dy^i$ is $C^{\infty}$-linear in its argument
-\[
-\begin{aligned}
-\Longrightarrow \Gamma_{jk}^i(y) & = \frac{ \partial y^i}{ \partial x^q} dx^q \left( \frac{ \partial x^p}{ \partial y^k} \left[ \left( \nabla_{ \frac{ \partial }{ \partial x^p} } \frac{ \partial x^s}{ \partial y^j} \right) \frac{ \partial }{ \partial x^s} + \frac{ \partial x^s}{ \partial y^j} \left( \nabla_{ \frac{ \partial }{ \partial x^p } } \frac{ \partial }{ \partial x^s } \right)  \right] \right) = \\
-& = \frac{ \partial y^i}{ \partial x^q} \frac{ \partial x^p }{ \partial y^k} \frac{ \partial }{ \partial x^p } \frac{ \partial x^s}{ \partial y^j } \delta^q_{ \, \, s} + \frac{ \partial y^i}{ \partial x^q} \frac{ \partial x^p }{ \partial y^k} \frac{ \partial x^s}{ \partial y^j} \Gamma^q_{sp}(x)
-\end{aligned}
-\]
-
+\begin{align*}
+\ccfx{i}{jk}{(y)} & := dy^i \left(\nabla_{\cibasis{y^k}} \cibasis{y^j} \right) \\
+& = \cibasis[y^i]{x^q} dx^q \left(\nabla_{\cibasis[x^p]{y^k} \cibasis{x^p}} \cibasis[x^s]{y^j} \cibasis{x^s} \right) \\
+& = \cibasis[y^i]{x^q} dx^q \left(\cibasis[x^p]{y^k} \left[ \left(\nabla_{\cibasis{x^p}} \cibasis[x^s]{y^j} \right) \cibasis{x^s} + \cibasis[x^s]{y^j} \left(\nabla_{\cibasis{x^p}} \cibasis{x^s} \right) \right] \right) && \because \nabla \text{ is } C^{\infty}-linear \\
+& = \cibasis[y^i]{x^q} \underbrace{\cibasis[x^p]{y^k} \cibasis{x^p}}_{\cibasis{y^k}} \cibasis[x^s]{y^j} \delta^q_s + \cibasis[y^i]{x^q} \cibasis[x^p]{y^k} \cibasis[x^s]{y^j} \ccfx{q}{sp}{(x)}
+\end{align*}
 
 \begin{equation}\label{Eq:WEHCG0703_changeofGamma}
-\Gamma^i_{jk}(y) = \frac{ \partial y^i}{ \partial x^q} \frac{ \partial^2 x^q}{ \partial y^j \partial y^k} + \frac{ \partial y^i}{ \partial x^q } \frac{ \partial x^s }{ \partial y^j} \frac{ \partial x^p }{ \partial y^k} \Gamma^q_{sp}(x)
+\ccfx{i}{jk}{(y)} = \cibasis[y^i]{x^q} \frac{\partial^2 x^q}{\partial y^k \partial y^j} + \cibasis[y^i]{x^q} \cibasis[x^s]{y^j} \cibasis[x^p]{y^k} \ccfx{q}{sp}{(x)}
 \end{equation}
-Eq. (\ref{Eq:WEHCG0703_changeofGamma}) is the change of connection coefficient function under the change of chart $(U\cap V,x) \to (U\cap V,y)$
 
+Eq. (\ref{Eq:WEHCG0703_changeofGamma}) is the change of connection coefficient function under the change of chart $(U\cap V,x) \to (U\cap V,y)$. $\ccf{}{}$ is not a tensor due to the first term on left hand side in Eq. (\ref{Eq:WEHCG0703_changeofGamma}). However, for linear transformation between coordinates in two charts, the term $\frac{\partial^2 x^q}{\partial y^k \partial y^j}$ always vanishes and then, if $\Gamma$s are zero in one chart, they will be zero in the other chart too. However, there is no reason not to select a coordinate which is not a linear transformation of another one.
 
 \subsection{Normal Coordinates}
+Can we find a coordinate system that makes the $\ccf{}{}$s vanish?
+
+\begin{theorem}
+Let $p \in M$ of $(M, \mathcal{O}, \mathcal{A}, \nabla)$. Having chosen a point $p$, one can construct a chart $(U,x)$ with $p \in U$ such that the symmetric part of $\Gamma$s vanish at the point $p$ (not necessarily in any neighbourhood). That is, \\
+$\displaystyle\forall \, p \in M, \, \exists \, (U,x) \in \mathcal{A} \, : \, p \in U \text{ and } \ccfx{i}{(jk)}{(x)}(p) = 0$. \\
+Such $(U,x)$ is called a \textbf{normal coordinate chart} of $\nabla$ at $p \in M$.
+\end{theorem}
+
+\begin{proof}
+Let $(V,y) \in \mathcal{A}$ and $p \in V$. Then consider a new chart $(U,x)$ to which one transits using the map $(x \after y^{-1})$ whose $i^{th}$ component is given by\\
+\begin{align*}
+\left(x \after y^{-1}\right)^i\left(\alpha^1,\dotsc,\alpha^d\right) := \alpha^i - \ccfx{i}{(jk)}{(y)} \alpha^j \alpha^k && \text{ where the } \ccf{}{} \text{s are taken at the point } p \\ 
+\implies \displaystyle\cibasis[x^i]{y^j} = \partial_j\left(x^i \after y^{-1}\right) = \delta^i_j - \ccfx{i}{(jm)}{(y)} \alpha^m \\
+\implies \displaystyle\frac{\partial^2 x^i}{\partial y^k \partial y^j} = - \ccfx{i}{(jk)}{(y)} 
+%\implies \ccfx{i}{jk}{(y)}(p) = - \cibasis[y^i]{x^q} \ccfx{q}{(jk)}{(y)} + \cibasis[y^i]{x^q} \cibasis[x^s]{y^j} \cibasis[x^p]{y^k} \ccfx{q}{sp}{(x)} && \text{Eq. (\ref{Eq:WEHCG0703_changeofGamma}) \& the previous step}
+\end{align*}
+
+TODO: Not understood by me.
+\end{proof}
