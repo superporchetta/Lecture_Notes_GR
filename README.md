@@ -9,10 +9,10 @@ I agree with [Ernest Yeung](https://github.com/ernestyalumni) that these lecture
 ----------
 ### Why this fork
 The initial purpose of this fork is the following:
+* filling in missing parts in lectures or to modify existing parts to suit me better
 * to confine the output pdf only to lectures
 * using the documentclass{article} in A4 paper
 * put each lecture/tutorial in its own file
-* filling in missing parts in lectures or to modify existing parts to suit me better
 
 ----------
 
