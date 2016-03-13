@@ -17,6 +17,9 @@
 \usepackage{amssymb,latexsym}
 \usepackage{amsmath, amsthm}
 
+%for bibliography; installation using 'sudo tlmgr install amsrefs'
+\usepackage{amsrefs}
+
 \usepackage{graphics}
 
 \usepackage{hyperref}
@@ -72,6 +75,8 @@ decoration={snake,
 \newtheorem*{notation}{Notation}
 
 \numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{theorem}{section}
 
 %symbol for maps
 \renewcommand{\to}{\longrightarrow}
@@ -131,7 +136,7 @@ decoration={snake,
 \begin{abstract}
 These are lecture notes on General Relativity.
 
-They are based on the \href{https://www.youtube.com/channel/UCUHKG3S9N_QeIE2jQXd2-VQ/feed}{Central Lecture Course} by \textbf{Dr. Frederic P. Schuller} (\textbf{A thorough introduction to the theory of general relativity}) introducing the mathematical and physical foundations of the theory in 24 self-contained lectures at the International Winter School on Gravity and Light in Linz/Austriafor the WE Heraeus International Winter School of Gravity and Light, 2015 in Linz as part of the world-wide celebrations of the 100th anniversary of Einstein's theory of general relativity and the International Year of Light 2015.
+They are based on the \href{https://www.youtube.com/channel/UCUHKG3S9N_QeIE2jQXd2-VQ/feed}{Central Lecture Course} by \textbf{Dr. Frederic P. Schuller} (\textbf{A thorough introduction to the theory of general relativity}) introducing the mathematical and physical foundations of the theory in 24 self-contained lectures at the International Winter School on Gravity and Light in Linz/Austria for the WE Heraeus International Winter School of Gravity and Light, 2015 in Linz as part of the world-wide celebrations of the 100th anniversary of Einstein's theory of general relativity and the International Year of Light 2015.
 
 These lectures develop the theory from first principles and aim at an audience ranging from ambitious undergraduate students to beginning PhD students in mathematics and physics. Satellite Lectures (see other videos on this channel) by Bernard F Schutz (Gravitational Waves), Domenico Giulini (Canonical Formulation of Gravity), Marcus C Werner (Gravitational Lensing) and Valeria Pettorino (Cosmic Microwave Background) expand on the topics of this central lecture course and take students to the research frontier.
 
@@ -183,15 +188,16 @@ Spacetime is the physical key object, we shall be concerned about.
 
 %\include{lecture-others}
 
-
-\begin{thebibliography}{9}
-\bibitem{EPoisson2004}
-Eric Poisson, 
-\textbf{A Relativist's Toolkit: The Mathematics of Black-Hole Mechanics},
-Cambridge University Press, 
-2004.
-ISBN 0 521 83091 5
-
-\end{thebibliography}
+\begin{bibdiv}
+\begin{biblist}
+\bib{mse465672}{misc}{
+    title={Are there simple examples of Riemannian manifolds with zero curvature and nonzero torsion},    
+    author={Sepideh Bakhoda (http://math.stackexchange.com/users/36591/sepideh-bakhoda)},    
+    note={URL: http://math.stackexchange.com/q/465672 (version: 2013-08-12)},    
+    eprint={http://math.stackexchange.com/q/465672},    
+    organization={Mathematics Stack Exchange}  
+}
+\end{biblist}
+\end{bibdiv}
 
 \end{document}
