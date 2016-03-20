@@ -118,6 +118,10 @@ decoration={snake,
    \noindent{\small\bf Solution #1.}
   }
 
+\newcommand{\bubblethis}[2]{
+  \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0](#1) {#1};\node[overlay,cloud callout,callout relative pointer={(0.2cm,-0.7cm)}, aspect=2.5,fill=white!90] at ($(#1.north)+(-0.5cm,1.6cm)$) {#2};}
+}
+
 %-----------------------------------
 \begin{document}
 
@@ -183,6 +187,8 @@ Spacetime is the physical key object, we shall be concerned about.
 
 \include{lecture15} % Einstein Gravity
 %\include{tutorial13} % Schwarzschild Spacetime
+
+\include{lecture18} % Canonical Formulation of GR-I
 
 \include{lecture22} % Black Holes
 
