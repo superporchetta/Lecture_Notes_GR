@@ -1,37 +1,144 @@
-\section{Lecture 11: Symmetry}
+\section{Symmetry}
+\begin{framed}
+what a symmetry of the Lie algebra is, and in comparing structures $(M,\mathcal{O}, \mathcal{A})$ vs. $(M,\mathcal{O}, \mathcal{A}, \nabla)$, clarified differences, and asking about differences is a good way to learn, the difference between $\mathcal{L}$ and $\nabla$, respectively.  
 
-EY : 20150321 This lecture tremendously and lucidly clarified, for me at least, what a symmetry of the Lie algebra is, and in comparing structures $(M,\mathcal{O}, \mathcal{A})$ vs. $(M,\mathcal{O}, \mathcal{A}, \nabla)$, clarified differences, and asking about differences is a good way to learn, the difference between $\mathcal{L}$ and $\nabla$, respectively.  
+This lecture is about symmetry but we will pick a number of elementary techniques in differential geometry that we will need in Einstein's theory. We shall motivate these techniques by appealing to the feeling that the round sphere $(S^2, \mathcal{O}, \mathcal{A},g^{\text{round}})$ has rotational symmetry, while the potato $(S^2, \mathcal{O},\mathcal{A}, g^{\text{potato}})$ does not.
 
-Feeling that the round sphere
+So far we have considered symmetry by having inner product first, and then demanding that w.r.t. that inner product we classify linear maps $A$ acting on vectors $X$ and $Y$ such that inner product of $AX$ and $AY$ results in inner product $XY$.
+
+Here we talk about an altogether different idea. Firstly, since the distinction between the two is entirely contained in $g$, we are talking about the rotational symmetry of $g^{\text{round}}$. Secondly, while an inner product is on one tangent space, there are many different tangent spaces with different inner products. $g$ talks about the distribution of these inner products over the sphere, and that distribution in some sense is rotationally invariant or not.
+
+Therefore, the question is: How to describe the symmetries of a metric? This is important because nobody has solved Einstein's Equations without assuming some sort of additional assumptions such as symmetry of the solution.
+\end{framed}
+
+\subsection{Push-forward map}
+\begin{definition}
+Let $M$ and $N$ be smooth manifolds with tangent bundles $TM$ and $TN$ respectively. Let $\phi : M \to N$ be a smooth map. Then, the \textbf{push-forward map} of $\phi$ is the map
+\begin{align}
+\phi_{\ast} : & TM \to TN \nonumber \\
+& X \mapsto \phi_\ast(X) \nonumber \\
+\label{eq_defPushForwardMap}\text{where } & \phi_\ast(X) f := X (f \after \phi) && (\forall \, f \in C^\infty(N))
+\end{align}
+\end{definition}
+
+\begin{SCfigure}[5][h]
+\label{fig:L11_pushForwardMap}
+  \centering
+	\begin{tikzpicture}
+	  \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
+	  {
+		TM	&	TN	& \\
+		M	&	N	& \mathbb{R} \\
+	  };
+	  \path[->]  
+	  (m-1-1) edge node [auto] {$\phi_\ast$} (m-1-2)
+	          edge node [auto] {$\pi_{TM}$} (m-2-1)
+	  (m-1-2) edge node [auto] {$\pi_{TN}$} (m-2-2)
+	  (m-2-2) edge node [auto] {$f$} (m-2-3)
+	  (m-2-1) edge node [auto] {$\phi$} (m-2-2)
+	          edge [bend right=30] node [auto] {$f \after \phi$} (m-2-3);
+	\end{tikzpicture}
+    \caption{\textbf{Push-forward map}: $\phi_\ast$ takes a vector $X \in T_pM$ in the tangent space at the point $p \in M$ to the vector $\phi_\ast(X) \in T_qN$ in the tangent space at the point $\phi(p) = q \in N$, such that the action of $\phi_\ast(X)$ on any smooth function $f \in C^\infty(N)$ results in the same value as the action of $X$ on the function $(f \after \phi)$.}
+\end{SCfigure}
+
+\textbf{Note}: If we take an entire fibre at the point $p \in M$, applying $\phi_\ast$ on it remains within the fibre at the point $\phi(p) \in N$. That is \\
 \[
-(S^2, \mathcal{O}, \mathcal{A},g^{\text{round}})
+\phi_\ast(T_pM) \subseteq T_{\phi(p)}N
 \]
-has rotational symmetry, while \\
-the potato
-\[
-(S^2, \mathcal{O},\mathcal{A}, g^{\text{potato}})
-\]
-does not.  
 
-\subsection{}
+\textit{Mnemonic: ``vectors are pushed forward'' across tangent bundles in a manner dictated by the underlying map.}
 
-\subsection{}
+\textbf{Components of push-forward $\phi_\ast$ w.r.t charts $(U,x) \in \mathcal{A}_M$ and $(V,y) \in \mathcal{A}_N$}: Let $p \in U$ and $\phi(p) \in V$. Since $\cibasis{x^i}_p$ is a vector, we have $\phi_\ast(\cibasis{x^i}_p)$ as a vector in N. Then we can select a component of this vector by using $dy^a$ as follows: \\
+\begin{equation} \label{eq_pushForwardComponents}
+\underbrace{dy^a\left(\phi_\ast\left(\left(\cibasis{x^i}\right)_p\right)\right)}_{:= \phi^a_{\ast i}} = \phi_\ast\left(\left(\cibasis{x^i}\right)_p\right)y^a = \left(\cibasis{x^i}\right)_p (y^a \after \phi) = \left(\cibasis{x^i}\right)_p (y \after \phi)^a := \left(\cibasis[\hat{\phi}^a]{x^i}\right)_p
+\end{equation}
 
-Important
+\begin{SCfigure}[5][h]
+  \centering
+	\begin{tikzpicture}
+	  \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
+	  {
+		M \supseteq U	&	V \subseteq N \\
+		\underbrace{x(U)}_{\subseteq \mathbb{R}^{\text{dim }M}}		&	\underbrace{y(V)}_{\subseteq \mathbb{R}^{\text{dim }N}}\\
+	  };
+	  \path[->]  
+	  (m-1-1) edge node [auto] {$\phi$} (m-1-2)
+	          edge node [auto] {$x$} (m-2-1)
+	          edge node [sloped, anchor=center, above] {$y \after \phi =: \hat{\phi}$} (m-2-2)
+	  (m-1-2) edge node [auto] {$y$} (m-2-2)
+	  (m-2-1) edge node [below] {$y \after \phi \after x^{-1}$} (m-2-2);
+	\end{tikzpicture}
+    \caption{Components of push-forward map w.r.t charts $(U,x) \in \mathcal{A}_M$ and $(V,y) \in \mathcal{A}_N$.}
+\end{SCfigure}
+
+\begin{theorem}
+If $\gamma : \mathbb{R} \to M$ is a curve in $M$, then $\phi \after \gamma : \mathbb{R} \to N$ is a curve in $N$. Then, $\phi_\ast$ pushes the tangent to a curve $\gamma$ (velocity) to the tangent to the curve $(\phi \after \gamma)$, i.e.,
+\begin{equation}
+\phi_\ast\left(v_{\gamma, p}\right) = v_{(\phi \after \gamma), \phi(p)}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Let $p = \gamma(\lambda_0)$. Then $\forall \, f \in C^\infty(N)$,
+\begin{align*}
+\phi_\ast\left(v_{\gamma, p}\right) f & = v_{\gamma, p} (f \after \phi) && (\text{by Eq.~\ref{eq_defPushForwardMap}}) \\
+& = ((f \after \phi) \after \gamma)^\prime (\lambda_0) && (\text{by Eq.~\ref{eq_velocity}}) \\
+& = (f \after (\phi \after \gamma))^\prime (\lambda_0) && (\text{by associativity of composition}) \\
+& = v_{(\phi \after \gamma), \phi(\gamma(\lambda_0))} f && (\text{by Eq.~\ref{eq_velocity}}) \\
+& = v_{(\phi \after \gamma), \phi(p)} f && (\gamma(\lambda_0) = p) \\
+\implies \phi_\ast\left(v_{\gamma, p}\right) & = v_{(\phi \after \gamma), \phi(p)}
+\end{align*}
+\end{proof}
+
+\subsection{Pull-back map}
+\begin{definition}
+Let $M$ and $N$ be smooth manifolds with cotangent bundles $T^\ast M$ and $T^\ast N$ respectively. Let $\phi : M \to N$ be a smooth map. Then, the \textbf{pull-back map} of $\phi$ is the map
+\begin{align}
+\phi^{\ast} : & T^\ast N \to T\ast M \nonumber \\
+& \omega \mapsto \phi^\ast(\omega) \nonumber \\
+\label{eq_defPullBackMap}\text{where } & \phi^\ast(\omega)(X) := \omega (\phi_\ast(X)) && (\forall \, X \in T_pM)
+\end{align}
+\end{definition}
+
+\textbf{Components of pull-back $\phi^\ast$ w.r.t charts $(U,x) \in \mathcal{A}_M$ and $(V,y) \in \mathcal{A}_N$}: Let $p \in U$ and $\phi(p) \in V$. Since $dy^a$ is a covector, we have $\phi^\ast(dy^a_p)$ as a covector in N. Then we can select a component of this covector by using $\cibasis{x^i}$ as follows: \\
+\begin{align*}
+\phi^{\ast a} & := \phi^\ast\left(\left(dy^a\right)_{\phi(p)}\right) \left(\left(\cibasis{x^i}\right)_p\right) \\
+& = \left(dy^a\right)_{\phi(p)} \phi_\ast \left(\left(\cibasis{x^i}\right)_p\right) && (\text{by Eq.~\ref{eq_defPullBackMap}}) \\
+& = \left(\cibasis[\hat{\phi}^a]{x^i}\right)_p  = \phi^a_{\ast i} && (\text{by Eq.~\ref{eq_pushForwardComponents}})
+\end{align*}
+Thus, the components of the push-forward and pull-back maps are exactly the same.
+\begin{align*}
+\left(\phi_\ast\left(X\right)\right)^a & = \phi^a_{\ast i} X^i \\
+\left(\phi^\ast\left(\omega\right)\right)_i & = \phi^a_{\ast i} \omega_a
+\end{align*}
+Remember, $a = (1, \dotsc, \text{dim} N)$ and $i = (1, \dotsc, \text{dim} M)$.
+
+Claim: $\phi^\ast(df) = d(f \after \phi)$. 
+
+\textit{Mnemonic: ``covectors are pulled back'' across tangent bundles in a manner dictated by the underlying map.}
+
+\textbf{Important application}:
+\begin{definition}
+Let $M$ and $N$ be smooth manifolds. Let $\phi : M \injmapto N$ be an injective map. If we know a metric $g$ on $N$, then the \textbf{induced metric} $g_M$ in $M$ is defined using the push-forward map $\phi_\ast$ as follows:
+\begin{equation}\label{eq_inducedMetric}
+\boxed{g_M(X,Y) := g\left(\phi_\ast(X),\phi_\ast(Y)\right)} \quad \quad (\forall \, X, Y \in T_pM)
+\end{equation}
+\end{definition}
+In terms of components,
+\begin{equation}
+\left(\left(g_M\right)_{ij}\right)_p = \left(g_{ab}\right)_{\phi(p)} \left(\cibasis[\hat{\phi}^a]{x^i}\right)_{\phi(p)} \left(\cibasis[\hat{\phi}^b]{x^j}\right)_{\phi(p)}
+\end{equation}
+\textbf{Example}: $N = (\mathbb{R}^3, \stdtop, \mathcal{A})$ and $M = (S^2, \mathcal{O}, \mathcal{A})$, then we can have several injective maps $\phi : S^2 \injmapto \mathbb{R}^3$. For example, $S^2$ could live in $\mathbb{R}^3$ either as a potato or a round sphere. However, suppose $\mathbb{R}^3$ is equipped with the Euclidean metric $g_E$ ...
+%TODO complete and explain the example
 
 \subsection{Flow of a complete vector field}
-
-Let $(M,\mathcal{O},\mathcal{A})$ smooth $X$ vector \underline{field} on $M$
-
 \begin{definition}
-  A curve $\gamma :I \subseteq \mathbb{R} \to M$ is called an \underline{integral curve of $X$} \\
-if 
+Let $X$ be a vector field on a smooth manifold $(M,\mathcal{O},\mathcal{A})$. A curve $\gamma : I \subseteq \mathbb{R} \to M$ is called an \textbf{integral curve of $X$} if 
 \[
 v_{\gamma,\gamma(\lambda)} = X_{\gamma(\lambda)}
 \]
 \end{definition}
 
-\begin{definition} A vector filed $X$ is \textbf{complete} if all integral curves have $I = \mathbb{R}$ EY: 20150321 (i.e. domain is all of $\mathbb{R}$)
+\begin{definition} A vector field $X$ is \textbf{complete} if all integral curves have $I = \mathbb{R}$ (i.e. domain is all of $\mathbb{R}$).
 \end{definition}
 
 Ex. minute 48:30 EY : reall good explanation by F.P.Schuller; take a pt. out for an incomplete vector field.
