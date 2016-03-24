@@ -45,7 +45,7 @@ We need $\nabla_X$ to provide the new structure to allow us to talk about direct
 We formulate a wish list of properties which $\nabla_X$ acting on a tensor field should have. We put this in form of a definition. There may be many structures that satify this wish list. Any remaining freedom in choosing such a $\nabla$ will need to be provided as additional structure beyond the structure we already have. And we assume all this takes place on a smooth manifold.
 
 \begin{definition}\label{def:connection}
-A \textbf{connection} $\nabla$ on a smooth manifold $(M, \mathcal{O}, \mathcal{A})$ is a map that takes a pair consisting of a vector (field) $X$ and a $(p,q)$-tensor field $T$ and sends them to a $(p,q)$-tensor (field) $\nabla_X T$ satisfying
+A \textbf{connection} $\nabla$ on a smooth manifold $\mfd$ is a map that takes a pair consisting of a vector (field) $X$ and a $(p,q)$-tensor field $T$ and sends them to a $(p,q)$-tensor (field) $\nabla_X T$ satisfying
 \begin{enumerate}[i)]
 \item $\nabla_X f = Xf \quad \forall f \in C^{\infty}M$
 
@@ -67,15 +67,15 @@ $C^{\infty}$-linearity means that no matter how the function $f$ scales the vect
 \end{enumerate}
 \end{definition}
 
-A \textbf{manifold with a connection} $\nabla$ is a quadruple $(M, \mathcal{O}, \mathcal{A}, \nabla)$, where $M$ is a set, $\mathcal{O}$ is a topology and $\mathcal{A}$ is a smooth atlas.
+A \textbf{manifold with a connection} $\nabla$ is a quadruple $(M, \mathcal{O}, \A, \nabla)$, where $M$ is a set, $\mathcal{O}$ is a topology and $\A$ is a smooth atlas.
 
 Remark: If $\nabla_X (\cdot)$ can be seen as an extension of $X$, \\
 then $\nabla_{(\cdot)}(\cdot)$ can be seen as an extension of $d$.
 
-\subsection{New structure on $(M,\mathcal{O},\mathcal{A})$ required to fix $\nabla$}
+\subsection{New structure on $\mfd$ required to fix $\nabla$}
 How much freedom do we have in choosing such a structure?
 
-Consider vector fields $X, Y$ and chart $(U,x) \in \mathcal{A}$. Then \\
+Consider vector fields $X, Y$ and chart $(U,x) \in \A$. Then
 \begin{align*}
 \nabla_X Y & = \nabla_{\left(X^i \cibasis{x^i}\right)} \left(Y^m \cibasis{x^m}\right) && \text{by expanding in chart-induced basis} \\
 & = X^i \cdot \nabla_{\left(\cibasis{x^i}\right)} \left(Y^m \cibasis{x^m}\right) && \text{by }C^\infty\text{-linearity} \\
@@ -90,9 +90,9 @@ Thus, by change of indices,
 So we need $(dim\,M)^3$-many functions to define directional derivative of a vector field.
 
 \begin{definition}
-Given $(M, \mathcal{O}, \mathcal{A}, \nabla)$ and $(U,x) \in \mathcal{A}$, then the \textbf{connection coefficient functions} ($\Gamma$s) on $M$ of $\nabla$ w.r.t $(U,x)$ are $(dim\,M)^3$-many functions given by
+Given $(M, \mathcal{O}, \A, \nabla)$ and $(U,x) \in \A$, then the \textbf{connection coefficient functions} ($\Gamma$s) on $M$ of $\nabla$ w.r.t $(U,x)$ are $(dim\,M)^3$-many functions given by
 \begin{align}
-\ccf{i}{jk} : \quad & U \to \mathbb{R} \nonumber \\ 
+\ccf{i}{jk} : \quad & U \to \R \nonumber \\ 
 & p \mapsto \ccf{i}{jk}(p) := \left(dx^i \left(\nabla_{\left(\cibasis{x^k}\right)} \cibasis{x^j}\right)\right)(p)
 \end{align}
 \end{definition}
@@ -102,7 +102,6 @@ Given $(M, \mathcal{O}, \mathcal{A}, \nabla)$ and $(U,x) \in \mathcal{A}$, then 
 On a chart domain $U$, choice of the $(dim\,M)^3$-many functions $\ccf{i}{jk}$ suffices to fix the action of $\nabla$ on a vector field. What about the directional derivative of a covector field, or a tensor field? Will we have to provide more and more coefficients? Fortunately, the same $(dim\,M)^3$-many functions fix the action of $\nabla$ on any tensor field.
 
 We know that, for a covector, $\nabla_{\cibasis{x^m}}\left(dx^i\right) = \Sigma\indices{^{i}_{jm}} dx^j$, since $dx^i$ form a dual basis. Are these $\Sigma$s independent of $\Gamma$s? Consider the following.
-
 \begin{align*}
 & \displaystyle\nabla_{\cibasis{x^m}} \left(dx^i \left(\cibasis{x^j}\right)\right) = \nabla_{\cibasis{x^m}} \delta^i_j = \cibasis{x^m}(\delta^i_j) = 0 \\
 & \implies \displaystyle\left(\nabla_{\cibasis{x^m}} dx^i \right)\left(\cibasis{x^j}\right) + dx^i \underbrace{\left(\nabla_{\cibasis{x^m}} \cibasis{x^j}\right)}_{\ccf{q}{jm}\cibasis{x^q}} = 0 \\
@@ -112,7 +111,6 @@ We know that, for a covector, $\nabla_{\cibasis{x^m}}\left(dx^i\right) = \Sigma\
 & \implies \boxed{\nabla_{\cibasis{x^m}} dx^i = -\ccf{i}{jm} dx^j} \\
 & \implies \boxed{\left(\nabla_{\cibasis{x^m}} dx^i\right)_j = -\ccf{i}{jm}}
 \end{align*}
-
 In summary,
 \begin{align}
   \displaystyle\left(\nabla_X Y\right)^i & = X(Y^i) + \ccf{i}{jm} Y^j X^m \\
@@ -126,15 +124,14 @@ Similarly, as an example, by further application of Leibnitz rule, for a $(1,2)$
 \end{align*}
 
 %Student's Question: If in a Euclidean space, do the $\Gamma$s all vanish in a global chart? Yes, it is so by definition. But what is a Euclidean space? \\
-%$\left(M = \mathbb{R}^n, \mathcal{O}_{\text{st}}, \mathcal{A}\right)$ smooth manifold. \\
-%Assume $(\mathbb{R}^n, \text{id}_{\mathbb{R}^n} ) \in \mathcal{A}$ and 
+%$\left(M = \R^n, \mathcal{O}_{\text{st}}, \A\right)$ smooth manifold. \\
+%Assume $(\R^n, \text{id}_{\R^n} ) \in \A$ and 
 %\[
 %\ccfx{i}{jk}{(x)} = dx^i \left( (\nabla_{\text{\underline{E}}})_{\cibasis{x^k}}\cibasis{x^j} \right) \overset{!}{=} 0 
 %\]
 
 \subsection{Change of $\Gamma$'s under change of chart}
-Let $(U,x)$, $(V,y) \in \mathcal{A}$ and $U \cap V \neq \emptyset$.
-
+Let $(U,x)$, $(V,y) \in \A$ and $U \cap V \neq \emptyset$.
 \begin{align*}
 \ccfx{i}{jk}{(y)} & := dy^i \left(\nabla_{\cibasis{y^k}} \cibasis{y^j} \right) \\
 & = \cibasis[y^i]{x^q} dx^q \left(\nabla_{\cibasis[x^p]{y^k} \cibasis{x^p}} \cibasis[x^s]{y^j} \cibasis{x^s} \right) \\
@@ -152,13 +149,13 @@ Eq. (\ref{Eq:WEHCG0703_changeofGamma}) is the change of connection coefficient f
 Can we find a coordinate system that makes the $\ccf{}{}$s vanish?
 
 \begin{theorem}
-Let $p \in M$ of $(M, \mathcal{O}, \mathcal{A}, \nabla)$. Having chosen a point $p$, one can construct a chart $(U,x)$ with $p \in U$ such that the symmetric part of $\Gamma$s vanish at the point $p$ (not necessarily in any neighbourhood). That is, \\
-$\displaystyle\forall \, p \in M, \, \exists \, (U,x) \in \mathcal{A} \, : \, p \in U \text{ and } \ccfx{i}{(jk)}{(x)}(p) = 0$. \\
+Let $p \in M$ of $(M, \mathcal{O}, \A, \nabla)$. Having chosen a point $p$, one can construct a chart $(U,x)$ with $p \in U$ such that the symmetric part of $\Gamma$s vanish at the point $p$ (not necessarily in any neighbourhood). That is, \\
+$\displaystyle\forall \, p \in M, \, \exists \, (U,x) \in \A \, : \, p \in U \text{ and } \ccfx{i}{(jk)}{(x)}(p) = 0$. \\
 Such $(U,x)$ is called a \textbf{normal coordinate chart} of $\nabla$ at $p \in M$.
 \end{theorem}
 
 \begin{proof}
-Let $(V,y) \in \mathcal{A}$ and $p \in V$. Then consider a new chart $(U,x)$ to which one transits using the map $(x \after y^{-1})$ whose $i^{th}$ component is given by\\
+Let $(V,y) \in \A$ and $p \in V$. Then consider a new chart $(U,x)$ to which one transits using the map $(x \after y^{-1})$ whose $i^{th}$ component is given by\\
 \begin{align*}
 \left(x \after y^{-1}\right)^i\left(\alpha^1,\dotsc,\alpha^d\right) := \alpha^i - \ccfx{i}{(jk)}{(y)} \alpha^j \alpha^k && \text{ where the } \ccf{}{} \text{s are taken at the point } p \\ 
 \implies \displaystyle\cibasis[x^i]{y^j} = \partial_j\left(x^i \after y^{-1}\right) = \delta^i_j - \ccfx{i}{(jm)}{(y)} \alpha^m \\

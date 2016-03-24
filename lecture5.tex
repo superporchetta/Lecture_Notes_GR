@@ -1,14 +1,14 @@
 \section{Tangent Spaces}
-Lead question: ``What is the velocity of a curve $\gamma : \mathbb{R} \to M$ at the point $p$ of the curve in $M$?''
+Lead question: ``What is the velocity of a curve $\gamma : \R \to M$ at the point $p$ of the curve in $M$?''
 
 \subsection{Velocities}
 % \url{https://youtu.be/pepU_7NJSGM?t=1m30s}
-\begin{definition} Let $(M,\mathcal{O},\mathcal{A})$ be a smooth manifold. Let there be a curve $\gamma : \mathbb{R} \to M$, which is at least $C^1$. Suppose $\gamma(\lambda_0) =p$. The \textbf{velocity} of $\gamma$ at the point $p$ of the curve $\gamma$ is the linear map \\
+\begin{definition} Let $\mfd$ be a smooth manifold. Let there be a curve $\gamma : \R \to M$, which is at least $C^1$. Suppose $\gamma(\lambda_0) =p$. The \textbf{velocity} of $\gamma$ at the point $p$ of the curve $\gamma$ is the linear map \\
 \begin{equation}\label{eq_velocity}
-v_{\gamma, p} : C^{\infty}(M) \linearmapto \mathbb{R} \text{ with }
+v_{\gamma, p} : C^{\infty}(M) \linearmapto \R \text{ with }
 f \mapsto v_{\gamma,p}(f):= (f \after \gamma)^{\prime}(\lambda_0)
 \end{equation}
-where $C^{\infty}(M) := \lbrace f: M \to \mathbb{R} \, | \, f \text{ is a smooth function } \rbrace$ equipped with \\
+where $C^{\infty}(M) := \lbrace f: M \to \R \, | \, f \text{ is a smooth function } \rbrace$ equipped with \\
 $(f \oplus g)(p) := f(p) + g(p)$ and $(\lambda \otimes g)(p) := \lambda \cdot g(p)$ is a vector space.
 \end{definition}
 
@@ -18,14 +18,14 @@ $(f \oplus g)(p) := f(p) + g(p)$ and $(\lambda \otimes g)(p) := \lambda \cdot g(
 	\begin{tikzpicture}
 	  \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
 	  {
-		\mathbb{R} & M  & \mathbb{R}   \\
+		\R & M & \R \\
 	  };
 	  \path[->]  
 	  (m-1-1) edge node [auto] {$\gamma$} (m-1-2)
 	          edge [bend right=30] node [auto] {$f \after \gamma$} (m-1-3)
 	  (m-1-2) edge node [auto] {$f $} (m-1-3);
 	\end{tikzpicture}
-    \caption{$f \after \gamma$. Intuition: If the first $\mathbb{R}$ is thought of as time, and $f$ as temperature, then $f \after \gamma$ relates time and temperature and $(f \after \gamma)^\prime$ is the rate of change of temperature as you run around the curve.}
+    \caption{$f \after \gamma$. Intuition: If the first $\R$ is thought of as time, and $f$ as temperature, then $f \after \gamma$ relates time and temperature and $(f \after \gamma)^\prime$ is the rate of change of temperature as you run around the curve.}
 \end{SCfigure}
 
 \underline{past}: `` $\underbrace{v^i}_{\text{vector in past}} (\partial_i f) = (\underbrace{v^i \partial_i}_{\text{vector as map}})f$ \\
@@ -61,10 +61,10 @@ T_p M := \lbrace v_{\gamma, p} \, | \, \text{ for all smooth curves } \gamma \te
 \begin{theorem}
 $(T_pM, \oplus, \otimes)$ is a vector space with 
 \begin{align*}
-  \oplus : & T_pM \times T_pM \to Hom(C^\infty(M),\mathbb{R})  \\
-  & (v_{\gamma,p} \oplus v_{\delta,p})(\underbrace{f}_{ \in C^{\infty}(M)} ) := v_{\gamma,p}(f) +_{\mathbb{R}} v_{\delta,p}(f) \\
-  \odot : & \mathbb{R} \times T_pM \to Hom(C^{\infty}(M),\mathbb{R}) \\
-  & (\alpha \odot v_{\gamma,p} )(f) := \alpha \cdot_{\mathbb{R}}  v_{\gamma, p}(f)
+  \oplus : & T_pM \times T_pM \to Hom(C^\infty(M),\R)  \\
+  & (v_{\gamma,p} \oplus v_{\delta,p})(\underbrace{f}_{ \in C^{\infty}(M)} ) := v_{\gamma,p}(f) +_{\R} v_{\delta,p}(f) \\
+  \odot : & \R \times T_pM \to Hom(C^{\infty}(M),\R) \\
+  & (\alpha \odot v_{\gamma,p} )(f) := \alpha \cdot_{\R}  v_{\gamma, p}(f)
 \end{align*}
 \end{theorem}
 
@@ -73,20 +73,20 @@ $(T_pM, \oplus, \otimes)$ is a vector space with
   \item For product, $\exists \, \tau $ curve : $\alpha \odot v_{\gamma,p} = v_{\tau,p}$
   \item For sum, $\exists \, \sigma$ curve : $v_{\gamma,p} \oplus v_{\delta,p} = v_{\sigma,p}$
 \end{enumerate}
-\underline{Product}: Let $\tau : \mathbb{R} \to M$ with $\lambda \mapsto \tau(\lambda) := \gamma(\alpha  \lambda + \lambda_0) = (\gamma \after \mu_{\alpha})(\lambda)$
-where $\mu_{\alpha} : \mathbb{R} \to \mathbb{R}$ with $r \mapsto \alpha \cdot r + \lambda_0$. Then $\tau(0) = \gamma(\lambda_0) = p$, and
+\underline{Product}: Let $\tau : \R \to M$ with $\lambda \mapsto \tau(\lambda) := \gamma(\alpha  \lambda + \lambda_0) = (\gamma \after \mu_{\alpha})(\lambda)$
+where $\mu_{\alpha} : \R \to \R$ with $r \mapsto \alpha \cdot r + \lambda_0$. Then $\tau(0) = \gamma(\lambda_0) = p$, and
 \[
 v_{\tau,p} = (f \after \tau)^{\prime}(0) = (f \after \gamma \after \mu_{\alpha})^{\prime}(0) = \mu_{\alpha}^{\prime}(0) \cdot (f \after \gamma)^{\prime}(\mu_{\alpha}(0)) = \alpha \cdot (f \after \gamma)^{\prime}(\lambda_0) = \alpha \cdot v_{\gamma,p}
 \]
 
 \underline{Sum}: Choose a chart $(U,x)$ and $p \in U$. \textit{(If the proof will depend on the choice of a chart, alarm bells should ring. But we shall see that the result is finally independent of the chart.)} \\
 Let $p = \gamma(\lambda_0) = \delta(\lambda_1)$. \\
-Now define $\sigma : \mathbb{R} \to M$ with $\lambda \mapsto \sigma(\lambda) := x^{-1}(\underbrace{(x \after \gamma)(\lambda_0 + \lambda)}_{\mathbb{R} \to \mathbb{R}^d} + (x \after \delta)(\lambda_1+ \lambda) - (x \after \gamma)(\lambda_0))$. \\
+Now define $\sigma : \R \to M$ with $\lambda \mapsto \sigma(\lambda) := x^{-1}(\underbrace{(x \after \gamma)(\lambda_0 + \lambda)}_{\R \to \R^d} + (x \after \delta)(\lambda_1 + \lambda) - (x \after \gamma)(\lambda_0))$. \\
 Then, $\sigma_x(0) = x^{-1}((x \after \gamma)(\lambda_0) + (x \after \delta)(\lambda_1) - (x \after \gamma)(\lambda_0)) = \delta(\lambda_1) = p$. \\
 Now
 \begin{align*}
   v_{\sigma_x,p}(f) & := (f \after \sigma_x)^{\prime}(0) \\ 
-  & = ( \underbrace{(f \after x^{-1})}_{\mathbb{R}^d \to \mathbb{R}} \after \underbrace{(x \after \sigma_x)}_{\mathbb{R} \to \mathbb{R}^d})^{\prime}(0) \\
+  & = ( \underbrace{(f \after x^{-1})}_{\R^d \to \R} \after \underbrace{(x \after \sigma_x)}_{\R \to \R^d})^{\prime}(0) \\
   & = \underbrace{(x \after \sigma_x)^{\prime}(0)}_{(x \after \gamma)^{\prime}(\lambda_0) + (x \after \delta)^{\prime}(\lambda_1)} \cdot \left( \partial_i (f \after x^{-1}) \right)(x(\underbrace{\sigma(0)}_{p})) \\
   & = (x \after \gamma)^{\prime}(\lambda_0)(\partial_i (f \after x^{-1}))(x(p)) + (x \after \delta)(\lambda_1)(\partial_i (f \after x^{-1}))(x(p)) \\
   & = (f \after \gamma)^{\prime}(\lambda_0) + (f \after \delta)^{\prime}(\lambda_1) \\
@@ -102,8 +102,8 @@ Now
 \begin{tikzpicture}
   \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
   {
-    \mathbb{R} & M & \mathbb{R} \\
-    & \mathbb{R}^d & \\
+    \R & M & \R \\
+    & \R^d & \\
   };
   \path[->]
   (m-1-1) edge node[auto] {$\gamma$} (m-1-2)
@@ -113,13 +113,13 @@ Now
   (m-2-2) edge node[sloped, anchor=center, below] {$f \after x^{-1}$} (m-1-3);
 \end{tikzpicture}
 
-Let $(U,x) \in \mathcal{A}_{\text{smooth}}, \, \gamma : \mathbb{R} \to U$ and $\gamma(0) = p$. Then
+Let $(U,x) \in \A_{\text{smooth}}, \, \gamma : \R \to U$ and $\gamma(0) = p$. Then
 \begin{align*}
   v_{\gamma,p}(f) & := (f \after \gamma)^\prime(0) \\
-  & = (\underbrace{(f \after x^{-1})}_{\mathbb{R}^d \to \mathbb{R}} \after \underbrace{(x \after \gamma)}_{\mathbb{R} \to \mathbb{R}^d})^\prime(0) \\
+  & = (\underbrace{(f \after x^{-1})}_{\R^d \to \R} \after \underbrace{(x \after \gamma)}_{\R \to \R^d})^\prime(0) \\
   & = \displaystyle\left(\left(x \after \gamma\right)^\prime\right)^i(0) \cdot \left(f \after x^{-1}\right)^\prime_i(x(p)) \\
   & = \underbrace{\displaystyle\left(\left(x \after \gamma\right)^\prime\right)^i(0)}_{=: \dot{\gamma}_x^i(0)} \cdot \underbrace{(\partial_i(f \after x^{-1}))(x(p))}_{=: \left(\cibasis[f]{x^i}\right)_p} \\
-  & = \dot{\gamma}_x^i(0) \cdot \left(\cibasis{x^i}\right)_p f && \forall \, f \in C^{\infty}(M), f : M \to \mathbb{R}
+  & = \dot{\gamma}_x^i(0) \cdot \left(\cibasis{x^i}\right)_p f && \forall \, f \in C^{\infty}(M), f : M \to \R
 \end{align*}
 
 \begin{definition}
@@ -151,19 +151,19 @@ For a chart $(U,x)$,
 \begin{proof}
 \begin{align*}
 \cibasis[x^i]{x^j} & = \partial_j (x^i \after x^{-1})(x(p)) \\
-& = \delta^i_j && \text{ since } x^i \after x^{-1} : \mathbb{R}^d \to \mathbb{R} \text{ s.t. } (\alpha^1 , \dots , \alpha^d) \mapsto \alpha^i
+& = \delta^i_j && \text{ since } x^i \after x^{-1} : \R^d \to \R \text{ s.t. } (\alpha^1 , \dots , \alpha^d) \mapsto \alpha^i
 \end{align*}
 \end{proof}
 
 \subsection{Chart-induced basis}
 % \url{https://youtu.be/pepU_7NJSGM?t=1h2m}
 \begin{definition}
-If $(U,x) \in \mathcal{A}_{\text{smooth}}$, then $\displaystyle\left(\cibasis{x^1}\right)_p, \dotsc, \left(\cibasis{x^d}\right)_p \in T_pU \subseteq T_pM$ constitute a \textbf{chart-induced basis} of $T_pU$.
+If $(U,x) \in \A_{\text{smooth}}$, then $\displaystyle\left(\cibasis{x^1}\right)_p, \dotsc, \left(\cibasis{x^d}\right)_p \in T_pU \subseteq T_pM$ constitute a \textbf{chart-induced basis} of $T_pU$.
 \end{definition}
 
 \begin{proof} We have already shown that any vector in $T_pU$ can be expressed in terms of $\displaystyle\left(\cibasis{x^i}\right)_p$. It remains to be shown that they are linearly independent. That is, we require $\displaystyle\lambda^i \left(\cibasis{x^i}\right)_p = 0 \implies \lambda^i = 0$ for all $i = 1, \dotsc, d$. Or,
 \begin{align*}
-0 & = \lambda^i \left(\cibasis{x^i}\right)_p(x^j) && x^j : U \to \mathbb{R} \text{ is differentiable}\\
+0 & = \lambda^i \left(\cibasis{x^i}\right)_p(x^j) && x^j : U \to \R \text{ is differentiable}\\
 & = \lambda^i \partial_i (x^j \after x^{-1})(x(p)) && \text{by Eq. \ref{eq:defCIBasis}} \\
 & = \lambda^i \delta^j_i && \text{by Theorem \ref{thm:L5_dxiupondxj}} \\
 & = \lambda^j && \text{for all } j = 1, \dotsc, d 
@@ -175,7 +175,7 @@ $dim \, T_pM = d = dim \, M$. \\
 This follows from the fact $d$ vectors are needed to express any vector in $T_pM$, and these $d$ vectors arise from the $d$ coordinates of chart which shows that $M$ has $d$ dimensions.
 \end{corollary}
 
-\underline{Terminology}: $X \in T_pM \implies \exists \, \gamma : \mathbb{R} \to M : X = v_{\gamma,p}$ and $\displaystyle \exists \, \underbrace{X^1, \dotsc, X^d}_{\in \mathbb{R}} : X = X^i \left(\cibasis{x^i}\right)_p$. $X^i$ are called \textbf{components of the vector $X$ w.r.t chart-induced basis}.
+\underline{Terminology}: $X \in T_pM \implies \exists \, \gamma : \R \to M : X = v_{\gamma,p}$ and $\displaystyle \exists \, \underbrace{X^1, \dotsc, X^d}_{\in \R} : X = X^i \left(\cibasis{x^i}\right)_p$. $X^i$ are called \textbf{components of the vector $X$ w.r.t chart-induced basis}.
 
 \subsection{Change of vector components under a change of chart}
 \ding{56} A vector does not change under change of chart. It is the vector components that transform under a change of chart.
@@ -187,7 +187,7 @@ X^i_{(y)} \cdot \left(\cibasis{y^i}\right)_p \underbrace{=}_{(V,y)} X \underbrac
 Now,
 \begin{align*}
   \left(\cibasis{x^i}\right)_p f & = \partial_i(f \after x^{-1})(x(p)) \\
-  & = \partial_i (\underbrace{(f \after y^{-1})}_{\mathbb{R}^d \to \mathbb{R}} \after (\underbrace{y \after x^{-1}}_{\mathbb{R}^d \to \mathbb{R}^d})(x(p)) \\
+  & = \partial_i (\underbrace{(f \after y^{-1})}_{\R^d \to \R} \after (\underbrace{y \after x^{-1}}_{\R^d \to \R^d})(x(p)) \\
   & = (\partial_i (y \after x^{-1})^j)(x(p)) \cdot (\partial_j (f \after y^{-1}))(y(p)) \\
   & = (\partial_i (y^j \after x^{-1}))(x(p)) \cdot (\partial_j (f \after y^{-1}))(y(p)) \\
   & = \boxed{\left(\cibasis[y^j]{x^i}\right)_p \cdot \left(\cibasis[f]{y^j}\right)_p}
@@ -211,7 +211,7 @@ Since $T_pM$ is a vector space, therefore it is trivial to define cotangent spac
 \begin{definition}
 For the tangent space $T_pM$ at $p \in M$, \textbf{cotangent space} is defined as
 \begin{equation}
-(T_pM)^* := \lbrace \varphi : T_pM \linearmapto \mathbb{R} \rbrace
+(T_pM)^* := \lbrace \varphi : T_pM \linearmapto \R \rbrace
 \end{equation}
 \end{definition}
 
@@ -220,7 +220,7 @@ For the tangent space $T_pM$ at $p \in M$, \textbf{cotangent space} is defined a
 If $f \in C^{\infty}(M)$, then the \textbf{gradient of $f$ at the point $p \in M$} is defined as
 \begin{align}
 \label{eq:defGradient}
-  (df)_p : & T_p M \linearmapto \mathbb{R} \nonumber \\ 
+  (df)_p : & T_p M \linearmapto \R \nonumber \\ 
   & X \mapsto (df)_p(X) := Xf
 \end{align}
 
@@ -237,7 +237,7 @@ $(df)_p$ is a $(0,1)$-tensor over the underlying vector space $T_pM$. We define 
 \end{definition}
 
 \begin{theorem}
-A chart $(U,x) \implies x^i : U \to \mathbb{R}$ are smooth functions. Then, $(dx^1)_p, (dx^2)_p, \dotsc, (dx^d)_p$ form a basis of $T_p^*M$. 
+A chart $(U,x) \implies x^i : U \to \R$ are smooth functions. Then, $(dx^1)_p, (dx^2)_p, \dotsc, (dx^d)_p$ form a basis of $T_p^*M$. 
 \end{theorem}
 
 \begin{proof}

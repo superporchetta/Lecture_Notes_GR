@@ -35,7 +35,7 @@ A \textbf{section} $\sigma$ of a bundle $E \projmapto M$ is the map $\sigma : M 
 
 
 \subsection{Tangent bundle of smooth manifold}
-For this entire subsection, let $(M, \mathcal{O}, \mathcal{A})$ be a smooth manifold and let $d := dim \, M$. 
+For this entire subsection, let $\mfd$ be a smooth manifold and let $d := dim \, M$. 
 
 Define the set, 
 \begin{equation}
@@ -60,13 +60,13 @@ For a bundle, $TM$ should be a smooth manifold and $\pi$ a smooth map. Let us co
 
 It can be shown that $(TM,\mathcal{O}_{TM})$ is a topological space. But we meed a smooth atlas.\\
 
-\underline{Construction of a $C^{\infty}$-atlas on $TM$ from the $C^{\infty}$-atlas $\mathcal{A}$ on $M$} \\
+\underline{Construction of a $C^{\infty}$-atlas on $TM$ from the $C^{\infty}$-atlas $\A$ on $M$} \\
 Define
 \begin{equation}\label{eq:atlasTangentBundle}
 \boxed{
 \begin{split}
-\mathcal{A}_{TM} := & \lbrace (TU,\xi_x) \, | \, (U,x) \in \mathcal{A} \rbrace \text{ where } \\
-  \xi_x : & TU \to \mathbb{R}^{2d} \\
+\A_{TM} := & \lbrace (TU,\xi_x) \, | \, (U,x) \in \A \rbrace \text{ where } \\
+  \xi_x : & TU \to \R^{2d} \\
   & X \mapsto \left(\underbrace{(x^1 \after \pi)(X), \dotsc, (x^d \after \pi)(X)}_{(U,x)-\text{ coords of } \pi(X) \, (d\text{-many})}, \underbrace{(dx^1)_{\pi(X)}(X), \dotsc, (dx^d)_{\pi(X)}(X)}_{\text{components of $X$ w.r.t } (U,x) \, (d\text{-many})}\right)
 \end{split}
 }
@@ -80,20 +80,20 @@ We can write $\xi_x^{-1}$ as follows:
 \begin{equation}\label{eq:xiInverseTangentBundle}
 \boxed{
 \begin{split}
-\xi_x^{-1} \, : \, & \underbrace{\xi_x(TU)}_{\subseteq \mathbb{R}^{2d}} \to TU \\
+\xi_x^{-1} \, : \, & \underbrace{\xi_x(TU)}_{\subseteq \R^{2d}} \to TU \\
 & (\alpha^1, \dotsc, \alpha^d, \beta^1, \dotsc, \beta^d) := \beta^i \left(\cibasis{x^i}\right)_{\underbrace{x^{-1}(\alpha^1, \dotsc, \alpha^d)}_{\pi(X)}}
 \end{split}
 }
 \end{equation}
 
-Now we check, whether the atlas $\mathcal{A}_{TM}$ smooth. That is, are the transitions between its charts smooth?
+Now we check, whether the atlas $\A_{TM}$ smooth. That is, are the transitions between its charts smooth?
 
 \begin{theorem}
-$\mathcal{A}_{TM}$ is a smooth atlas.
+$\A_{TM}$ is a smooth atlas.
 \end{theorem}
 
 \begin{proof}
-Let $(U,\xi_x) \in \mathcal{A}_{TM}, \quad (V,\xi_y) \in \mathcal{A}_{TM} \quad \text{ and } \quad U \cap V \ne \emptyset$. Calculate the chart transition
+Let $(U,\xi_x) \in \A_{TM}, \quad (V,\xi_y) \in \A_{TM} \quad \text{ and } \quad U \cap V \ne \emptyset$. Calculate the chart transition
 \begin{align*}
 & (\xi_y \after \xi_x^{-1})(\alpha^1, \dotsc, \alpha^d, \beta^1, \dotsc, \beta^d) = \xi_y \left(\beta^i \left(\cibasis{x^i} \right)_{x^{-1}(\alpha^1, \dotsc, \alpha^d)}\right) && \text{by Eq.~\ref{eq:xiInverseTangentBundle}} \\
 & = \left(\dotsc, (y^i \after \pi)\left(\beta^m \cdot \left(\cibasis{x^m}\right)_{x^{-1}(\alpha^1, \dotsc, \alpha^d)}\right), \dotsc, \dotsc, (dy^i)_{x^{-1}(\alpha^1, \dotsc, \alpha^d)} \left(\beta^m \left(\cibasis{x^m} \right)_{x^{-1}(\alpha^1, \dotsc, \alpha^d)} \right), \dotsc \right) && \text{by Eq.~\ref{eq:atlasTangentBundle}}  \\
@@ -101,13 +101,13 @@ Let $(U,\xi_x) \in \mathcal{A}_{TM}, \quad (V,\xi_y) \in \mathcal{A}_{TM} \quad 
 & = \left(\dotsc, (y^i \after x^{-1})(\alpha^1, \dotsc, \alpha^d), \dotsc, \dotsc, \beta^m \left(\left(\cibasis[y^i]{x^m}\right)_{x^{-1}(\alpha^1, \dotsc, \alpha^d)} \right), \dotsc\right) \\
 & = \left(\dotsc, (y^i \after x^{-1})(\alpha^1, \dotsc, \alpha^d), \dotsc, \dotsc, \beta^m \left(\partial_m (y^i \after x^{-1})( x (x^{-1}(\alpha^1, \dotsc, \alpha^d))) \right), \dotsc\right) \\
 & = \left(\dotsc, \underbrace{(y^i \after x^{-1})(\alpha^1, \dotsc, \alpha^d)}_{\text{smooth } \because \mathcal(A) \text{ is smooth atlas}}, \dotsc, \dotsc, \underbrace{\beta^m \left(\partial_m (y^i \after x^{-1})(\alpha^1, \dotsc, \alpha^d)\right)}_{\text{smooth } \because \text{ chart transition map is } C^\infty \text{ smooth}}, \dotsc\right) \\
-& \implies (\xi_y \after \xi_x^{-1}) \text{ is smooth} \implies \mathcal{A}_{TM} \text{ is smooth}
+& \implies (\xi_y \after \xi_x^{-1}) \text{ is smooth} \implies \A_{TM} \text{ is smooth}
 \end{align*}
 \end{proof}
 
 Further, the surjective map $\pi$ is a smooth map because, in the chart representation, $\pi$ takes the $2d$ components of $X \in TM$ to the $d$-coordinates of the base point in $M$, which can be seen to happen smoothly by seeing how the components are mapped. Therefore, we have the following definition. 
 \begin{definition}
-Then, using the smooth manifold $(M, \mathcal{O}, \mathcal{A})$ as the base space and the smooth manifold $(TM, \mathcal{O}_{TM}, \mathcal{A}_{TM})$ as the total space, the \textbf{tangent bundle} is the triple
+Then, using the smooth manifold $\mfd$ as the base space and the smooth manifold $(TM, \mathcal{O}_{TM}, \A_{TM})$ as the total space, the \textbf{tangent bundle} is the triple
 \begin{equation}\label{eq:TangentBundle}
 \boxed{TM \projmapto M}
 \end{equation}
@@ -131,7 +131,7 @@ For a tangent bundle $TM \projmapto M$, a \textbf{smooth vector field} $\chi$ is
 \textit{Remarks: $\chi$ is a section, which couldn't have been a smooth map unless we had both $M$ and $TM$ as smooth manifolds.}
 
 \subsection{The $C^{\infty}(M)$-module $\Gamma(TM)$}
-We already know that $C^{\infty}(M)$, the collection of all smooth functions is a vector space with S-multiplication with $\mathbb{R}$. But we may also consider the structure $(C^{\infty}(M),+,\cdot)$ with point-wise addition between elements of $C^{\infty}(M)$ and point-wise multiplication between elements of $C^{\infty}(M)$. This structure satisfies all the requirements of a field (commutativity, associativity, neutral element, inverse element under both operations, and distributivity) except that there is no inverse for all non-zero elements under multiplication. This is so because a function that is not zero everywhere, may be zero at some points and then point-wise multiplication with no function would result in the value 1 everywhere. Such a structure is called a ring. 
+We already know that $C^{\infty}(M)$, the collection of all smooth functions is a vector space with S-multiplication with $\R$. But we may also consider the structure $(C^{\infty}(M),+,\cdot)$ with point-wise addition between elements of $C^{\infty}(M)$ and point-wise multiplication between elements of $C^{\infty}(M)$. This structure satisfies all the requirements of a field (commutativity, associativity, neutral element, inverse element under both operations, and distributivity) except that there is no inverse for all non-zero elements under multiplication. This is so because a function that is not zero everywhere, may be zero at some points and then point-wise multiplication with no function would result in the value 1 everywhere. Such a structure is called a ring. 
 
 A module over a ring is a generalization of the notion of vector space over a field, wherein the corresponding scalars are the elements of an arbitrary given ring.
 
