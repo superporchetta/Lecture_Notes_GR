@@ -1,9 +1,102 @@
 \section{Integration}
+\begin{framed}
+This lecture will be the completion of our ``lift'' of analysis on charts to the manifold level. We want to be able to integrate a function $f$ over a manifold $M$. This $\int_{M} f$ will be an important tool for writing down the action on Einstein Equations.
 
-\subsection{}
+However, to define integral we need a mild new structure on the smooth manifold $\mfd$. It requires \\
+(i) a choice of a certain tensor field, the so-called \textbf{volume form} and \\
+(ii) a restriction on the atlas $\A$, which is called '\textbf{orientation}'.
+\end{framed}
 
-\subsection{}
+\subsection{Review of integration on $\mathbb{R}^d$}
+We review this because this is what, after all, happens on charts; and we want to use this knowledge to have a well-defined integration on manifolds.
+\begin{enumerate}[a)]
+\item If $F : \R \to \R$, we assume a notion of integration is known. We define an integral over an interval $(a,b)$ as follows: \\
+\[
+\int_{(a,b)} F := \int_a^b dx \, F(x) \quad\quad \text{(which is understood in terms of, say, Riemann's integral)}.
+\]
 
+\item If $F : \R^k \to \R$, then
+\begin{enumerate}[(i)]
+\item on a box-shaped domain, $Box = (a,b) \times (c,d) \times \dotsb \times (u,v) \subseteq \R^k$, the integral on the box is a series of integrals which have to be evaluated one after the other as follows \\
+\[
+\int_{Box} F := \int_a^b dx^1 \int_c^d dx^2 \dotsi \int_u^v dx^k \, F(x^1, x^2, \dotsc, x^k)
+\]
+\item for other domains, $G \subseteq \R^k$, we first introduce an \textbf{indicator function} $\mu_G : \R^k \to \R$ such that
+\[
+\mu_G(x) = \begin{cases}
+               1, \quad \quad x \in G \\
+               0, \quad \quad x \not\in G
+            \end{cases}
+\]
+and then define
+\[
+\int_{G} F := \int_{-\infty}^{+\infty} dx^1 \int_{-\infty}^{+\infty} dx^2 \dotsi \int_{-\infty}^{+\infty} dx^k \, \mu_G(x) \cdot F(x^1, x^2, \dotsc, x^k)
+\]
+While this may not be a practical definition, it tells us what we mean by an integral over a function from $\R^k$ to $\R$ over an arbitrary domain $G$.
+\end{enumerate}
+\end{enumerate}
+
+\textit{\textbf{Note}: All of the above comes with the disclaimer '\textbf{if the integral exists}' since there could be many issues that do not allow the existence of the integral as defined above.}
+
+\textbf{Change of variables}, which may also be called integration by substitution.
+
+\begin{theorem}
+If $F : \R^k \ni G \to \R$ and $\phi : preim_\phi(G) (\in \R^k) \to G$, then
+\[
+\int_G F(x) = \int_{preim_\phi(G)} \underbrace{\left\lvert det(\partial x)(y) \right\rvert}_{\text{Jacobian of }\phi} \cdot (F \after \phi)(y)
+\]
+\end{theorem}
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
+  {
+    \R^k \ni preim_\phi(G) & G \in \R^k \\
+    & \R \\
+  };
+  \path[->]
+  (m-1-1) edge node[auto] {$\phi$} (m-1-2)
+          edge node[sloped, anchor=center, below] {$F \after \phi$} (m-2-2)
+  (m-1-2) edge node[auto] {$F$} (m-2-2);
+\end{tikzpicture}
+
+\textbf{Example}: Consider the domain $G \subset \R^2$, which includes the entire $R^2$ except the x-axis. Let
+\begin{align*}
+\phi : & \R^+ \times \lbrace(0,\pi) \cup (\pi,2\pi)\rbrace \to G \\
+& (r, \varphi) \mapsto (r\cos\varphi, r\sin\varphi)
+\end{align*}
+Thus, $G$ is in Cartesian coordinates and $preim_\phi(G)$ is in polar coordinates. Let us calculate the Jacobian.
+\begin{align*}
+(\partial_a x^b) (r, \varphi) & = \begin{vmatrix}
+\cos\varphi & \sin\varphi \\
+-r\sin\varphi & r\cos\varphi
+\end{vmatrix} \\
+det(\partial_a x^b) (r, \varphi) & = r \\
+\implies \int_G \underbrace{dx^1 \, dx^2}_{\text{volume element}} \, F(x^1,x^2) & = \int_0^\infty \int_0^{2\pi} \underbrace{dr \, d\varphi \, r}_{\text{volume element}} F(r\cos\varphi, r\sin\varphi)
+\end{align*}
+
+\subsection{Integration on one chart}
+Let $\mfd$ be a smooth manifold, $f : M \to \R$ and choose charts $(U,x), (U,y) \in \A$
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=5em, column sep=7em, minimum width=2em]
+  {
+    y(U) \in \R^k &  \\
+    U & \R \\
+    x(U) \in \R^k &  \\
+  };
+  \path[->]
+  (m-2-1) edge node[auto] {$f$} (m-2-2)
+          edge node[auto] {$y$} (m-1-1)
+          edge node[auto] {$x$} (m-3-1)
+  (m-1-1) edge node[sloped, anchor=center, above] {$f_{(y)} := f \after y^{-1}$} (m-2-2)
+  (m-3-1) edge node[sloped, anchor=center, below] {$f_{(x)} := f \after x^{-1}$} (m-2-2)
+  (m-3-1) edge [bend left=40] node[left] {$y \after x^{-1}$} (m-1-1);
+\end{tikzpicture}
+
+Consider $\int_U f$
+\[
+\int_U f := \int_{x(U)} d^k\alpha \, f_{(x)}(\alpha)
+\]
 \subsection{Volume forms}
 
 \begin{definition}
