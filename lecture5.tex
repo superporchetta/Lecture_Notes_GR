@@ -34,7 +34,6 @@ $(f \oplus g)(p) := f(p) + g(p)$ and $(\lambda \otimes g)(p) := \lambda \cdot g(
 \underline{Terminology}: If $X$ is a vector seen as a map, then $X$ acting on a function $f$, i.e. $Xf$ is called the \textbf{directional derivative of $f$ in the $X$ direction}.
 
 \subsection{Tangent vector space}
-% \url{https://youtu.be/pepU_7NJSGM?t=9m9s}
 \begin{definition}
 For each point $p \in M$, the \textbf{tangent space} to $M$ at the point $p$ is the set \\
 \begin{equation}\label{Eq:L5_defTangentSpace}
@@ -94,9 +93,7 @@ Now
 \end{align*}
 \end{proof}
 
-\underline{picture}: (cf. \url{https://youtu.be/pepU_7NJSGM?t=39m5s})
-
-\textit{If we push $\gamma$ and $\delta$ to one chart, and add them there, then bring the sum back to $M$, we would get a curve which would be different from the curve we would get if we used another chart. But it turns out, irrespective of the charts selected, we get the same tangent/velocity. Conclusion: Adding trajectories is chart dependent; hence, bad. Adding velocities is good because, whatever the charts, they yield the same derivative at the point of intersection. Of course, you cannot add two curves $(\gamma \oplus \delta)(\lambda) := \gamma(\lambda) +_M \delta(\lambda)$ because there is no addition $+_M$ in $M$. Defining $+$ through charts results in chart-dependent results, which is, therefore, not real.}  
+\textit{\textbf{Note}: If we push $\gamma$ and $\delta$ to one chart, and add them there, then bring the sum back to $M$, we would get a curve which would be different from the curve we would get if we used another chart. But it turns out, irrespective of the charts selected, we get the same tangent/velocity. Conclusion: Adding trajectories is chart dependent; hence, bad. Adding velocities is good because, whatever the charts, they yield the same derivative at the point of intersection. Of course, you cannot add two curves $(\gamma \oplus \delta)(\lambda) := \gamma(\lambda) +_M \delta(\lambda)$ because there is no addition $+_M$ in $M$. Defining $+$ through charts results in chart-dependent results, which is, therefore, not real.}  
 
 \subsection{Components of a vector w.r.t. a chart}
 \begin{tikzpicture}
@@ -139,7 +136,6 @@ which eat a function, form a basis of $T_pM$ w.r.t. which the components of the 
 \end{definition}
 
 \textit{Note: The components of a vector are always w.r.t. a chart. In $M$, there is just the vector, no components.} \\
-Picture: \url{https://youtu.be/pepU_7NJSGM?t=1h16s}
 
 \begin{theorem}
 \label{thm:L5_dxiupondxj}
@@ -150,13 +146,11 @@ For a chart $(U,x)$,
 \end{theorem}
 \begin{proof}
 \begin{align*}
-\cibasis[x^i]{x^j} & = \partial_j (x^i \after x^{-1})(x(p)) \\
-& = \delta^i_j && \text{ since } x^i \after x^{-1} : \R^d \to \R \text{ s.t. } (\alpha^1 , \dots , \alpha^d) \mapsto \alpha^i
+\cibasis[x^i]{x^j} = \partial_j (x^i \after x^{-1})(x(p)) = \delta^i_j && \text{(since } x^i \after x^{-1} : \R^d \to \R \text{ s.t. } (\alpha^1 , \dots , \alpha^d) \mapsto \alpha^i)
 \end{align*}
 \end{proof}
 
 \subsection{Chart-induced basis}
-% \url{https://youtu.be/pepU_7NJSGM?t=1h2m}
 \begin{definition}
 If $(U,x) \in \A_{\text{smooth}}$, then $\displaystyle\left(\cibasis{x^1}\right)_p, \dotsc, \left(\cibasis{x^d}\right)_p \in T_pU \subseteq T_pM$ constitute a \textbf{chart-induced basis} of $T_pU$.
 \end{definition}
@@ -178,15 +172,14 @@ This follows from the fact $d$ vectors are needed to express any vector in $T_pM
 \underline{Terminology}: $X \in T_pM \implies \exists \, \gamma : \R \to M : X = v_{\gamma,p}$ and $\displaystyle \exists \, \underbrace{X^1, \dotsc, X^d}_{\in \R} : X = X^i \left(\cibasis{x^i}\right)_p$. $X^i$ are called \textbf{components of the vector $X$ w.r.t chart-induced basis}.
 
 \subsection{Change of vector components under a change of chart}
-\ding{56} A vector does not change under change of chart. It is the vector components that transform under a change of chart.
+\ding{56} A vector does not change under change of chart; only the vector components do.
 
 Let $(U,x)$ and $(V,y)$ be overlapping charts and $p \in U \cap V$. Let $X \in T_pM$. Then, $X$ can be expanded in terms of chart-induced basis of the two charts as follows:
 \begin{equation}\label{eq:L5_VecExpandedIn2Charts}
 X^i_{(y)} \cdot \left(\cibasis{y^i}\right)_p \underbrace{=}_{(V,y)} X \underbrace{=}_{(U,x)} X^i_{(x)} \cdot \left(\cibasis{x^i}\right)_p
 \end{equation}
-Now,
 \begin{align*}
-  \left(\cibasis{x^i}\right)_p f & = \partial_i(f \after x^{-1})(x(p)) \\
+  \text{Now, } \quad \quad \left(\cibasis{x^i}\right)_p f & = \partial_i(f \after x^{-1})(x(p)) \\
   & = \partial_i (\underbrace{(f \after y^{-1})}_{\R^d \to \R} \after (\underbrace{y \after x^{-1}}_{\R^d \to \R^d})(x(p)) \\
   & = (\partial_i (y \after x^{-1})^j)(x(p)) \cdot (\partial_j (f \after y^{-1}))(y(p)) \\
   & = (\partial_i (y^j \after x^{-1}))(x(p)) \cdot (\partial_j (f \after y^{-1}))(y(p)) \\
@@ -239,7 +232,6 @@ $(df)_p$ is a $(0,1)$-tensor over the underlying vector space $T_pM$. We define 
 \begin{theorem}
 A chart $(U,x) \implies x^i : U \to \R$ are smooth functions. Then, $(dx^1)_p, (dx^2)_p, \dotsc, (dx^d)_p$ form a basis of $T_p^*M$. 
 \end{theorem}
-
 \begin{proof}
 In fact, $(dx^i)_p$ form a dual basis since 
 \begin{equation}
@@ -248,36 +240,29 @@ In fact, $(dx^i)_p$ form a dual basis since
 \end{proof}
 
 \subsection{Change of components of a covector under a change of chart}
-\ding{56} A covector does not change under change of chart. It is the covector components that transform under a change of chart.
+\ding{56} A covector does not change under change of chart; only the covector components do.
 
 Let $(U,x)$ and $(V,y)$ be overlapping charts and $p \in U \cap V$. Let $\omega \in T_p^*M$. Then, $\omega$ can be expanded in terms of chart-induced basis of the two charts as follows:
 \begin{equation}\label{eq:L5_CovecExpandedIn2Charts}
-\displaystyle\omega_{(y)j}(dy^j)_p \underbrace{=}_{(V,y)} \omega \underbrace{=}_{(U,x)} \omega_{(x)i}(dx^i)_p
+\displaystyle\omega_{(y)k}(dy^k)_p \underbrace{=}_{(V,y)} \omega \underbrace{=}_{(U,x)} \omega_{(x)j}(dx^j)_p
 \end{equation}
-
-Now,
 \begin{align*}
-  && \displaystyle\omega_{(y)j}(dy^j)_p & = \omega_{(x)i}(dx^i)_p && \text{by Eq. \ref{eq:L5_CovecExpandedIn2Charts}} \\
-  \implies && \displaystyle\omega_{(y)j}(dy^j)_p \left(\cibasis{y^k}\right)_p & = \omega_{(x)i}(dx^i)_p \left(\cibasis{y^k}\right)_p \\
-  \implies && \displaystyle\omega_{(y)j}(dy^j)_p \left(\cibasis{y^k}\right)_p & = \omega_{(x)i}(dx^i)_p \left(\cibasis[x^q]{y^k}\right)_p \cdot \left(\cibasis{x^q}\right)_p && \text{by Eq. \ref{eq:L5_cibasisIn2Charts}} \\
-  \implies && \displaystyle\omega_{(y)j} \left(\cibasis[y^j]{y^k}\right)_p & = \omega_{(x)i} \left(\cibasis[x^q]{y^k}\right)_p \cdot \left(\cibasis[x^i]{x^q}\right)_p && \text{by Eq. \ref{eq:defGradient}} \\
-  \implies && \displaystyle\omega_{(y)j} \delta^j_k & = \omega_{(x)i} \left(\cibasis[x^q]{y^k}\right)_p \cdot \delta^i_q && \text{by Theorem \ref{thm:L5_dxiupondxj}} \\
-  \implies && \displaystyle\omega_{(y)k} & = \omega_{(x)i} \left(\cibasis[x^i]{y^k}\right)_p
+  \implies && \displaystyle\omega_{(y)k}(dy^k)_p \left(\cibasis{y^i}\right)_p & = \omega_{(x)j}(dx^j)_p \left(\cibasis{y^i}\right)_p \\
+  \implies && \displaystyle\omega_{(y)k} \left(\cibasis[y^k]{y^i}\right)_p & = \omega_{(x)j} \left(\cibasis[x^j]{y^i}\right)_p && \text{by Eq. \ref{eq:defGradient}} \\
+  \implies && \displaystyle\omega_{(y)k} \delta^k_i & = \omega_{(x)j} \left(\cibasis[x^j]{y^i}\right)_p && \text{by Theorem \ref{thm:L5_dxiupondxj}}
 \end{align*}
-Or, with a change of indices,
-\begin{equation}
-\boxed{\omega_{(y)i} = \left(\cibasis[x^j]{y^i}\right)_p \omega_{(x)j}}
-\end{equation}
+\begin{align}
+\implies && \boxed{\omega_{(y)i} = \left(\cibasis[x^j]{y^i}\right)_p \omega_{(x)j}} &&
+\end{align}
 
-\begin{align*}
-&& \omega_{(y)i} & = \left(\cibasis[x^j]{y^i}\right)_p \omega_{(x)j} \\
-\implies && \omega_{(y)i}(dy^i)_p & = \left(\cibasis[x^j]{y^i}\right)_p \omega_{(x)j}(dy^i)_p \\
-\implies && \omega & = \left(\cibasis[x^j]{y^i}\right)_p \omega_{(x)j}(dy^i)_p \\
-\implies && \omega (dx^j)_p & = \left(\cibasis[x^j]{y^i}\right)_p \omega_{(x)j}(dy^i)_p (dx^j)_p \\
-\implies && \omega (dx^j)_p & = \left(\cibasis[x^j]{y^i}\right)_p \omega (dy^i)_p \\
-\implies && (dx^j)_p & = \left(\cibasis[x^j]{y^i}\right)_p (dy^i)_p
-\end{align*}
-
-\begin{equation}\label{eq:L5_cicobasisIn2Charts}
-\therefore \boxed{(dx^j)_p = \left(\cibasis[x^j]{y^i}\right)_p (dy^i)_p}
-\end{equation}
+%\begin{align*}
+%\implies && \omega_{(y)i}(dy^i)_p & = \left(\cibasis[x^j]{y^i}\right)_p \omega_{(x)j}(dy^i)_p \\
+%\implies && \omega & = \left(\cibasis[x^j]{y^i}\right)_p \omega_{(x)j}(dy^i)_p \\
+%\implies && \omega (dx^j)_p & = \left(\cibasis[x^j]{y^i}\right)_p \omega_{(x)j}(dy^i)_p (dx^j)_p \\
+%\implies && \omega (dx^j)_p & = \left(\cibasis[x^j]{y^i}\right)_p \omega (dy^i)_p \\
+%\implies && (dx^j)_p & = \left(\cibasis[x^j]{y^i}\right)_p (dy^i)_p
+%\end{align*}
+%
+%\begin{equation}\label{eq:L5_cicobasisIn2Charts}
+%\therefore \boxed{(dx^j)_p = \left(\cibasis[x^j]{y^i}\right)_p (dy^i)_p}
+%\end{equation}
