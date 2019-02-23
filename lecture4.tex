@@ -87,7 +87,7 @@ Since both $y \circ x^{-1}$ and $y \circ x^{-1}$ are $\mathbb{R}^d \to \mathbb{R
 \end{definition}
 
 
-\begin{tabular}{ l | c  l}
+\begin{tabular}{ l | c | p{11cm}}
 \ding{96} &  undergraduate  \ding{96} &  \\
 \hline
 $C^0$ & $C^0(\mathbb{R}^d \to \mathbb{R}^d) =$  &  continuous maps w.r.t. $\mathcal{O}$ (we know from section 1 that every atlas is $C^0$-compatible atlas.) \\
@@ -98,14 +98,14 @@ $\vdots$ & & \\
 $C^{\infty}$ & $C^{\infty}(\mathbb{R}^d \to \mathbb{R}^d)$ & continuously differentiable arbitrarily many times; also called ``smooth manifolds''\\
 $\mathbin{\rotatebox[origin=c]{-90}{$\supseteq$}}$ & &  \\
 $C^{\omega}$ & & $\exists $ multi-dimensional Taylor expansion \\
-$\mathbb{C}^{\infty}$ & satisfy Cauchy-Riemann equations, pair-wise & 
+$\mathbb{C}^{\infty}$ & & satisfy Cauchy-Riemann equations, pair-wise \\
+\hline
 \end{tabular}
 
 
 EY : 20151109 Schuller says: $C^k$ is easy to work with because you can judge $k$-times continuously differentiability from existence of all partial derivatives \textbf{and} their continuity.  There are examples of maps that partial derivatives exist but are not $D^k$, $k$-times differentiable.  
 
-\begin{theorem}[Whitney\footnote{\url{http://mathoverflow.net/questions/8789/can-every-manifold-be-given-an-analytic-structure}}
-]
+\begin{theorem}[Whitney\footnote{\url{http://mathoverflow.net/questions/8789/can-every-manifold-be-given-an-analytic-structure}}]
 %  Any $C^{k\geq 1}$-manifold $(M,\mathcal{O}, \mathcal{A}_{C^{k\geq 1}})$  
   Any $C^{k\geq 1}$-atlas, $\mathcal{A}_{C^{k\geq 1}}$ of a topological manifold \emph{contains} a $C^{\infty}$-atlas.  
 
@@ -117,6 +117,7 @@ Thus we may w.l.o.g. always consider $C^{\infty}$-manifolds (i.e., ``smooth mani
 \end{definition}
 
 \textit{Remarks: We should distinguish the real physical object from the maps used to communicate them.}
+
 \begin{tikzpicture}
   \matrix (m) [matrix of math nodes, row sep=4em, column sep=6em, minimum width=2em]
   {
@@ -135,20 +136,15 @@ Thus we may w.l.o.g. always consider $C^{\infty}$-manifolds (i.e., ``smooth mani
 
 \subsection{Diffeomorphisms}
 
-We study structure preserving bijections.
+We study isomorphisms, i.e., structure preserving bijections.
 
-If $M,N$ are naked sets (i.e., with no additional structure), the structure preserving maps are the bijections (invertible maps).  
-
-\begin{definition}
-  $M \cong_{\text{set}} N$, i.e., $M$ and $N$ are (set-theoretically) isomorphic to each other if $\exists \, $ bijection $\phi : M \to N$.
-\end{definition}
+If $M,N$ are naked sets (i.e., with no additional structure), then $M \cong_{\text{set}} N$, i.e., $M$ and $N$ are (set-theoretically) isomorphic to each other if $\exists \, $ bijection $\phi : M \to N$.
 
 \underline{Examples}.  $\mathbb{N} \cong_{\text{set}} \mathbb{Z}$, $\mathbb{N} \cong_{\text{set}} \mathbb{Q}$  (using diagonal counting scheme), $\mathbb{N} \cancel{\cong_{\text{set}}} \mathbb{R}$.
 
 Now $(M, \mathcal{O}_M) \cong_{\text{top}} (N,\mathcal{O}_N)$, i.e., they are topologically isomorphic (also called ``homeomorphic'') if $\exists \, $ bijection $\phi : M \to N$  s.t. $\phi$ and $\phi^{-1}$ are continuous.  
 
-Two vector spaces are isomorphic , i.e., $(V,+,\cdot) \cong_{\text{vec}} ( W,+_w,\cdot_w)$ if \\
-$\exists \, \text{ linear bijection } \phi : V \to W$.
+Two vector spaces are isomorphic , i.e., $(V,+,\cdot) \cong_{\text{vec}} ( W,+_w,\cdot_w)$ if $\exists \, \text{ linear bijection } \phi : V \to W$.
 
 Finally,
 \begin{definition}
@@ -179,19 +175,17 @@ M \supseteq U &  V\subseteq N   \\
 \begin{theorem}
   $\# = $ number of $C^{\infty}$-manifolds one can make out of a given $C^0$-manifolds (if any) - up to diffeomorphisms.  
 
-\begin{tabular}{l | c r }
-  $\text{dim}M$ &  $\#$ &  \\
-  \hline
-  1  & 1  & Morse-Radon theorems \\
- 2  & 1  & Morse-Radon theorems \\
- 3 & 1  & Morse-Radon theorems \\
+\begin{tabular}{l | c | r }
+$\text{dim }M$ &  $\#$ &  \\
+\hline
+1  & 1  & Morse-Radon theorems \\
+2  & 1  & Morse-Radon theorems \\
+3 & 1  & Morse-Radon theorems \\
 4 & uncountably infinite & \\
 5 &   finite  & surgery theory \\
 6 &  finite & surgery theory \\
-\vdots & finite & surgery theory
+\vdots & finite & surgery theory \\
+\hline
 \end{tabular}
 
 \end{theorem}
-
-EY : 20151109 cf. \url{http://math.stackexchange.com/questions/833766/closed-4-manifolds-with-uncountably-many-differentiable-structures}  \\
-\href{http://www.maths.ed.ac.uk/~aar/papers/scorpan.pdf}{The wild world of 4-manifolds}
