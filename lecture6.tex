@@ -117,7 +117,7 @@ Then, using the smooth manifold $\mfd$ as the base space and the smooth manifold
 Why did we put so much effort in making a smooth atlas on $TM$ and defining a tangent bundle? The answer is in the following definition of \emph{smooth} vector field, not just any vector field.
 
 \begin{definition}
-For a tangent bundle $TM \projmapto M$, a \textbf{smooth vector field} $\chi$ is a smooth map such that $\pi \after \chi = id_{M}$.
+For a tangent bundle $TM \projmapto M$, a \textbf{smooth vector field} $\chi$ is a smooth map such that $\pi \after \chi = id_{M}$, $\chi$ is a \textit{smooth section}.
 \end{definition}
 
 \begin{tikzpicture}
@@ -131,7 +131,7 @@ For a tangent bundle $TM \projmapto M$, a \textbf{smooth vector field} $\chi$ is
 \textit{Remarks: $\chi$ is a section, which couldn't have been a smooth map unless we had both $M$ and $TM$ as smooth manifolds.}
 
 \subsection{The $C^{\infty}(M)$-module $\Gamma(TM)$}
-We already know that $C^{\infty}(M)$, the collection of all smooth functions is a vector space with S-multiplication with $\R$. But we may also consider the structure $(C^{\infty}(M),+,\cdot)$ with point-wise addition between elements of $C^{\infty}(M)$ and point-wise multiplication between elements of $C^{\infty}(M)$. This structure satisfies all the requirements of a field (commutativity, associativity, neutral element, inverse element under both operations, and distributivity) except that there is no inverse for all non-zero elements under multiplication. This is so because a function that is not zero everywhere, may be zero at some points and then point-wise multiplication with no function would result in the value 1 everywhere. Such a structure is called a ring. 
+We already know that $C^{\infty}(M)$, the collection of all smooth functions is a vector space with S-multiplication with $\R$. So we may also consider the structure $(C^{\infty}(M),+,\cdot)$ with point-wise addition between elements of $C^{\infty}(M)$ and point-wise multiplication between elements of $C^{\infty}(M)$. This structure satisfies all the requirements of a field (commutativity, associativity, neutral element, inverse element under both operations, and distributivity) except that there is no inverse for all non-zero elements under multiplication. This is so because a function that is not zero everywhere, may be zero at some points and then point-wise multiplication with no function would result in the value 1 everywhere. Such a structure is called a \textit{ring}. 
 
 A module over a ring is a generalization of the notion of vector space over a field, wherein the corresponding scalars are the elements of an arbitrary given ring.
 
@@ -172,7 +172,7 @@ So far we have constructed the sections over the tangent bundle. That is, $\Gamm
 Exactly along the same lines we can construct the \textbf{cotangent bundle} $\Gamma(T^*M) = $ ``set of covector fields'' as a $C^{\infty}(M)$-module, by mapping a covector to the coordinates of its base point and components of the covector. $\Gamma(TM)$ and $\Gamma(T^*M)$ are the basic building blocks for every tensor field.
 
 \begin{definition}
-An \textbf{$(r,s)$-tensor field} $T$ is a multilinear map
+An \textbf{$(r,s)$-tensor field} $T$ is a $C^{\infty}(M)$ multilinear map
 \begin{equation}
 T:\underbrace{\Gamma(T^*M) \times \dotsb \times \Gamma(T^*M)}_{r} \times \underbrace{\Gamma(TM) \times \dotsb \times \Gamma(TM)}_{s} \linearmapto C^{\infty}(M)
 \end{equation}

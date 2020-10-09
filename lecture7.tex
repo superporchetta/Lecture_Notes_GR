@@ -159,9 +159,14 @@ Let $(V,y) \in \A$ and $p \in V$. Then consider a new chart $(U,x)$ to which one
 \begin{align*}
 \left(x \after y^{-1}\right)^i\left(\alpha^1,\dotsc,\alpha^d\right) := \alpha^i - \ccfx{i}{(jk)}{(y)} \alpha^j \alpha^k && \text{ where the } \ccf{}{} \text{s are taken at the point } p \\ 
 \implies \displaystyle\cibasis[x^i]{y^j} = \partial_j\left(x^i \after y^{-1}\right) = \delta^i_j - \ccfx{i}{(jm)}{(y)} \alpha^m \\
-\implies \displaystyle\frac{\partial^2 x^i}{\partial y^k \partial y^j} = - \ccfx{i}{(jk)}{(y)} 
-%\implies \ccfx{i}{jk}{(y)}(p) = - \cibasis[y^i]{x^q} \ccfx{q}{(jk)}{(y)} + \cibasis[y^i]{x^q} \cibasis[x^s]{y^j} \cibasis[x^p]{y^k} \ccfx{q}{sp}{(x)} && \text{Eq. (\ref{Eq:WEHCG0703_changeofGamma}) \& the previous step}
+\implies \displaystyle\frac{\partial^2 x^i}{\partial y^k \partial y^j} = - \ccfx{i}{(jk)}{(y)} \\
 \end{align*}
-
-TODO: Not understood by me.
+To end the proof one can see that, without loss of generality, the coordinates of $y$ can be chosen so that the chart coordinates vanish at $p$. Then in applying formula (\ref{Eq:WEHCG0703_changeofGamma}) one has to evaluate derivatives at point $p$. Also, given that $\delta$ is its own inverse.
+\begin{align*}
+\implies & \ccfx{i}{jk}{(x)}(p) = \ccfx{i}{(jk)}{(y)}(p) - \ccfx{i}{(jk)}{(y)}(p) = \ccfx{i}{[jk]}{(y)}(p) \\
+\implies & \ccfx{i}{(jk)}{(x)}(p) = 0.
+\end{align*}
 \end{proof}
+
+We can say that, up to a \textit{torsion}, we can make the $\Gamma$s vanish.
+Later in the course one should see that the antisymmetric part of the $\Gamma$s is in fact a tensor and that can ce set consistently to zero. I can then look at special kind of connections where the $\Gamma^{i}_{~[jk]}$ vanishes, those are \textit{torsion-free connections}.
